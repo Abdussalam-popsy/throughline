@@ -1,5 +1,5 @@
 import Anthropic from "@anthropic-ai/sdk";
-import { BRIEF_SYSTEM, ENTRY_SYSTEM, ROUTE_SYSTEM } from "../lib/prompts";
+import { BRIEF_SYSTEM, DOMAIN_SYSTEM, ENTRY_SYSTEM, ROUTE_SYSTEM } from "../lib/prompts";
 import type {
   BriefDestination,
   Entry,
@@ -150,6 +150,33 @@ function safeParseAnalysis(
   return analysis;
 }
 
+/**
+ * Quick, single-purpose domain triage. A lightweight LLM check that decides which
+ * domain a fresh entry fits into, BEFORE the entry is stored. Fails safe to
+ * "general" on any transport or parse error, so the caller always gets a domain.
+ */
+export async function classifyDomain(text: string): Promise<Domain> {
+  let raw: string;
+  try {
+    // raw = await glmChat(DOMAIN_SYSTEM, text);
+    raw = await claudeChat(DOMAIN_SYSTEM, text);
+  } catch {
+    return "general";
+  }
+  const cleaned = stripFences(raw);
+  // Prefer the JSON shape, but tolerate a bare domain word if the model drifts.
+  try {
+    const parsed = JSON.parse(cleaned) as { domain?: unknown };
+    if (VALID_DOMAIN.includes(parsed.domain as Domain)) {
+      return parsed.domain as Domain;
+    }
+  } catch {
+    const word = cleaned.replace(/["'.\s]/g, "") as Domain;
+    if (VALID_DOMAIN.includes(word)) return word;
+  }
+  return "general";
+}
+
 export async function processEntry(
   recent: Entry[],
   today: string,
@@ -162,7 +189,11 @@ export async function processEntry(
     : "";
   let raw: string;
   try {
-    raw = await glmChat(
+    // raw = await glmChat(
+    //   ENTRY_SYSTEM,
+    //   `Recent entries:\n${ctx}\n\nToday's entry:\n${today}${stressorContext}`
+    // );
+    raw = await claudeChat(
       ENTRY_SYSTEM,
       `Recent entries:\n${ctx}\n\nToday's entry:\n${today}${stressorContext}`
     );
@@ -185,7 +216,8 @@ export async function routeBrief(
   ]
     .filter(Boolean)
     .join("\n");
-  const raw = await glmChat(ROUTE_SYSTEM, user);
+  // const raw = await glmChat(ROUTE_SYSTEM, user);
+  const raw = await claudeChat(ROUTE_SYSTEM, user);
   return JSON.parse(stripFences(raw)) as RouteSuggestion;
 }
 

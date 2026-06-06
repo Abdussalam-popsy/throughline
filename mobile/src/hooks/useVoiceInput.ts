@@ -19,11 +19,14 @@ export function useVoiceInput(onResult: ResultListener) {
   useSpeechRecognitionEvent("start", () => setRecognizing(true));
   useSpeechRecognitionEvent("end", () => setRecognizing(false));
   useSpeechRecognitionEvent("result", (event) => {
-    const transcript = event.results[0]?.transcript ?? "";
-    if (transcript.length > 0) onResultRef.current(transcript, event.isFinal);
+    // Guard every access: some result/end/error events arrive with `results`
+    // undefined, and an unguarded throw here is dispatched from a native event
+    // emitter — which trips the Hermes dev inspector and segfaults the app.
+    const transcript = event?.results?.[0]?.transcript ?? "";
+    if (transcript.length > 0) onResultRef.current(transcript, !!event?.isFinal);
   });
   useSpeechRecognitionEvent("error", (event) => {
-    setError(event.message || "Voice input failed. Please try again.");
+    setError(event?.message || "Voice input failed. Please try again.");
     setRecognizing(false);
   });
 

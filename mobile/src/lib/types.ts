@@ -5,6 +5,12 @@ export type Domain =
   | "body_image"
   | "loneliness"
   | "financial_anxiety"
+  | "relationship_stress"
+  | "identity_uncertainty"
+  | "work_burnout"
+  | "sleep_fatigue"
+  | "self_harm"
+  | "crisis"
   | "general";
 
 export type BriefDestination =

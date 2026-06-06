@@ -2,14 +2,34 @@ import request from "supertest";
 
 jest.mock("../src/services/ai", () => ({
   processEntry: jest.fn(),
+  classifyDomain: jest.fn(),
 }));
 
 import { app } from "../src/index";
-import { processEntry } from "../src/services/ai";
+import { classifyDomain, processEntry } from "../src/services/ai";
 
 const mockedProcess = processEntry as jest.MockedFunction<typeof processEntry>;
+const mockedClassify = classifyDomain as jest.MockedFunction<typeof classifyDomain>;
 
 afterEach(() => jest.clearAllMocks());
+
+test("domain returns the classified domain for an entry", async () => {
+  mockedClassify.mockResolvedValue("exam_stress");
+  const r = await request(app)
+    .post("/api/entry/domain")
+    .send({ text: "deadlines everywhere and I can't keep up" });
+  expect(r.status).toBe(200);
+  expect(r.body.domain).toBe("exam_stress");
+  expect(mockedClassify).toHaveBeenCalledWith(
+    "deadlines everywhere and I can't keep up"
+  );
+});
+
+test("domain rejects an empty entry", async () => {
+  const r = await request(app).post("/api/entry/domain").send({ text: "   " });
+  expect(r.status).toBe(400);
+  expect(mockedClassify).not.toHaveBeenCalled();
+});
 
 test("process returns analysis + matching resource for a domain", async () => {
   mockedProcess.mockResolvedValue({

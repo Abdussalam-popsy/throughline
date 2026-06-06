@@ -92,6 +92,14 @@ export interface GenerateBriefResponse {
   briefMarkdown: string;
 }
 
+export interface ClassifyDomainRequest {
+  text: string;
+}
+
+export interface ClassifyDomainResponse {
+  domain: Domain;
+}
+
 export interface ProcessEntryRequest {
   recent: Entry[];
   today: string;

@@ -13,7 +13,7 @@ import { ResourceCard } from "../src/components/ResourceCard";
 import { CrisisCard } from "../src/components/CrisisCard";
 import { useEntries } from "../src/hooks/useEntries";
 import { useVoiceInput } from "../src/hooks/useVoiceInput";
-import { processEntryApi } from "../src/services/api";
+import { classifyDomainApi, processEntryApi } from "../src/services/api";
 import type { ProcessEntryResult } from "../src/lib/types";
 
 type Stage = "triage" | "grounding" | "write" | "submitting" | "result";
@@ -73,7 +73,12 @@ export default function TodayScreen() {
           .filter((s): s is string => !!s && s.trim().length > 0)
       )
     ).map((label) => ({ label, domain: "general" as const }));
-    const result = await processEntryApi(entries, text.trim(), knownStressors);
+    // Quick domain triage runs alongside the full reflection; its result is the
+    // entry's stored domain. Both finish before the entry is saved.
+    const [domain, result] = await Promise.all([
+      classifyDomainApi(text.trim()),
+      processEntryApi(entries, text.trim(), knownStressors),
+    ]);
     const now = Date.now();
     add({
       id: String(now),
@@ -82,7 +87,7 @@ export default function TodayScreen() {
       text: text.trim(),
       riskLevel: result.analysis.risk_level,
       themes: result.analysis.themes,
-      domain: result.analysis.domain,
+      domain,
       // The stressor is chosen by the model, never the user.
       stressor: result.analysis.related_stressor?.label,
       createdAt: now,

@@ -70,9 +70,20 @@ export default function BriefScreen() {
         status === "sending" ||
         status === "success") &&
         brief.length > 0 && (
-          <View style={styles.card}>
-            <Markdown style={markdownStyles}>{brief}</Markdown>
-          </View>
+          <>
+            <View style={styles.card}>
+              <Markdown style={markdownStyles}>{brief}</Markdown>
+            </View>
+            <Pressable
+              style={({ pressed }) => [
+                styles.refresh,
+                pressed && styles.refreshPressed,
+              ]}
+              onPress={() => generate(entries)}
+            >
+              <Text style={styles.refreshText}>↻ Regenerate from latest entries</Text>
+            </Pressable>
+          </>
         )}
 
       {status === "review" && (
@@ -123,6 +134,18 @@ const styles = StyleSheet.create({
     marginTop: 16,
     fontStyle: "italic",
   },
+  refresh: {
+    alignSelf: "flex-start",
+    marginTop: 14,
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: "#cfe0da",
+    backgroundColor: "#eef5f2",
+  },
+  refreshPressed: { backgroundColor: "#e0ece8" },
+  refreshText: { color: "#2f6f5e", fontWeight: "700", fontSize: 14 },
 });
 
 const markdownStyles = {

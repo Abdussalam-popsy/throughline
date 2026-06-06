@@ -6,7 +6,12 @@ jest.mock("@anthropic-ai/sdk", () => ({
   })),
 }));
 
-import { generateBrief, processEntry, routeBrief } from "../src/services/ai";
+import {
+  classifyDomain,
+  generateBrief,
+  processEntry,
+  routeBrief,
+} from "../src/services/ai";
 import type { Entry } from "../src/lib/types";
 
 beforeEach(() => {
@@ -25,6 +30,45 @@ beforeEach(() => {
 });
 
 afterEach(() => jest.restoreAllMocks());
+
+test("classifyDomain returns the model's chosen domain", async () => {
+  (global as any).fetch = jest.fn(async () => ({
+    ok: true,
+    json: async () => ({
+      choices: [{ message: { content: '{"domain":"exam_stress"}' } }],
+    }),
+  }));
+  expect(await classifyDomain("exams are crushing me")).toBe("exam_stress");
+});
+
+test("classifyDomain tolerates fenced JSON and a bare word", async () => {
+  (global as any).fetch = jest.fn(async () => ({
+    ok: true,
+    json: async () => ({
+      choices: [{ message: { content: '```json\n{"domain":"loneliness"}\n```' } }],
+    }),
+  }));
+  expect(await classifyDomain("nobody talks to me")).toBe("loneliness");
+
+  (global as any).fetch = jest.fn(async () => ({
+    ok: true,
+    json: async () => ({ choices: [{ message: { content: "financial_anxiety" } }] }),
+  }));
+  expect(await classifyDomain("rent is due and I'm broke")).toBe("financial_anxiety");
+});
+
+test("classifyDomain fails safe to general on garbage or network error", async () => {
+  (global as any).fetch = jest.fn(async () => ({
+    ok: true,
+    json: async () => ({ choices: [{ message: { content: "not a domain" } }] }),
+  }));
+  expect(await classifyDomain("anything")).toBe("general");
+
+  (global as any).fetch = jest.fn(async () => {
+    throw new Error("network down");
+  });
+  expect(await classifyDomain("anything")).toBe("general");
+});
 
 test("generateBrief returns Claude content", async () => {
   const out = await generateBrief([

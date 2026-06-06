@@ -21,14 +21,16 @@ Return ONLY valid JSON — no prose, no markdown fences:
   "risk_level":     "none" | "elevated" | "crisis",
   "risk_rationale": string,   // one short sentence, grounded in their words
   "themes":         string[], // short lowercase tags, e.g. ["sleep","exam-pressure","isolation"]
-  "domain":         "exam_stress" | "body_image" | "loneliness" | "financial_anxiety" | "general",
+  "domain":         "exam_stress" | "body_image" | "loneliness" | "financial_anxiety" | "relationship_stress" | "identity_uncertainty" | "work_burnout" | "sleep_fatigue" | "self_harm" | "crisis" | "general"
+,
                               // categorise the PRIMARY source of distress; "general" if unclear
   "stressors":      [         // 0-3 concrete sources of stress named in TODAY's entry, in the
                               // user's own framing; [] if none is clear. Reuse an existing
                               // label verbatim when the entry is about it.
     {
       "label":  string,       // <=4 words, e.g. "Final exams", "Rent", "Feeling left out"
-      "domain": "exam_stress" | "body_image" | "loneliness" | "financial_anxiety" | "general"
+      "domain": "exam_stress" | "body_image" | "loneliness" | "financial_anxiety" | "relationship_stress" | "identity_uncertainty" | "work_burnout" | "sleep_fatigue" | "self_harm" | "crisis" | "general"
+
     }
   ],
   "related_stressor": {       // the SINGLE stressor today's entry is primarily about. Choose
@@ -36,7 +38,8 @@ Return ONLY valid JSON — no prose, no markdown fences:
                               // entry is about it; otherwise name a new one. null only if no
                               // source of stress is clear in the entry.
     "label":  string,         // <=4 words; must match an existing label verbatim when reused
-    "domain": "exam_stress" | "body_image" | "loneliness" | "financial_anxiety" | "general"
+    "domain": "exam_stress" | "body_image" | "loneliness" | "financial_anxiety" | "relationship_stress" | "identity_uncertainty" | "work_burnout" | "sleep_fatigue" | "self_harm" | "crisis" | "general"
+
   }
 }
 
@@ -63,6 +66,26 @@ Hard rules:
 - A stressor label must be a neutral source of stress (e.g. "Final exams"). NEVER let a
   stressor label describe a method, means, or self-harm specifics.
 - You do not decide what happens next. Your only output is this JSON.
+`.trim();
+
+export const DOMAIN_SYSTEM = `
+You are a fast classifier inside Throughline. Read ONE short journal entry and decide which
+SINGLE domain of distress it primarily fits into. This is a quick triage check — no therapy,
+advice, or commentary.
+
+Return ONLY valid JSON — no prose, no markdown fences:
+{ "domain": "exam_stress" | "body_image" | "loneliness" | "financial_anxiety" | "relationship_stress" | "identity_uncertainty" | "work_burnout" | "sleep_fatigue" | "self_harm" | "crisis" | "general" }
+
+Domain rules:
+- "exam_stress":        exams, deadlines, coursework, grades, revision, academic pressure.
+- "body_image":         appearance, weight, eating, exercise as punishment, self-disgust about body.
+- "loneliness":         isolation, no friends, feeling invisible, social comparison, being a burden.
+- "financial_anxiety":  money, rent, debt, not affording things, cost of living.
+- "general":            anything that does not clearly fit one of the above.
+
+Rules:
+- Choose exactly ONE domain. If it is unclear or mixed, choose "general".
+- Output nothing but the JSON object.
 `.trim();
 
 export const ROUTE_SYSTEM = `
