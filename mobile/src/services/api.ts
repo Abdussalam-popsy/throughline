@@ -14,7 +14,6 @@ const BASE = process.env.EXPO_PUBLIC_API_URL ?? "http://localhost:3000";
 // Call 0 — quick domain triage. Run before saving an entry so it's tagged with
 // the right domain. Fails safe to "general" if the backend is unreachable.
 export async function classifyDomainApi(text: string): Promise<Domain> {
-  console.log("classifyDomainApi", text);
   try {
     const r = await fetch(`${BASE}/api/entry/domain`, {
       method: "POST",
@@ -22,7 +21,6 @@ export async function classifyDomainApi(text: string): Promise<Domain> {
       body: JSON.stringify({ text }),
     });
     if (!r.ok) throw new Error("domain failed");
-    // console.log("classifyDomainApi response", await r.json());
     return (await r.json()).domain;
   } catch (error) {
     console.error("Error in classifyDomainApi:", error);
