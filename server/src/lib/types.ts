@@ -31,12 +31,33 @@ export interface Entry {
   createdAt: number;
 }
 
+/** A source of stress the model extracted from an entry, in the user's framing. */
+export interface ExtractedStressor {
+  label: string;
+  domain: Domain;
+}
+
+/**
+ * The single stressor a new entry is primarily about. The model chooses an
+ * existing stressor (reusing its label) when the entry is about it, otherwise
+ * names a new one. `isNew` is decided server-side against the existing list.
+ */
+export interface RelatedStressor extends ExtractedStressor {
+  isNew: boolean;
+}
+
 export interface EntryAnalysis {
   next_prompt: string;
   risk_level: RiskLevel;
   risk_rationale: string;
   themes: string[];
   domain: Domain;
+  // Concrete stressors the model surfaced from today's entry. Optional so older
+  // callers/mocks that predate stressor extraction still typecheck.
+  stressors?: ExtractedStressor[];
+  // The one stressor this entry relates to (existing or new), or null if none
+  // is clear. Drives the per-entry stressor link / "stressor added" tag.
+  related_stressor?: RelatedStressor | null;
 }
 
 export interface RouteSuggestion {

@@ -4,7 +4,7 @@ import { processEntryApi } from "../src/services/api";
 afterEach(() => jest.restoreAllMocks());
 
 test("processEntryApi returns the backend result on success", async () => {
-  (global as any).fetch = jest.fn(async () => ({
+  (globalThis as any).fetch = jest.fn(async () => ({
     ok: true,
     json: async () => ({
       analysis: {
@@ -23,7 +23,7 @@ test("processEntryApi returns the backend result on success", async () => {
 });
 
 test("processEntryApi fails safe to elevated + no resource when fetch throws", async () => {
-  (global as any).fetch = jest.fn(async () => {
+  (globalThis as any).fetch = jest.fn(async () => {
     throw new Error("offline");
   });
   const r = await processEntryApi([], "anything");
@@ -32,7 +32,7 @@ test("processEntryApi fails safe to elevated + no resource when fetch throws", a
 });
 
 test("processEntryApi fails safe on a non-OK response", async () => {
-  (global as any).fetch = jest.fn(async () => ({ ok: false, status: 502 }));
+  (globalThis as any).fetch = jest.fn(async () => ({ ok: false, status: 502 }));
   const r = await processEntryApi([], "anything");
   expect(r.analysis.risk_level).toBe("elevated");
   expect(r.resource).toBeNull();

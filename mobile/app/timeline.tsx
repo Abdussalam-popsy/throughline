@@ -1,5 +1,8 @@
+import { useFocusEffect } from "expo-router";
+import { useCallback, useState } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
-import { SEED_ENTRIES } from "../src/lib/seed";
+import { getEntries } from "../src/services/storage";
+import type { Entry } from "../src/lib/types";
 
 const RISK_COLOR: Record<string, string> = {
   none: "#7fae9f",
@@ -8,30 +11,52 @@ const RISK_COLOR: Record<string, string> = {
 };
 
 export default function TimelineScreen() {
+  const [entries, setEntries] = useState<Entry[]>([]);
+
+  const load = useCallback(() => {
+    setEntries(getEntries());
+  }, []);
+
+  // Reload every time the tab regains focus so entries added on the Today
+  // screen show up here without a restart.
+  useFocusEffect(load);
+
   return (
     <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
       <Text style={styles.kicker}>TIMELINE</Text>
       <Text style={styles.h1}>Your entries over time</Text>
       <Text style={styles.note}>
-        Mood thread + entry detail get fleshed out in build-order step 5. Demo
-        data shown below.
+        Every journal entry you log, in the order it happened. Each is tagged with
+        the stressor it&apos;s about — chosen automatically, never by hand.
       </Text>
-      {SEED_ENTRIES.map((e) => (
-        <View key={e.id} style={styles.row}>
-          <View
-            style={[
-              styles.dot,
-              { backgroundColor: RISK_COLOR[e.riskLevel ?? "none"] },
-            ]}
-          />
-          <View style={styles.rowBody}>
-            <Text style={styles.date}>{e.date}</Text>
-            <Text style={styles.text} numberOfLines={2}>
-              {e.text}
-            </Text>
+
+      {entries.length === 0 ? (
+        <Text style={styles.empty}>
+          Nothing yet. Add an entry on the Today tab and it&apos;ll appear here.
+        </Text>
+      ) : (
+        entries.map((entry) => (
+          <View key={entry.id} style={styles.row}>
+            <View
+              style={[
+                styles.dot,
+                { backgroundColor: RISK_COLOR[entry.riskLevel ?? "none"] },
+              ]}
+            />
+            <View style={styles.rowBody}>
+              <Text style={styles.date}>{entry.date}</Text>
+              <Text style={styles.text} numberOfLines={2}>
+                {entry.text}
+              </Text>
+              {entry.stressor ? (
+                <View style={styles.chip}>
+                  <Text style={styles.chipText}>{entry.stressor}</Text>
+                </View>
+              ) : null}
+            </View>
           </View>
-        </View>
-      ))}
+        ))
+      )}
     </ScrollView>
   );
 }
@@ -48,9 +73,21 @@ const styles = StyleSheet.create({
   },
   h1: { fontSize: 24, fontWeight: "800", color: "#1d2b27" },
   note: { color: "#7b8884", fontSize: 13, marginTop: 8, marginBottom: 16 },
+  empty: { color: "#7b8884", fontSize: 14, lineHeight: 20, marginTop: 8 },
   row: { flexDirection: "row", gap: 12, marginBottom: 14 },
   dot: { width: 12, height: 12, borderRadius: 6, marginTop: 5 },
   rowBody: { flex: 1 },
   date: { color: "#7b8884", fontSize: 12, fontWeight: "600" },
   text: { color: "#2b3733", fontSize: 14, lineHeight: 20, marginTop: 2 },
+  chip: {
+    alignSelf: "flex-start",
+    backgroundColor: "#eef5f2",
+    borderRadius: 999,
+    borderWidth: 1,
+    borderColor: "#d4e5de",
+    paddingVertical: 4,
+    paddingHorizontal: 10,
+    marginTop: 6,
+  },
+  chipText: { color: "#2f6f5e", fontSize: 12, fontWeight: "600" },
 });

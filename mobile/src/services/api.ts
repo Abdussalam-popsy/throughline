@@ -1,6 +1,7 @@
 import type {
   BriefDestination,
   Entry,
+  ExtractedStressor,
   ProcessEntryResult,
   RiskLevel,
   RouteSuggestion,
@@ -13,13 +14,14 @@ const BASE = process.env.EXPO_PUBLIC_API_URL ?? "http://localhost:3000";
 // result if the backend is unreachable, so the UI never gets stuck.
 export async function processEntryApi(
   recent: Entry[],
-  today: string
+  today: string,
+  stressors: ExtractedStressor[] = []
 ): Promise<ProcessEntryResult> {
   try {
     const r = await fetch(`${BASE}/api/entry/process`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ recent, today }),
+      body: JSON.stringify({ recent, today, stressors }),
     });
     if (!r.ok) throw new Error("process failed");
     return r.json();
@@ -31,6 +33,8 @@ export async function processEntryApi(
         risk_rationale: "Reflection was unavailable.",
         themes: [],
         domain: "general",
+        stressors: [],
+        related_stressor: null,
       },
       resource: null,
     };
@@ -57,13 +61,19 @@ export async function generateBriefApi(
   entries: Entry[],
   destination?: BriefDestination
 ): Promise<string> {
-  const r = await fetch(`${BASE}/api/brief/generate`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ entries, destination }),
-  });
-  if (!r.ok) throw new Error("generate failed");
-  return (await r.json()).briefMarkdown;
+  try {
+    console.log("generateBriefApi", entries, destination);
+    const r = await fetch(`${BASE}/api/brief/generate`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ entries, destination }),
+    });
+    if (!r.ok) throw new Error("generate failed");
+    return (await r.json()).briefMarkdown;
+  } catch (error) {
+    console.error("Error in generateBriefApi:", error);
+    throw error;
+  }
 }
 
 export async function sendBriefApi(p: {

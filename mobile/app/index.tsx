@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import {
   ActivityIndicator,
   Pressable,
@@ -12,6 +12,7 @@ import { GroundingActivity } from "../src/components/GroundingActivity";
 import { ResourceCard } from "../src/components/ResourceCard";
 import { CrisisCard } from "../src/components/CrisisCard";
 import { useEntries } from "../src/hooks/useEntries";
+import { useVoiceInput } from "../src/hooks/useVoiceInput";
 import { processEntryApi } from "../src/services/api";
 import type { ProcessEntryResult } from "../src/lib/types";
 
@@ -33,6 +34,28 @@ export default function TodayScreen() {
   const [text, setText] = useState("");
   const [outcome, setOutcome] = useState<ProcessEntryResult | null>(null);
 
+  // Text already in the field when the current dictation began. Live transcripts
+  // are appended to it so speaking doesn't wipe out what was typed earlier.
+  const dictationBaseRef = useRef("");
+  const {
+    recognizing,
+    error: voiceError,
+    start: startVoice,
+    stop: stopVoice,
+  } = useVoiceInput((transcript) => {
+    const base = dictationBaseRef.current;
+    setText(base ? `${base} ${transcript}` : transcript);
+  });
+
+  function toggleDictation() {
+    if (recognizing) {
+      stopVoice();
+      return;
+    }
+    dictationBaseRef.current = text.trim();
+    startVoice();
+  }
+
   function pickEmoji(emoji: (typeof EMOJIS)[number]) {
     setSos(emoji.sos);
     setStage(emoji.grounding ? "grounding" : "write");
@@ -41,7 +64,16 @@ export default function TodayScreen() {
   async function submit() {
     if (text.trim().length === 0) return;
     setStage("submitting");
-    const result = await processEntryApi(entries, text.trim());
+    // Send the distinct stressors already on the device so the model reuses an
+    // existing label verbatim instead of inventing a near-duplicate.
+    const knownStressors = Array.from(
+      new Set(
+        entries
+          .map((e) => e.stressor)
+          .filter((s): s is string => !!s && s.trim().length > 0)
+      )
+    ).map((label) => ({ label, domain: "general" as const }));
+    const result = await processEntryApi(entries, text.trim(), knownStressors);
     const now = Date.now();
     add({
       id: String(now),
@@ -51,6 +83,8 @@ export default function TodayScreen() {
       riskLevel: result.analysis.risk_level,
       themes: result.analysis.themes,
       domain: result.analysis.domain,
+      // The stressor is chosen by the model, never the user.
+      stressor: result.analysis.related_stressor?.label,
       createdAt: now,
     });
     setOutcome(result);
@@ -58,6 +92,7 @@ export default function TodayScreen() {
   }
 
   function reset() {
+    if (recognizing) stopVoice();
     setText("");
     setOutcome(null);
     setSos(false);
@@ -114,18 +149,48 @@ export default function TodayScreen() {
           )}
           <Text style={styles.h1}>How has today been?</Text>
           <Text style={styles.hint}>
-            Write as much or as little as you like. It stays on your device.
+            Write or speak as much or as little as you like. It stays on your
+            device.
           </Text>
-          <TextInput
-            style={styles.input}
-            value={text}
-            onChangeText={setText}
-            multiline
-            autoFocus
-            placeholder="Today I…"
-            placeholderTextColor="#9aa5a1"
-            textAlignVertical="top"
-          />
+          <View style={styles.inputWrap}>
+            <TextInput
+              style={styles.input}
+              value={text}
+              onChangeText={setText}
+              multiline
+              autoFocus
+              placeholder="Today I…"
+              placeholderTextColor="#9aa5a1"
+              textAlignVertical="top"
+            />
+            <Pressable
+              onPress={toggleDictation}
+              accessibilityRole="button"
+              accessibilityLabel={
+                recognizing ? "Stop voice dictation" : "Dictate with your voice"
+              }
+              style={({ pressed }) => [
+                styles.micBtn,
+                recognizing && styles.micBtnActive,
+                pressed && styles.micPressed,
+              ]}
+            >
+              <Text style={[styles.micIcon, recognizing && styles.micIconActive]}>
+                {recognizing ? "■" : "🎤"}
+              </Text>
+            </Pressable>
+          </View>
+          {recognizing ? (
+            <View style={styles.listeningRow}>
+              <ActivityIndicator size="small" color="#2f6f5e" />
+              <Text style={styles.listeningText}>Listening… tap the square to stop.</Text>
+            </View>
+          ) : (
+            <Text style={styles.micHint}>Tap the mic to dictate your entry.</Text>
+          )}
+          {voiceError ? (
+            <Text style={styles.voiceError}>{voiceError}</Text>
+          ) : null}
           <Pressable
             disabled={text.trim().length === 0}
             onPress={submit}
@@ -219,6 +284,7 @@ const styles = StyleSheet.create({
   },
   emojiPressed: { backgroundColor: "#eef5f2", borderColor: "#bfe0d6" },
   emoji: { fontSize: 40 },
+  inputWrap: { position: "relative", marginTop: 14 },
   input: {
     backgroundColor: "#fff",
     borderRadius: 14,
@@ -226,10 +292,36 @@ const styles = StyleSheet.create({
     borderColor: "#e2e7e5",
     minHeight: 160,
     padding: 16,
+    paddingBottom: 56,
     fontSize: 16,
     color: "#1d2b27",
-    marginTop: 14,
   },
+  micBtn: {
+    position: "absolute",
+    right: 12,
+    bottom: 12,
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: "#eef5f2",
+    borderWidth: 1,
+    borderColor: "#cfe4dc",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  micBtnActive: { backgroundColor: "#2f6f5e", borderColor: "#2f6f5e" },
+  micPressed: { opacity: 0.7 },
+  micIcon: { fontSize: 20 },
+  micIconActive: { color: "#fff", fontSize: 16, fontWeight: "800" },
+  micHint: { fontSize: 13, color: "#7a857f", marginTop: 8 },
+  listeningRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+    marginTop: 8,
+  },
+  listeningText: { fontSize: 13, color: "#2f6f5e", fontWeight: "600" },
+  voiceError: { fontSize: 13, color: "#b3261e", marginTop: 8 },
   cta: {
     backgroundColor: "#2f6f5e",
     borderRadius: 14,

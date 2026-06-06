@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import {
   ActivityIndicator,
   Pressable,
@@ -7,13 +7,24 @@ import {
   Text,
   View,
 } from "react-native";
+import { useFocusEffect } from "expo-router";
 import Markdown from "react-native-markdown-display";
 import { useBriefSender } from "../src/hooks/useBriefSender";
-import { SEED_ENTRIES } from "../src/lib/seed";
+import { getEntries } from "../src/services/storage";
+import type { Entry } from "../src/lib/types";
 
 export default function BriefScreen() {
   const { status, brief, generate } = useBriefSender();
-  const [entries] = useState(SEED_ENTRIES);
+  const [entries, setEntries] = useState<Entry[]>([]);
+
+  // Build the brief from the live timeline (entries logged on the Today tab and
+  // shown on the Timeline tab), not a hardcoded sample. Reload on focus so the
+  // brief always reflects what the user has actually written.
+  useFocusEffect(
+    useCallback(() => {
+      setEntries(getEntries());
+    }, [])
+  );
 
   return (
     <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
@@ -24,21 +35,27 @@ export default function BriefScreen() {
         words. Not a diagnosis — a starting point you choose to share.
       </Text>
 
-      {(status === "idle" || status === "error") && (
-        <Pressable
-          style={({ pressed }) => [styles.cta, pressed && styles.ctaPressed]}
-          onPress={() => generate(entries)}
-        >
-          <Text style={styles.ctaText}>
-            {status === "error" ? "Try again" : "Generate my brief"}
+      {(status === "idle" || status === "error") &&
+        (entries.length === 0 ? (
+          <Text style={styles.footnote}>
+            No entries yet. Add a few on the Today tab and they&apos;ll appear on
+            your Timeline — then you can build a brief from them here.
           </Text>
-        </Pressable>
-      )}
+        ) : (
+          <Pressable
+            style={({ pressed }) => [styles.cta, pressed && styles.ctaPressed]}
+            onPress={() => generate(entries)}
+          >
+            <Text style={styles.ctaText}>
+              {status === "error" ? "Try again" : "Generate my brief"}
+            </Text>
+          </Pressable>
+        ))}
 
       {status === "error" && (
         <Text style={styles.error}>
           Couldn&apos;t reach the brief service. Is the backend running on{" "}
-          {process.env.EXPO_PUBLIC_API_URL ?? "http://localhost:3000"}?
+          {process.env.EXPO_PUBLIC_API_URL ?? "adsfafasfdsa, http://localhost:300"}?
         </Text>
       )}
 

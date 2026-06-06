@@ -9,10 +9,18 @@
     "userInterfaceStyle": "light",
     "plugins": [
       "expo-router",
-      "expo-sqlite"
+      "expo-sqlite",
+      [
+        "expo-speech-recognition",
+        {
+          "microphonePermission": "Allow Throughline to use the microphone so you can dictate your entry.",
+          "speechRecognitionPermission": "Allow Throughline to transcribe your speech into your entry."
+        }
+      ]
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.crux-codes.throughline"
     },
     "android": {
       "adaptiveIcon": {

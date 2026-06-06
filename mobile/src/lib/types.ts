@@ -21,7 +21,24 @@ export interface Entry {
   riskLevel?: RiskLevel;
   themes?: string[];
   domain?: Domain;
+  // The single source of stress this entry is about, chosen by the model at
+  // submit time (never picked by the user). Undefined if none was clear.
+  stressor?: string;
   createdAt: number;
+}
+
+/** A source of stress the model extracted from an entry, in the user's framing. */
+export interface ExtractedStressor {
+  label: string;
+  domain: Domain;
+}
+
+/**
+ * The single stressor the model decided an entry is primarily about. Mirrors the
+ * backend contract; the app consumes `label` as the entry's `stressor` string.
+ */
+export interface RelatedStressor extends ExtractedStressor {
+  isNew: boolean;
 }
 
 export interface EntryAnalysis {
@@ -30,6 +47,11 @@ export interface EntryAnalysis {
   risk_rationale: string;
   themes: string[];
   domain: Domain;
+  // Concrete stressors the model surfaced from today's entry (0-3).
+  stressors?: ExtractedStressor[];
+  // The one stressor this entry is primarily about; its label becomes
+  // Entry.stressor. Null when no source of stress is clear.
+  related_stressor?: RelatedStressor | null;
 }
 
 export interface Resource {

@@ -1,10 +1,14 @@
+import Anthropic from "@anthropic-ai/sdk";
 import { BRIEF_SYSTEM, ENTRY_SYSTEM, ROUTE_SYSTEM } from "../lib/prompts";
 import type {
   BriefDestination,
   Entry,
   EntryAnalysis,
+  ExtractedStressor,
+  RelatedStressor,
   RiskLevel,
   RouteSuggestion,
+  Domain,
 } from "../lib/types";
 import { config } from "../config";
 
@@ -35,36 +39,90 @@ async function glmChat(system: string, user: string): Promise<string> {
   return data.choices[0].message.content;
 }
 
-/* --- BACKUP: Anthropic Claude. Uncomment + `npm i @anthropic-ai/sdk` if GLM stalls on stage. ---
-import Anthropic from "@anthropic-ai/sdk";
 const anthropic = new Anthropic({ apiKey: config.anthropicApiKey });
 async function claudeChat(system: string, user: string): Promise<string> {
   const m = await anthropic.messages.create({
-    model: "claude-sonnet-4-5", max_tokens: 2000, system,
+    model: "claude-sonnet-4-5",
+    max_tokens: 2000,
+    system,
     messages: [{ role: "user", content: user }],
   });
-  return m.content.filter(b => b.type === "text").map(b => (b as any).text).join("");
+  return m.content
+    .filter((b) => b.type === "text")
+    .map((b) => (b as { text: string }).text)
+    .join("");
 }
-*/
 
 function stripFences(raw: string): string {
   return raw.replace(/```json|```/g, "").trim();
 }
 
 const VALID_RISK: RiskLevel[] = ["none", "elevated", "crisis"];
+const VALID_DOMAIN: Domain[] = [
+  "exam_stress",
+  "body_image",
+  "loneliness",
+  "financial_anxiety",
+  "general",
+];
+
+/** Keep only well-formed stressors, cap at 3, and de-dupe by label (case-insensitive). */
+function parseStressors(raw: unknown): ExtractedStressor[] {
+  if (!Array.isArray(raw)) return [];
+  const seen = new Set<string>();
+  const out: ExtractedStressor[] = [];
+  for (const s of raw) {
+    const label = typeof s?.label === "string" ? s.label.trim() : "";
+    if (!label) continue;
+    const key = label.toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    const domain: Domain = VALID_DOMAIN.includes(s?.domain) ? s.domain : "general";
+    out.push({ label, domain });
+    if (out.length === 3) break;
+  }
+  return out;
+}
+
+/**
+ * Resolve the single stressor an entry relates to. The model proposes a label;
+ * the server decides `isNew` authoritatively by matching (case-insensitively)
+ * against the user's existing stressors, so the flag can't drift from reality.
+ */
+function parseRelatedStressor(
+  raw: unknown,
+  existing: ExtractedStressor[]
+): RelatedStressor | null {
+  if (!raw || typeof raw !== "object") return null;
+  const r = raw as { label?: unknown; domain?: unknown };
+  const label = typeof r.label === "string" ? r.label.trim() : "";
+  if (!label) return null;
+  const domain: Domain = VALID_DOMAIN.includes(r.domain as Domain)
+    ? (r.domain as Domain)
+    : "general";
+  const isNew = !existing.some(
+    (s) => s.label.toLowerCase() === label.toLowerCase()
+  );
+  return { label, domain, isNew };
+}
 
 /**
  * Cross-cutting rule 7 (fail safe): if JSON fails to parse or risk_level is
  * missing/invalid, treat the entry as "elevated" and show support. Crisis
  * forces an empty next_prompt regardless of what the model returned.
  */
-function safeParseAnalysis(raw: string): EntryAnalysis {
+function safeParseAnalysis(
+  raw: string,
+  existingStressors: ExtractedStressor[] = []
+): EntryAnalysis {
   const fallback: EntryAnalysis = {
     next_prompt: "",
     risk_level: "elevated",
     risk_rationale: "Analysis was unavailable, defaulting to a supportive stance.",
     themes: [],
     domain: "general",
+    stressors: [],
+    related_stressor: null,
   };
   let parsed: Partial<EntryAnalysis>;
   try {
@@ -82,6 +140,11 @@ function safeParseAnalysis(raw: string): EntryAnalysis {
       typeof parsed.risk_rationale === "string" ? parsed.risk_rationale : "",
     themes: Array.isArray(parsed.themes) ? parsed.themes : [],
     domain: (parsed.domain as EntryAnalysis["domain"]) ?? "general",
+    stressors: parseStressors((parsed as { stressors?: unknown }).stressors),
+    related_stressor: parseRelatedStressor(
+      (parsed as { related_stressor?: unknown }).related_stressor,
+      existingStressors
+    ),
   };
   if (analysis.risk_level === "crisis") analysis.next_prompt = "";
   return analysis;
@@ -89,20 +152,25 @@ function safeParseAnalysis(raw: string): EntryAnalysis {
 
 export async function processEntry(
   recent: Entry[],
-  today: string
+  today: string,
+  existingStressors: ExtractedStressor[] = []
 ): Promise<EntryAnalysis> {
   const ctx = recent.map((e) => `[${e.date}] ${e.text}`).join("\n\n");
+  const stressorContext = existingStressors.length
+    ? `\n\nExisting stressors (reuse a label verbatim if today's entry is about it):\n` +
+      existingStressors.map((s) => `- ${s.label} [${s.domain}]`).join("\n")
+    : "";
   let raw: string;
   try {
     raw = await glmChat(
       ENTRY_SYSTEM,
-      `Recent entries:\n${ctx}\n\nToday's entry:\n${today}`
+      `Recent entries:\n${ctx}\n\nToday's entry:\n${today}${stressorContext}`
     );
   } catch {
     // Even on transport failure we fail safe rather than throw.
-    return safeParseAnalysis("");
+    return safeParseAnalysis("", existingStressors);
   }
-  return safeParseAnalysis(raw);
+  return safeParseAnalysis(raw, existingStressors);
 }
 
 export async function routeBrief(
@@ -132,6 +200,7 @@ export async function generateBrief(
     generatedDate
   );
   const body = entries.map((e) => `[${e.date}] ${e.text}`).join("\n\n");
-  return glmChat(system, `Here are the student's journal entries:\n\n${body}`);
-  // return claudeChat(system, `Here are the student's journal entries:\n\n${body}`);
+  // Brief generation uses Claude Sonnet; GLM is disabled here until the Z.ai balance is restored.
+  // return glmChat(system, `Here are the student's journal entries:\n\n${body}`);
+  return claudeChat(system, `Here are the student's journal entries:\n\n${body}`);
 }

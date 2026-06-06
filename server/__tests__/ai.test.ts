@@ -1,34 +1,44 @@
+const mockCreate = jest.fn();
+jest.mock("@anthropic-ai/sdk", () => ({
+  __esModule: true,
+  default: jest.fn().mockImplementation(() => ({
+    messages: { create: mockCreate },
+  })),
+}));
+
 import { generateBrief, processEntry, routeBrief } from "../src/services/ai";
 import type { Entry } from "../src/lib/types";
 
 beforeEach(() => {
+  // GLM transport (processEntry / routeBrief still use fetch).
   (global as any).fetch = jest.fn(async () => ({
     ok: true,
     json: async () => ({
       choices: [{ message: { content: "## Summary\nlow mood" } }],
     }),
   }));
+  // Brief generation goes through Claude.
+  mockCreate.mockReset();
+  mockCreate.mockResolvedValue({
+    content: [{ type: "text", text: "## Summary\nlow mood" }],
+  });
 });
 
 afterEach(() => jest.restoreAllMocks());
 
-test("generateBrief returns model content", async () => {
+test("generateBrief returns Claude content", async () => {
   const out = await generateBrief([
     { id: "1", date: "2026-05-15", text: "bad day", createdAt: 0 } as Entry,
   ]);
   expect(out).toContain("Summary");
-  expect(fetch).toHaveBeenCalled();
+  expect(mockCreate).toHaveBeenCalled();
 });
 
-test("generateBrief surfaces GLM errors", async () => {
-  (global as any).fetch = jest.fn(async () => ({
-    ok: false,
-    status: 401,
-    text: async () => "unauthorized",
-  }));
+test("generateBrief surfaces Claude errors", async () => {
+  mockCreate.mockRejectedValueOnce(new Error("anthropic 401"));
   await expect(
     generateBrief([{ id: "1", date: "x", text: "y", createdAt: 0 } as Entry])
-  ).rejects.toThrow(/GLM 401/);
+  ).rejects.toThrow(/anthropic 401/);
 });
 
 test("processEntry parses JSON (incl. fenced) into analysis with domain", async () => {
@@ -53,6 +63,51 @@ test("processEntry parses JSON (incl. fenced) into analysis with domain", async 
   expect(a.themes).toContain("sleep");
   expect(a.domain).toBe("exam_stress");
   expect(a.next_prompt).not.toEqual("");
+});
+
+test("processEntry relates the entry to an existing stressor (isNew=false)", async () => {
+  (global as any).fetch = jest.fn(async () => ({
+    ok: true,
+    json: async () => ({
+      choices: [
+        {
+          message: {
+            content:
+              '{"next_prompt":"q","risk_level":"elevated","risk_rationale":"r","themes":["exam-pressure"],"domain":"exam_stress","related_stressor":{"label":"Final exams","domain":"exam_stress"}}',
+          },
+        },
+      ],
+    }),
+  }));
+  const a = await processEntry([], "exams next week", [
+    { label: "Final exams", domain: "exam_stress" },
+  ]);
+  expect(a.related_stressor).toEqual({
+    label: "Final exams",
+    domain: "exam_stress",
+    isNew: false,
+  });
+});
+
+test("processEntry marks a brand-new stressor as isNew=true", async () => {
+  (global as any).fetch = jest.fn(async () => ({
+    ok: true,
+    json: async () => ({
+      choices: [
+        {
+          message: {
+            content:
+              '{"next_prompt":"q","risk_level":"elevated","risk_rationale":"r","themes":["money"],"domain":"financial_anxiety","related_stressor":{"label":"Rent","domain":"financial_anxiety"}}',
+          },
+        },
+      ],
+    }),
+  }));
+  const a = await processEntry([], "worried about rent", [
+    { label: "Final exams", domain: "exam_stress" },
+  ]);
+  expect(a.related_stressor?.isNew).toBe(true);
+  expect(a.related_stressor?.label).toBe("Rent");
 });
 
 test("processEntry fails safe to elevated on unparseable output", async () => {
@@ -112,18 +167,11 @@ test("routeBrief returns a destination category", async () => {
 });
 
 test("generateBrief substitutes destination + date into the prompt", async () => {
-  let sentSystem = "";
-  (global as any).fetch = jest.fn(async (_url: string, init: any) => {
-    sentSystem = JSON.parse(init.body).messages[0].content;
-    return {
-      ok: true,
-      json: async () => ({ choices: [{ message: { content: "## Summary\nok" } }] }),
-    };
-  });
   await generateBrief(
     [{ id: "1", date: "2026-05-15", text: "bad day", createdAt: 0 } as Entry],
     { destination: "extenuating_circumstances", generatedDate: "2026-06-06" }
   );
+  const sentSystem = mockCreate.mock.calls[0][0].system as string;
   expect(sentSystem).toContain("extenuating_circumstances");
   expect(sentSystem).toContain("2026-06-06");
   expect(sentSystem).not.toContain("{{destination}}");
