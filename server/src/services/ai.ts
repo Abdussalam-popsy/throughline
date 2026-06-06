@@ -1,5 +1,11 @@
-import { BRIEF_SYSTEM, ENTRY_SYSTEM } from "../lib/prompts";
-import type { Entry, EntryAnalysis } from "../lib/types";
+import { BRIEF_SYSTEM, ENTRY_SYSTEM, ROUTE_SYSTEM } from "../lib/prompts";
+import type {
+  BriefDestination,
+  Entry,
+  EntryAnalysis,
+  RiskLevel,
+  RouteSuggestion,
+} from "../lib/types";
 import { config } from "../config";
 
 // Standard key -> general endpoint. If using the sk-sp- CODING key, switch base to:
@@ -41,10 +47,44 @@ async function claudeChat(system: string, user: string): Promise<string> {
 }
 */
 
-export async function generateBrief(entries: Entry[]): Promise<string> {
-  const body = entries.map((e) => `[${e.date}] ${e.text}`).join("\n\n");
-  return glmChat(BRIEF_SYSTEM, `Here are the student's journal entries:\n\n${body}`);
-  // return claudeChat(BRIEF_SYSTEM, `Here are the student's journal entries:\n\n${body}`);
+function stripFences(raw: string): string {
+  return raw.replace(/```json|```/g, "").trim();
+}
+
+const VALID_RISK: RiskLevel[] = ["none", "elevated", "crisis"];
+
+/**
+ * Cross-cutting rule 7 (fail safe): if JSON fails to parse or risk_level is
+ * missing/invalid, treat the entry as "elevated" and show support. Crisis
+ * forces an empty next_prompt regardless of what the model returned.
+ */
+function safeParseAnalysis(raw: string): EntryAnalysis {
+  const fallback: EntryAnalysis = {
+    next_prompt: "",
+    risk_level: "elevated",
+    risk_rationale: "Analysis was unavailable, defaulting to a supportive stance.",
+    themes: [],
+    domain: "general",
+  };
+  let parsed: Partial<EntryAnalysis>;
+  try {
+    parsed = JSON.parse(stripFences(raw));
+  } catch {
+    return fallback;
+  }
+  if (!parsed || !VALID_RISK.includes(parsed.risk_level as RiskLevel)) {
+    return fallback;
+  }
+  const analysis: EntryAnalysis = {
+    next_prompt: typeof parsed.next_prompt === "string" ? parsed.next_prompt : "",
+    risk_level: parsed.risk_level as RiskLevel,
+    risk_rationale:
+      typeof parsed.risk_rationale === "string" ? parsed.risk_rationale : "",
+    themes: Array.isArray(parsed.themes) ? parsed.themes : [],
+    domain: (parsed.domain as EntryAnalysis["domain"]) ?? "general",
+  };
+  if (analysis.risk_level === "crisis") analysis.next_prompt = "";
+  return analysis;
 }
 
 export async function processEntry(
@@ -52,9 +92,46 @@ export async function processEntry(
   today: string
 ): Promise<EntryAnalysis> {
   const ctx = recent.map((e) => `[${e.date}] ${e.text}`).join("\n\n");
-  const raw = await glmChat(
-    ENTRY_SYSTEM,
-    `Recent entries:\n${ctx}\n\nToday's entry:\n${today}`
+  let raw: string;
+  try {
+    raw = await glmChat(
+      ENTRY_SYSTEM,
+      `Recent entries:\n${ctx}\n\nToday's entry:\n${today}`
+    );
+  } catch {
+    // Even on transport failure we fail safe rather than throw.
+    return safeParseAnalysis("");
+  }
+  return safeParseAnalysis(raw);
+}
+
+export async function routeBrief(
+  themes: string[],
+  riskLevel: RiskLevel,
+  concern?: string
+): Promise<RouteSuggestion> {
+  const user = [
+    `Recent themes: ${themes.length ? themes.join(", ") : "(none yet)"}`,
+    `Latest risk_level: ${riskLevel}`,
+    concern ? `Self-described concern: ${concern}` : null,
+  ]
+    .filter(Boolean)
+    .join("\n");
+  const raw = await glmChat(ROUTE_SYSTEM, user);
+  return JSON.parse(stripFences(raw)) as RouteSuggestion;
+}
+
+export async function generateBrief(
+  entries: Entry[],
+  opts: { destination?: BriefDestination; generatedDate?: string } = {}
+): Promise<string> {
+  const destination = opts.destination ?? "gp_or_talking_therapies";
+  const generatedDate = opts.generatedDate ?? new Date().toISOString().slice(0, 10);
+  const system = BRIEF_SYSTEM.replace(/\{\{destination\}\}/g, destination).replace(
+    /\{\{generated_date\}\}/g,
+    generatedDate
   );
-  return JSON.parse(raw.replace(/```json|```/g, "").trim());
+  const body = entries.map((e) => `[${e.date}] ${e.text}`).join("\n\n");
+  return glmChat(system, `Here are the student's journal entries:\n\n${body}`);
+  // return claudeChat(system, `Here are the student's journal entries:\n\n${body}`);
 }
