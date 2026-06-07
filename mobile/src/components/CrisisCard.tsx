@@ -29,7 +29,9 @@ export function CrisisCard({ prominent = false }: { prominent?: boolean }) {
         <Text
           key={l.action}
           style={styles.line}
-          onPress={() => Linking.openURL(l.action)}
+          onPress={() => {
+            Linking.openURL(l.action).catch(() => {});
+          }}
         >
           {l.label}
         </Text>

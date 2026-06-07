@@ -1,7 +1,8 @@
 import { Ionicons } from "@expo/vector-icons";
-import { Linking, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { CrisisCard } from "../src/components/CrisisCard";
+import { copyContact } from "../src/lib/clipboard";
 import type { University } from "../src/lib/types";
 import { getUniversity } from "../src/services/storage";
 
@@ -10,26 +11,26 @@ function ContactLine({
   icon,
   label,
   value,
-  action,
+  copyValue,
 }: {
   icon: React.ComponentProps<typeof Ionicons>["name"];
   label: string;
   value: string;
-  action: string;
+  copyValue: string;
 }) {
   return (
     <Pressable
-      onPress={() => Linking.openURL(action)}
+      onPress={() => copyContact(copyValue, `${label} copied`)}
       style={({ pressed }) => [styles.contactRow, pressed && styles.pressed]}
       accessibilityRole="button"
-      accessibilityLabel={`${label}: ${value}`}
+      accessibilityLabel={`Copy ${label}: ${value}`}
     >
       <Ionicons name={icon} size={18} color="#2f6f5e" />
       <View style={styles.contactText}>
         <Text style={styles.contactLabel}>{label}</Text>
         <Text style={styles.contactValue}>{value}</Text>
       </View>
-      <Ionicons name="chevron-forward" size={18} color="#9aa5a1" />
+      <Ionicons name="copy-outline" size={18} color="#9aa5a1" />
     </Pressable>
   );
 }
@@ -45,9 +46,9 @@ function UniversityCard({ university }: { university: University }) {
         {university.phone ? (
           <ContactLine
             icon="call-outline"
-            label="Call"
+            label="Phone"
             value={university.phone}
-            action={`tel:${university.phone.replace(/\s+/g, "")}`}
+            copyValue={university.phone}
           />
         ) : null}
         {university.email ? (
@@ -55,14 +56,14 @@ function UniversityCard({ university }: { university: University }) {
             icon="mail-outline"
             label="Email"
             value={university.email}
-            action={`mailto:${university.email}`}
+            copyValue={university.email}
           />
         ) : null}
         <ContactLine
           icon="globe-outline"
-          label="Visit website"
+          label="Website"
           value={university.url.replace(/^https?:\/\//, "").replace(/\/$/, "")}
-          action={university.url}
+          copyValue={university.url}
         />
       </View>
 

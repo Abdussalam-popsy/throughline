@@ -4,6 +4,7 @@ import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { getEntries } from "../src/services/storage";
 import { BiggestCauses } from "../src/components/BiggestCauses";
+import { WeatherBand } from "../src/components/WeatherBand";
 import type { Entry } from "../src/lib/types";
 
 const RISK_COLOR: Record<string, string> = {
@@ -32,6 +33,8 @@ export default function TimelineScreen() {
         Every journal entry you log, in the order it happened. Each is tagged with
         the stressor it&apos;s about — chosen automatically, never by hand.
       </Text>
+
+      <WeatherBand entries={entries} />
 
       <BiggestCauses entries={entries} />
 
