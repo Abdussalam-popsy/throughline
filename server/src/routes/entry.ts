@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { classifyDomain, processEntry } from "../services/ai";
-import { getResourceForDomain } from "../services/resources";
+import { getTipForDomain } from "../services/resources";
+import { getGroundingForDomain } from "../services/grounding";
 
 export const entryRouter = Router();
 
@@ -14,8 +15,9 @@ entryRouter.post("/domain", async (req, res) => {
   res.json({ domain });
 });
 
-// Call 1 — reflect + domain. Returns the analysis plus a matching institutional
-// resource (null for "general" or for crisis, where the app suppresses it).
+// Call 1 — reflect + risk. Returns the analysis only. The result-screen support
+// content (tip + grounding) is assembled separately by POST /support, so the
+// server owns what is sent to the client in one place.
 entryRouter.post("/process", async (req, res) => {
   const { recent, today, stressors } = req.body ?? {};
   if (typeof today !== "string" || today.trim().length === 0)
@@ -25,9 +27,22 @@ entryRouter.post("/process", async (req, res) => {
     today,
     Array.isArray(stressors) ? stressors : []
   );
-  const resource =
-    analysis.risk_level === "crisis"
-      ? null
-      : getResourceForDomain(analysis.domain);
-  res.json({ analysis, resource });
+  res.json({ analysis });
+});
+
+const cleanDomain = (value: unknown): string =>
+  typeof value === "string" && value.trim().length > 0 ? value.trim() : "general";
+
+// Support — the single source of truth for what the result screen shows. Returns
+// a domain tip + grounding technique, both null on crisis (CrisisCard-only).
+entryRouter.post("/support", (req, res) => {
+  const { domain, riskLevel } = req.body ?? {};
+  if (riskLevel === "crisis") return res.json({ tip: null, grounding: null });
+  const d = cleanDomain(domain);
+  res.json({ tip: getTipForDomain(d), grounding: getGroundingForDomain(d) });
+});
+
+// Tip re-roll — drives the TipCard "Show another".
+entryRouter.get("/tip", (req, res) => {
+  res.json({ tip: getTipForDomain(cleanDomain(req.query.domain)) });
 });

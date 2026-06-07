@@ -31,7 +31,7 @@ test("domain rejects an empty entry", async () => {
   expect(mockedClassify).not.toHaveBeenCalled();
 });
 
-test("process returns analysis + matching resource for a domain", async () => {
+test("process returns the analysis only — no eager tip/resource", async () => {
   mockedProcess.mockResolvedValue({
     next_prompt: "You mentioned revision — what part feels heaviest?",
     risk_level: "elevated",
@@ -44,23 +44,8 @@ test("process returns analysis + matching resource for a domain", async () => {
     .send({ recent: [], today: "exams are crushing me" });
   expect(r.status).toBe(200);
   expect(r.body.analysis.domain).toBe("exam_stress");
-  expect(r.body.resource).not.toBeNull();
-  expect(r.body.resource.source).toContain("Imperial");
-});
-
-test("process suppresses the resource on crisis", async () => {
-  mockedProcess.mockResolvedValue({
-    next_prompt: "",
-    risk_level: "crisis",
-    risk_rationale: "explicit intent",
-    themes: ["crisis"],
-    domain: "general",
-  });
-  const r = await request(app)
-    .post("/api/entry/process")
-    .send({ recent: [], today: "i can't go on" });
-  expect(r.status).toBe(200);
-  expect(r.body.resource).toBeNull();
+  expect(r.body.resource).toBeUndefined();
+  expect(r.body.tip).toBeUndefined();
 });
 
 test("process rejects an empty entry", async () => {
@@ -68,4 +53,38 @@ test("process rejects an empty entry", async () => {
     .post("/api/entry/process")
     .send({ recent: [], today: "   " });
   expect(r.status).toBe(400);
+});
+
+test("support returns a domain tip and grounding technique", async () => {
+  const r = await request(app)
+    .post("/api/entry/support")
+    .send({ domain: "exam_stress", riskLevel: "elevated" });
+  expect(r.status).toBe(200);
+  expect(r.body.tip).not.toBeNull();
+  expect(r.body.tip.domain).toBe("exam_stress");
+  expect(typeof r.body.tip.tip).toBe("string");
+  expect(r.body.grounding).not.toBeNull();
+  expect(typeof r.body.grounding.title).toBe("string");
+});
+
+test("support suppresses tip and grounding on crisis", async () => {
+  const r = await request(app)
+    .post("/api/entry/support")
+    .send({ domain: "general", riskLevel: "crisis" });
+  expect(r.status).toBe(200);
+  expect(r.body.tip).toBeNull();
+  expect(r.body.grounding).toBeNull();
+});
+
+test("support falls back to general when no domain is given", async () => {
+  const r = await request(app).post("/api/entry/support").send({});
+  expect(r.status).toBe(200);
+  expect(r.body.tip.domain).toBe("general");
+  expect(typeof r.body.grounding.title).toBe("string");
+});
+
+test("tip re-roll returns a tip for the requested domain", async () => {
+  const r = await request(app).get("/api/entry/tip?domain=loneliness");
+  expect(r.status).toBe(200);
+  expect(r.body.tip.domain).toBe("loneliness");
 });

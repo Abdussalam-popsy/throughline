@@ -67,12 +67,21 @@ export interface RouteSuggestion {
   confidence: "low" | "medium" | "high";
 }
 
-export interface Resource {
+/** A self-help tip drawn from the curated `resources.json`, keyed by domain. */
+export interface Tip {
   domain: string;
-  title: string;
+  tip: string;
   source: string;
-  snippet: string;
-  url?: string;
+  readMore?: string;
+}
+
+/** A grounding technique from `grounding.json`, matched to a domain via best_for. */
+export interface Grounding {
+  id: string;
+  title: string;
+  durationLabel: string;
+  description: string;
+  type: string;
 }
 
 /** Recipient context the BRIEF_SYSTEM prompt is rendered against. */
@@ -107,7 +116,18 @@ export interface ProcessEntryRequest {
 
 export interface ProcessEntryResponse {
   analysis: EntryAnalysis;
-  resource: Resource | null;
+}
+
+/** Body for POST /api/entry/support — the result-screen support bundle request. */
+export interface SupportRequest {
+  domain: string;
+  riskLevel?: RiskLevel;
+}
+
+/** The bundle the server hands the result screen. Both null on crisis. */
+export interface SupportResponse {
+  tip: Tip | null;
+  grounding: Grounding | null;
 }
 
 export interface RouteBriefRequest {

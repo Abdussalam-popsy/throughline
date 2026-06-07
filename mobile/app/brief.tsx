@@ -8,6 +8,7 @@ import {
   View,
 } from "react-native";
 import { useFocusEffect } from "expo-router";
+import { SafeAreaView } from "react-native-safe-area-context";
 import Markdown from "react-native-markdown-display";
 import { useBriefSender } from "../src/hooks/useBriefSender";
 import { getEntries } from "../src/services/storage";
@@ -27,6 +28,7 @@ export default function BriefScreen() {
   );
 
   return (
+    <SafeAreaView edges={["top", "bottom"]} style={styles.safe}>
     <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
       <Text style={styles.kicker}>YOUR ONE-PAGE BRIEF</Text>
       <Text style={styles.h1}>A summary a clinician can read in 30 seconds</Text>
@@ -93,11 +95,13 @@ export default function BriefScreen() {
         </Text>
       )}
     </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  screen: { backgroundColor: "#f7faf9" },
+  safe: { flex: 1, backgroundColor: "#f7faf9" },
+  screen: { flex: 1, backgroundColor: "#f7faf9" },
   content: { padding: 20, paddingBottom: 48 },
   kicker: {
     color: "#2f6f5e",

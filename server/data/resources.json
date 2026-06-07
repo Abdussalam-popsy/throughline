@@ -1,0 +1,2210 @@
+[
+  {
+    "domain": "exam_stress",
+    "tip": "Create a realistic revision schedule by breaking down the work into manageable chunks and mixing up subjects to avoid boredom.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/children-and-young-adults/help-for-teenagers-young-adults-and-students/tips-on-preparing-for-exams/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Identify the causes of your exam stress — fear of failure, pressure from others — to better understand and manage your feelings.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/for-young-people/feelings-and-experiences/exam-stress/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Be kind to yourself: reflect on your achievements and write down what you like about yourself to rebuild self-esteem during exam season.",
+    "source": "YoungMinds",
+    "read_more": "https://www.youngminds.org.uk/young-person/coping-with-life/exam-stress/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Spread your revision over several weeks using a study timetable to avoid last-minute cramming and reduce feeling overwhelmed.",
+    "source": "Imperial College London",
+    "read_more": "https://www.imperial.ac.uk/engineering/departments/electrical-engineering/study/current-students-course-handbook/study-and-wellbeing/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Practice mindfulness techniques such as breathing exercises for a few minutes daily to calm your body's stress response and refocus your attention.",
+    "source": "UCL",
+    "read_more": "https://www.ucl.ac.uk/news/2017/apr/7-tips-help-you-cope-exam-stress"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Take simple steps to manage anxiety during exams — small changes to how you prepare can meaningfully lower stress and improve performance.",
+    "source": "Student Minds",
+    "read_more": "https://www.studentminds.org.uk/advice-and-information/studying-and-exams/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Plan your time by writing lists of tasks, prioritising the most important ones, and setting steps and goals for complicated tasks to feel more in control.",
+    "source": "Rethink Mental Illness",
+    "read_more": "https://www.rethink.org/advice-and-information/about-mental-illness/mental-health-symptoms/stress-how-to-manage-it-causes-symptoms-and-support-options/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Make time away from studies to wind down — a bath, fresh air, or music — so your brain can recover and you can cope better with exam pressure.",
+    "source": "CALM",
+    "read_more": "https://www.thecalmzone.net/guides/exam-stress"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Replace negative thoughts like 'I can't do this' with 'this is just anxiety, it can't harm me' — reframing anxious thoughts reduces their power.",
+    "source": "Childline",
+    "read_more": "https://www.childline.org.uk/info-advice/school-college-and-work/school-college/exam-stress/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Take regular breaks from revision to avoid burnout — stepping away, even briefly, helps your brain consolidate what you have learned.",
+    "source": "The Mix",
+    "read_more": "https://www.themix.org.uk/explore-our-topics/school-and-university/coping-with-exam-stress/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Focus on past successes rather than potential failures — when negative thoughts arise, remind yourself of how resilient you are and what has gone well before.",
+    "source": "University of Bristol",
+    "read_more": "https://student.blogs.bristol.ac.uk/2021/06/06/know-your-stress-signs-and-ease-your-exam-stress/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Gradually adjust your sleeping pattern in the weeks before exams so you are well-rested by exam time — sleep is when your brain consolidates memory.",
+    "source": "University of Edinburgh",
+    "read_more": "https://www.ed.ac.uk/news/students/2023/exam-preparation-and-stress-busting"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Make a realistic revision schedule by breaking down the work into manageable chunks and mixing up subjects to avoid boredom.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/children-and-young-adults/help-for-teenagers-young-adults-and-students/tips-on-preparing-for-exams/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Find a revision style that suits you, whether it's studying in silence, with quiet music, or with a friend.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/children-and-young-adults/help-for-teenagers-young-adults-and-students/tips-on-preparing-for-exams/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Customise your notes with colour coding, postcards, or diagrams to make them more personal and aid learning.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/children-and-young-adults/help-for-teenagers-young-adults-and-students/tips-on-preparing-for-exams/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Ensure you understand everything; if not, seek new information or ask teachers/friends for help instead of just memorising.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/children-and-young-adults/help-for-teenagers-young-adults-and-students/tips-on-preparing-for-exams/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Look at past exam papers to familiarise yourself with the layout and question types, and practice completing them within the time limit.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/children-and-young-adults/help-for-teenagers-young-adults-and-students/tips-on-preparing-for-exams/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Take regular short breaks during revision to avoid tiredness and maintain concentration.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/children-and-young-adults/help-for-teenagers-young-adults-and-students/tips-on-preparing-for-exams/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Reward yourself after revision sessions with enjoyable activities like a bath, music, spending time with friends, or watching a movie.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/children-and-young-adults/help-for-teenagers-young-adults-and-students/tips-on-preparing-for-exams/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Engage in physical activity during your spare time, such as walking or stretching, to relieve stress and improve sleep.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/children-and-young-adults/help-for-teenagers-young-adults-and-students/tips-on-preparing-for-exams/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Talk to someone you trust, like a family member, teacher, or friend, if you're feeling stressed about exams.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/children-and-young-adults/help-for-teenagers-young-adults-and-students/tips-on-preparing-for-exams/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Start exam days with a good breakfast, allow plenty of time to get to the exam hall, and remember to bring all necessary items.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/children-and-young-adults/help-for-teenagers-young-adults-and-students/tips-on-preparing-for-exams/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Use breathing exercises, such as breathing in for 4 counts, holding for 2, and breathing out for 7, to calm yourself if feeling overwhelmed.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/children-and-young-adults/help-for-teenagers-young-adults-and-students/tips-on-preparing-for-exams/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Read instructions and questions carefully before starting the exam, and ask supervisors if anything is unclear.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/children-and-young-adults/help-for-teenagers-young-adults-and-students/tips-on-preparing-for-exams/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Plan your time for each question during the exam and don't panic if you get stuck; leave time to return to difficult questions.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/children-and-young-adults/help-for-teenagers-young-adults-and-students/tips-on-preparing-for-exams/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Once an exam is finished, try to forget about it and focus on the next one, rather than dwelling on past performance or comparing answers.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/children-and-young-adults/help-for-teenagers-young-adults-and-students/tips-on-preparing-for-exams/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Speak with your departmental Wellbeing Adviser for confidential pastoral support and assistance with academic concerns, including mitigating circumstances.",
+    "source": "Imperial College London",
+    "read_more": "https://www.imperial.ac.uk/students/counselling/self-directed-support/academic-stress/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Consult your personal tutor or senior tutor for advice on academic matters and support with individual student problems or queries.",
+    "source": "Imperial College London",
+    "read_more": "https://www.imperial.ac.uk/students/counselling/self-directed-support/academic-stress/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Attend 'Procrastination to Productivity' workshops to explore reasons for struggling with work and learn practical time management tools.",
+    "source": "Imperial College London",
+    "read_more": "https://www.imperial.ac.uk/students/counselling/self-directed-support/academic-stress/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Participate in 'Stress Less for Exam Success' workshops offered before exam periods to help manage stress.",
+    "source": "Imperial College London",
+    "read_more": "https://www.imperial.ac.uk/students/counselling/self-directed-support/academic-stress/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Consider applying for mitigating circumstances if your ability to perform in assessments is impacted by personal issues.",
+    "source": "Imperial College London",
+    "read_more": "https://www.imperial.ac.uk/students/counselling/self-directed-support/academic-stress/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Attend the Library’s Study Skills Workshops to enhance your academic skills.",
+    "source": "Imperial College London",
+    "read_more": "https://www.imperial.ac.uk/students/counselling/self-directed-support/academic-stress/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Seek guidance from an Advice caseworker at the Imperial College Union for university regulations, appeals, and academic misconduct.",
+    "source": "Imperial College London",
+    "read_more": "https://www.imperial.ac.uk/students/counselling/self-directed-support/academic-stress/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Attend webinars delivered by the Imperial College Health Centre on topics like Enhancing Performance, Concentration, Imposter Syndrome, and Preparing for Exams.",
+    "source": "Imperial College London",
+    "read_more": "https://www.imperial.ac.uk/students/counselling/self-directed-support/academic-stress/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Establish a routine after school, dedicating time for both revision and self-care activities.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/for-young-people/feelings-and-experiences/exam-stress/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Ask teachers for support with revision strategies, difficult topics, exam preparation, and balancing subjects.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/for-young-people/feelings-and-experiences/exam-stress/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "If you have a mental health problem that counts as a disability, inquire about reasonable adjustments like extra time or a different exam room.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/for-young-people/feelings-and-experiences/exam-stress/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Talk to a trusted adult, such as a teacher or school nurse, if you are unsure about available support.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/for-young-people/feelings-and-experiences/exam-stress/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "If school support is insufficient, explore other support options, talk to a trusted person, or use message boards like The Mix or Childline.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/for-young-people/feelings-and-experiences/exam-stress/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Speak to someone confidentially, such as a counsellor at The Mix or Childline, for additional support.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/for-young-people/feelings-and-experiences/exam-stress/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Utilize counselling services to talk through problems, recognize their impact, and develop positive coping strategies.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/for-young-people/feelings-and-experiences/exam-stress/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Accept anxious feelings as a sign that you care about the exam and need to prepare for it.",
+    "source": "Student Minds",
+    "read_more": "https://www.studentminds.org.uk/advice-and-info/exam-stress/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Plan your time by creating a study timetable to regain control and reduce anxiety, ensuring to factor in time for physical and mental recharge.",
+    "source": "Student Minds",
+    "read_more": "https://www.studentminds.org.uk/advice-and-info/exam-stress/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Prioritise sleep, as it is vital for physical and mental stamina, learning, and academic performance.",
+    "source": "Student Minds",
+    "read_more": "https://www.studentminds.org.uk/advice-and-info/exam-stress/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Maintain a balanced diet, stay hydrated, move your body regularly, and get sunlight to keep anxiety in check.",
+    "source": "Student Minds",
+    "read_more": "https://www.studentminds.org.uk/advice-and-info/exam-stress/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Get all practicalities sorted before the exam, including pens, pencils, calculators, and knowing the location and time.",
+    "source": "Student Minds",
+    "read_more": "https://www.studentminds.org.uk/advice-and-info/exam-stress/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Spend time with friends to let off steam and share feelings, as connection with others is a human need.",
+    "source": "Student Minds",
+    "read_more": "https://www.studentminds.org.uk/advice-and-info/exam-stress/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "Avoid last-minute cramming the night before an exam, as it can disrupt sleep and confuse you; instead, finish early and allow time to wind down.",
+    "source": "Student Minds",
+    "read_more": "https://www.studentminds.org.uk/advice-and-info/exam-stress/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "On the day of the exam, set an alarm, allow plenty of time, eat breakfast, spend time outside, and listen to music that relaxes you.",
+    "source": "Student Minds",
+    "read_more": "https://www.studentminds.org.uk/advice-and-info/exam-stress/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "During the exam, use breathing techniques like 7/11 breathing to stay calm, read through the paper, and start with questions you are most confident in.",
+    "source": "Student Minds",
+    "read_more": "https://www.studentminds.org.uk/advice-and-info/exam-stress/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "If you feel nervous or go blank during the exam, look away for a few moments and use 7/11 breathing before returning to the paper.",
+    "source": "Student Minds",
+    "read_more": "https://www.studentminds.org.uk/advice-and-info/exam-stress/"
+  },
+  {
+    "domain": "exam_stress",
+    "tip": "After the exam, congratulate yourself, decide whether to spend time with friends or alone, focus on what you learned, and reward yourself for your hard work.",
+    "source": "Student Minds",
+    "read_more": "https://www.studentminds.org.uk/advice-and-info/exam-stress/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Challenge negative thoughts about your body by asking what evidence actually supports them, rather than accepting them as truth.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/body-dysmorphia/tips-for-improving-your-body-image/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Practice self-compassion: speak to yourself with the same kindness you would offer a close friend who was struggling with how they look.",
+    "source": "Beat Eating Disorders",
+    "read_more": "https://www.beateatingdisorders.org.uk/get-information-and-support/get-help-for-myself/self-help-and-self-care/body-image/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Focus on what your body can do for you — its strength, its senses, its capacity — rather than solely on how it appears to others.",
+    "source": "Mental Health Foundation",
+    "read_more": "https://www.mentalhealth.org.uk/our-work/research/body-image-how-we-think-and-feel-about-our-bodies/how-can-we-protect-promote-and-maintain-body-image"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Be mindful of the language you use about your own body and others' — avoid framing weight or appearance as measures of worth.",
+    "source": "iThrive Edinburgh",
+    "read_more": "https://ithriveedinburgh.org.uk/self-help/self-help-guides-resources/body-image/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "If body image thoughts are significantly affecting your daily life, speak to your GP — effective support is available and you deserve it.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/conditions/body-dysmorphia/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Body image is about how you think and feel about your body, not just how it looks. If it is affecting you, reaching out is a sign of strength.",
+    "source": "YoungMinds",
+    "read_more": "https://www.youngminds.org.uk/young-person/coping-with-life/body-image/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Take a break from social media to gain a better perspective of reality — most people do not look like the images you see online.",
+    "source": "The Mix",
+    "read_more": "https://www.themix.org.uk/explore-our-topics/your-body/dealing-with-negative-thoughts-about-your-body-or-appearance/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Reduce body-checking behaviours such as excessive mirror use — instead, focus on the different sensations and feelings within your body.",
+    "source": "The Mix",
+    "read_more": "https://www.themix.org.uk/explore-our-topics/your-body/dealing-with-negative-thoughts-about-your-body-or-appearance/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Wear clothes that are comfortable for you — bodies fluctuate and clothes should fit you, not the other way around.",
+    "source": "The Mix",
+    "read_more": "https://www.themix.org.uk/explore-our-topics/your-body/dealing-with-negative-thoughts-about-your-body-or-appearance/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Limit or unfollow social media accounts that are overly focused on appearance or promote unrealistic body standards.",
+    "source": "CALM",
+    "read_more": "https://www.thecalmzone.net/guides/body-image"
+  },
+  {
+    "domain": "body_image",
+    "tip": "If you experience negative thoughts about your body, try to divert your attention and use distraction techniques to shift your focus.",
+    "source": "Beat Eating Disorders",
+    "read_more": "https://www.beateatingdisorders.org.uk/get-information-and-support/get-help-for-myself/self-help-and-self-care/body-image/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Focus on your personality traits, abilities, achievements, and strengths rather than solely on your appearance. Ask loved ones what they appreciate about you if you find it difficult to identify these qualities yourself.",
+    "source": "Beat Eating Disorders",
+    "read_more": "https://www.beateatingdisorders.org.uk/get-information-and-support/get-help-for-myself/self-help-and-self-care/body-image/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Remind yourself that your worth is not defined by your appearance. Consider the qualities you admire in friends, which are often related to their personality rather than their physical looks.",
+    "source": "Beat Eating Disorders",
+    "read_more": "https://www.beateatingdisorders.org.uk/get-information-and-support/get-help-for-myself/self-help-and-self-care/body-image/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Practice self-compassion by treating and speaking to yourself with the same kindness and understanding you would offer a loved one.",
+    "source": "Beat Eating Disorders",
+    "read_more": "https://www.beateatingdisorders.org.uk/get-information-and-support/get-help-for-myself/self-help-and-self-care/body-image/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Reduce negative influences by unfollowing social media accounts that cause you to compare yourself or think negatively about your body.",
+    "source": "Beat Eating Disorders",
+    "read_more": "https://www.beateatingdisorders.org.uk/get-information-and-support/get-help-for-myself/self-help-and-self-care/body-image/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Set boundaries with loved ones by asking them to avoid talking about bodies or making comments that you find unhelpful or triggering.",
+    "source": "Beat Eating Disorders",
+    "read_more": "https://www.beateatingdisorders.org.uk/get-information-and-support/get-help-for-myself/self-help-and-self-care/body-image/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Surround yourself with people who make you feel comfortable and appreciate you for who you are as a person, fostering a supportive environment.",
+    "source": "Beat Eating Disorders",
+    "read_more": "https://www.beateatingdisorders.org.uk/get-information-and-support/get-help-for-myself/self-help-and-self-care/body-image/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Practice body gratitude by acknowledging the many ways your body supports you, such as healing, sensing, and allowing you to express yourself.",
+    "source": "Beat Eating Disorders",
+    "read_more": "https://www.beateatingdisorders.org.uk/get-information-and-support/get-help-for-myself/self-help-and-self-care/body-image/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Engage your senses (sight, smell, hearing, touch) to cultivate compassion and gratitude towards your body, focusing on what it allows you to experience.",
+    "source": "Beat Eating Disorders",
+    "read_more": "https://www.beateatingdisorders.org.uk/get-information-and-support/get-help-for-myself/self-help-and-self-care/body-image/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Label your thinking style to distance yourself from negative thoughts, recognizing patterns like 'all or nothing thinking' or 'mind reading'.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/body-dysmorphia/tips-for-improving-your-body-image/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Challenge negative thoughts by jotting them down and rationalizing them with evidence or facts, rather than accepting them as truth.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/body-dysmorphia/tips-for-improving-your-body-image/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Change your interaction with mirrors by not avoiding them entirely, but also not getting too close, and describing yourself objectively.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/body-dysmorphia/tips-for-improving-your-body-image/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Set boundaries for mirror time, such as allowing yourself only a specific number of minutes each day, to manage obsessive checking.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/body-dysmorphia/tips-for-improving-your-body-image/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Distract yourself from obsessive body image thoughts by engaging in enjoyable activities like crafts, exercise, or watching a TV show, focusing your mind elsewhere.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/body-dysmorphia/tips-for-improving-your-body-image/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Practice mindfulness to stay present in the moment and gently refocus your attention when your mind wanders back to worries about your appearance.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/body-dysmorphia/tips-for-improving-your-body-image/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Celebrate your successes, no matter how small, and take time to praise yourself for what you did well, helping to build self-acceptance.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/body-dysmorphia/tips-for-improving-your-body-image/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Accept compliments and make a note of them to review when you are feeling low or doubting yourself, reinforcing positive self-perception.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/body-dysmorphia/tips-for-improving-your-body-image/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Create a list of things you like about yourself, including character traits, skills, experiences, beliefs, or hobbies, and ask others for their suggestions.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/body-dysmorphia/tips-for-improving-your-body-image/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Appreciate what your body can do for you, focusing on the functions of your body parts rather than solely on their appearance.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/body-dysmorphia/tips-for-improving-your-body-image/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Identify when, where, and how often you compare your body to others, and then broaden your attention to your environment or a person's whole appearance.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/body-dysmorphia/tips-for-improving-your-body-image/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Talk to someone you trust about how you feel about your body to reduce feelings of loneliness and improve your ability to cope.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/body-dysmorphia/tips-for-improving-your-body-image/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Tell people what you need from them, such as help resisting compulsions or distractions, as they may want to help but not know how.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/body-dysmorphia/tips-for-improving-your-body-image/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Avoid repeatedly asking for reassurance from others; instead, share that you're struggling and ask for help with distraction.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/body-dysmorphia/tips-for-improving-your-body-image/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Spend time with friends and family, even if you're not ready to talk openly about your body image, to feel more comfortable and potentially open up later.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/body-dysmorphia/tips-for-improving-your-body-image/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Join peer-support groups for body dysmorphia to connect with others who understand your experiences, reducing isolation and offering coping strategies.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/body-dysmorphia/tips-for-improving-your-body-image/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Seek professional support if body image worries begin to affect your mental health, eating habits, or daily life, as early intervention can make a significant difference.",
+    "source": "YoungMinds",
+    "read_more": "https://www.youngminds.org.uk/young-person/coping-with-life/body-image/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Help others see they are more than their appearance by noticing and encouraging their personality, values, skills, interests, and passions.",
+    "source": "YoungMinds",
+    "read_more": "https://www.youngminds.org.uk/young-person/coping-with-life/body-image/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Be mindful of your language by avoiding body-shaming or diet talk about anyone, including yourself, and model self-care.",
+    "source": "YoungMinds",
+    "read_more": "https://www.youngminds.org.uk/young-person/coping-with-life/body-image/"
+  },
+  {
+    "domain": "body_image",
+    "tip": "Help create a safe online space by cleaning up social media feeds, unfollowing or muting accounts that promote negative comparisons, and seeking content that celebrates body diversity.",
+    "source": "YoungMinds",
+    "read_more": "https://www.youngminds.org.uk/young-person/coping-with-life/body-image/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Open up to a trusted friend, family member, or colleague about your feelings of loneliness — even a text message can deepen a connection.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/loneliness/tips-to-manage-loneliness/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Join an online community or find a local interest group — shared activities are often easier than unstructured socialising.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/loneliness/tips-to-manage-loneliness/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Regularly message old acquaintances or create group chats — maintaining small connections reduces isolation over time.",
+    "source": "NHS Every Mind Matters",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/loneliness/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Volunteer for a cause you care about — it helps you meet people, builds confidence, and gives a sense of purpose beyond yourself.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/feelings-symptoms-behaviours/feelings-and-symptoms/loneliness-in-older-people/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Plan your week ahead and schedule small activities — a walk, a coffee shop, a library visit — so you have things to look forward to each day.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/feelings-symptoms-behaviours/feelings-and-symptoms/loneliness-in-older-people/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Hearing a familiar voice or seeing a friendly face can significantly reduce feelings of isolation — reach out even when it feels pointless.",
+    "source": "NHS Every Mind Matters",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/loneliness/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Seek support to build confidence for social activities — joining groups or applying for opportunities becomes easier with a little help.",
+    "source": "Rethink Mental Illness",
+    "read_more": "https://www.rethink.org/news-and-stories/blogs/2024/02/loneliness-and-isolation-filling-an-important-gap/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Connect with yourself, nature, the wider world, and things you enjoy — loneliness often eases when you find meaning outside of social interaction.",
+    "source": "CALM",
+    "read_more": "https://www.thecalmzone.net/how-to-feel-less-alone"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Join a safe, supportive online community to talk to other young people who understand what you are going through.",
+    "source": "Childline",
+    "read_more": "https://www.childline.org.uk/info-advice/your-feelings/feelings-emotions/loneliness-doesnt-have-to-last/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Push yourself out of your comfort zone by attending an event alone — it is uncomfortable at first, but it builds confidence and opens unexpected connections.",
+    "source": "The Mix",
+    "read_more": "https://www.themix.org.uk/explore-our-topics/sex-and-relationships/help-im-lonely/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Learn to be comfortable in your own company by engaging in self-care activities you enjoy, such as walking, arts and crafts, or cooking.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/loneliness/tips-to-manage-loneliness/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Open up to someone you trust, like a friend, family member, or colleague, about your feelings of loneliness. You can communicate via text, social media, or in person.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/loneliness/tips-to-manage-loneliness/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Start small by making conversations with people you encounter daily, such as a cashier or a neighbor, to gradually build connections.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/loneliness/tips-to-manage-loneliness/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Spend time in environments where there are many people, like coffee shops, libraries, or shopping centers, to feel a sense of presence and reduce loneliness.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/loneliness/tips-to-manage-loneliness/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Establish a routine by visiting the same places at the same time, which may lead to recognizing people and forming connections over time.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/loneliness/tips-to-manage-loneliness/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Join online communities or groups that share your interests to connect with others who have similar experiences.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/loneliness/tips-to-manage-loneliness/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Volunteer in-person or at home to meet new people and improve your mental health through helping others.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/loneliness/tips-to-manage-loneliness/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Join local social media groups to connect with people in your area and find opportunities to meet nearby.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/loneliness/tips-to-manage-loneliness/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Try not to compare yourself to others, especially on social media, as it can exacerbate feelings of loneliness and inadequacy.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/loneliness/tips-to-manage-loneliness/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Engage in physical activity to boost your mental wellbeing and self-esteem, potentially by joining a local class or group like parkrun.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/loneliness/tips-to-manage-loneliness/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Spend time in nature, such as gardening or walking in green spaces, to improve your sense of wellbeing and reduce feelings of loneliness.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/loneliness/tips-to-manage-loneliness/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Consider talking therapies like CBT to explore the meaning of loneliness for you and develop coping strategies for difficult social situations.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/loneliness/tips-to-manage-loneliness/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Keep in regular contact with friends and family through chats, messages, or group apps to combat loneliness and maintain a support network.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/loneliness/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Join a group or club based on your interests to connect with new people and expand your social circle.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/loneliness/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Engage in activities you enjoy, such as spending time outdoors, exercising, reading, or listening to podcasts, to occupy your mind and improve your wellbeing.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/loneliness/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Share your feelings about loneliness with trusted individuals, as hearing a familiar voice or seeing a friendly face can make you feel less isolated.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/loneliness/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Reach out to people you know who might be feeling lonely, and try to connect with them by smiling, saying hello, or suggesting a shared activity.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/loneliness/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Invite someone to participate in free or low-cost activities in your local area, such as walks, exhibitions, or family events.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/loneliness/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Set up a routine for contacting friends and family regularly to manage homesickness and loneliness while at university.",
+    "source": "YoungMinds",
+    "read_more": "https://www.youngminds.org.uk/young-person/blog/how-to-deal-with-feeling-homesick-or-lonely-at-university/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Join a sports team or society at university to meet people with similar interests and build a support network.",
+    "source": "YoungMinds",
+    "read_more": "https://www.youngminds.org.uk/young-person/blog/how-to-deal-with-feeling-homesick-or-lonely-at-university/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Seek help from your university's support services, such as a wellbeing team or mental health advisor, if you continue to feel homesick or lonely.",
+    "source": "YoungMinds",
+    "read_more": "https://www.youngminds.org.uk/young-person/blog/how-to-deal-with-feeling-homesick-or-lonely-at-university/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Actively appreciate the good things about winter, such as cozy activities or indoor events, to shift your mindset and cope with seasonal challenges.",
+    "source": "YoungMinds",
+    "read_more": "https://www.youngminds.org.uk/young-person/blog/keeping-well-in-winter-how-shifting-your-mindset-can-help-you-cope/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Volunteer at food banks, shelters, or other organizations to foster a feeling of connection and community, especially during times that can inflate feelings of loneliness.",
+    "source": "YoungMinds",
+    "read_more": "https://www.youngminds.org.uk/young-person/blog/keeping-well-in-winter-how-shifting-your-mindset-can-help-you-cope/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Practice self-love by treating yourself, reflecting on good memories, noting compliments, and speaking kindly to yourself.",
+    "source": "YoungMinds",
+    "read_more": "https://www.youngminds.org.uk/young-person/blog/loving-yourself-this-valentines-day/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Engage in physical activity that feels good for you, such as dancing or rock-climbing, to boost your mood and release endorphins.",
+    "source": "YoungMinds",
+    "read_more": "https://www.youngminds.org.uk/young-person/blog/loving-yourself-this-valentines-day/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Re-engage with your inner child by playing and doing activities that make you happy, like dancing or engaging in imaginative games.",
+    "source": "YoungMinds",
+    "read_more": "https://www.youngminds.org.uk/young-person/blog/loving-yourself-this-valentines-day/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Reward yourself for your efforts and achievements, as a form of self-love and appreciation.",
+    "source": "YoungMinds",
+    "read_more": "https://www.youngminds.org.uk/young-person/blog/loving-yourself-this-valentines-day/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Acknowledge and discuss your struggles with trusted individuals, as communication is key to maintaining good mental health and feeling supported.",
+    "source": "YoungMinds",
+    "read_more": "https://www.youngminds.org.uk/young-person/blog/overcoming-loneliness-at-university-my-mental-health-journey/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Implement a structured daily routine during holidays or breaks to maintain organization and prevent feelings of being unmotivated or unproductive.",
+    "source": "YoungMinds",
+    "read_more": "https://www.youngminds.org.uk/young-person/blog/how-to-cope-with-loneliness-during-the-summer-holidays/"
+  },
+  {
+    "domain": "loneliness",
+    "tip": "Find a healthy release for difficult emotions, such as screaming relatable lyrics or journaling, to prevent them from building up and causing more pain.",
+    "source": "YoungMinds",
+    "read_more": "https://www.youngminds.org.uk/young-person/blog/how-to-cope-with-feeling-lonely-at-school/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "Create a budget to balance your income and expenses — having a clear picture of your money, even if it is tight, reduces the anxiety of the unknown.",
+    "source": "NHS Every Mind Matters",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/money-worries-mental-health/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "Seek free money advice from MoneyHelper or the National Debtline — most students do not know what support they qualify for until they ask.",
+    "source": "NHS Every Mind Matters",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/money-worries-mental-health/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "Talk about your money worries with someone you trust, or contact Mental Health and Money Advice for confidential support.",
+    "source": "NHS Every Mind Matters",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/money-worries-mental-health/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "Maintain a daily routine including consistent sleep and wake times — structure provides a sense of control when finances feel out of control.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/advice-for-life-situations-and-events/how-to-cope-with-financial-worries/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "63% of 18–34 year olds are anxious about their finances — you are not alone, and your university's hardship fund may be available to you.",
+    "source": "Money and Mental Health Policy Institute",
+    "read_more": "https://www.moneyandmentalhealth.org/money-and-mental-health-facts/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "Make a budget sheet to work out what you can afford to pay — seeing your finances clearly, however difficult, is the first step to managing them.",
+    "source": "Rethink Mental Illness",
+    "read_more": "https://www.rethink.org/advice-and-information/about-mental-illness/mental-health-symptoms/stress-how-to-manage-it-causes-symptoms-and-support-options/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "If you are worried about debt, seek advice from StepChange, Citizens Advice, or the National Debtline — they are free, confidential, and non-judgmental.",
+    "source": "Rethink Mental Illness",
+    "read_more": "https://www.rethink.org/advice-and-information/about-mental-illness/mental-health-symptoms/stress-how-to-manage-it-causes-symptoms-and-support-options/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "If you are relying on credit cards or buy now, pay later for essentials like food or bills, it is worth speaking to a financial adviser — this pattern is more common than you think and there is help available.",
+    "source": "Anxiety UK",
+    "read_more": "https://www.anxietyuk.org.uk/blog/is-your-debt-making-you-more-anxious/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "When discussing money worries, choose a quiet time away from distractions — writing down your concerns first can make the conversation easier.",
+    "source": "CALM",
+    "read_more": "https://www.thecalmzone.net/ask-calm-money-worries"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "Treat yourself kindly and avoid negative self-talk or unhelpful thoughts when struggling with money or unemployment.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/money-worries-mental-health/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "Try cognitive behavioural therapy (CBT) techniques, such as focusing on what you can control, to manage feelings of anxiety about money.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/money-worries-mental-health/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "Talk about your money worries with someone you trust, like a friend or family member, or a confidential service like Mental Health and Money Advice.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/money-worries-mental-health/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "Use relaxation techniques and meditation, such as mindful breathing, to feel calmer and help with feelings of anxiety about money.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/money-worries-mental-health/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "Create good self-care routines, starting with simple things like consistent sleep schedules, to boost your mood and sense of purpose.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/money-worries-mental-health/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "Take regular breaks and plan enjoyable activities if you are looking for work, to maintain good self-care routines.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/money-worries-mental-health/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "Maintain physical health by being active, eating a healthy diet, and avoiding excessive alcohol, smoking, or illegal drugs to ease anxiety.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/money-worries-mental-health/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "Create a budget or money plan to balance income and expenses, which can help you feel more in control and ease financial anxiety.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/money-worries-mental-health/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "Get free financial advice and support from organizations like MoneyHelper or the National Debtline as soon as possible if you are struggling with money or debt.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/money-worries-mental-health/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "Understand your employment rights and seek support from resources like MoneyHelper or Citizens Advice if you are worried about unemployment or redundancy.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/money-worries-mental-health/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "If you are struggling to pay your mortgage, try asking your lender for a payment holiday to temporarily stop or reduce payments.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/money-worries-mental-health/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "If you are finding it hard to pay your rent, speak to your landlord as soon as possible to see if they can give you more time.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/money-worries-mental-health/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "Do not ignore unmanageable debt; seek professional debt help to avoid late fees and a drop in your credit score.",
+    "source": "Anxiety UK",
+    "read_more": "https://www.anxietyuk.org.uk/blog/is-your-debt-making-you-more-anxious/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "Avoid relying on credit cards or buy now, pay later (BNPL) for essential daily expenses like food or bills.",
+    "source": "Anxiety UK",
+    "read_more": "https://www.anxietyuk.org.uk/blog/is-your-debt-making-you-more-anxious/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "If you are receiving regular calls or letters from creditors, get help before legal action is taken.",
+    "source": "Anxiety UK",
+    "read_more": "https://www.anxietyuk.org.uk/blog/is-your-debt-making-you-more-anxious/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "If you don't know how much you owe, conduct a financial check-up to understand your total debt.",
+    "source": "Anxiety UK",
+    "read_more": "https://www.anxietyuk.org.uk/blog/is-your-debt-making-you-more-anxious/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "If you have no savings and cannot save for emergencies due to debt, reach out for professional help.",
+    "source": "Anxiety UK",
+    "read_more": "https://www.anxietyuk.org.uk/blog/is-your-debt-making-you-more-anxious/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "If managing your finances feels overwhelming, consult a debt adviser to simplify your financial situation.",
+    "source": "Anxiety UK",
+    "read_more": "https://www.anxietyuk.org.uk/blog/is-your-debt-making-you-more-anxious/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "Before considering bankruptcy, seek free debt advice to understand the implications and explore alternatives.",
+    "source": "Anxiety UK",
+    "read_more": "https://www.anxietyuk.org.uk/blog/is-your-debt-making-you-more-anxious/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "Collect all information about your debts, including who you owe money to, how much, and account numbers, to get a clear picture of your financial situation.",
+    "source": "Citizens Advice",
+    "read_more": "https://www.citizensadvice.org.uk/debt-and-money/help-with-debt/dealing-with-your-debts/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "Check if you have to pay a debt, as some debts may be statute-barred or not legally enforceable.",
+    "source": "Citizens Advice",
+    "read_more": "https://www.citizensadvice.org.uk/debt-and-money/help-with-debt/dealing-with-your-debts/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "Explore options like 'Breathing Space' to get more time to deal with your debts without pressure from creditors.",
+    "source": "Citizens Advice",
+    "read_more": "https://www.citizensadvice.org.uk/debt-and-money/help-with-debt/dealing-with-your-debts/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "Prioritize which debts to deal with first, focusing on essential bills and high-priority debts.",
+    "source": "Citizens Advice",
+    "read_more": "https://www.citizensadvice.org.uk/debt-and-money/help-with-debt/dealing-with-your-debts/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "Check if you can increase your income through benefits, grants, or other financial support.",
+    "source": "Citizens Advice",
+    "read_more": "https://www.citizensadvice.org.uk/debt-and-money/help-with-debt/dealing-with-your-debts/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "Reduce your regular outgoings by reviewing your budget and cutting unnecessary expenses.",
+    "source": "Citizens Advice",
+    "read_more": "https://www.citizensadvice.org.uk/debt-and-money/help-with-debt/dealing-with-your-debts/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "Explore various debt solutions like Debt Management Plans, IVAs, or Debt Relief Orders to find the best option for your situation.",
+    "source": "Citizens Advice",
+    "read_more": "https://www.citizensadvice.org.uk/debt-and-money/help-with-debt/dealing-with-your-debts/"
+  },
+  {
+    "domain": "financial_anxiety",
+    "tip": "Make a realistic plan to pay your debts, considering your income and essential expenses.",
+    "source": "Citizens Advice",
+    "read_more": "https://www.citizensadvice.org.uk/debt-and-money/help-with-debt/dealing-with-your-debts/"
+  },
+  {
+    "domain": "relationship_stress",
+    "tip": "Set clear boundaries by thinking about what you feel able to give — whether that is listening or practical help — and stick to it without guilt.",
+    "source": "NHS Every Mind Matters",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/maintaining-healthy-relationships-and-mental-wellbeing/"
+  },
+  {
+    "domain": "relationship_stress",
+    "tip": "When conflict makes it hard to talk calmly, take time out and revisit the conversation when everyone involved feels more composed.",
+    "source": "NHS Every Mind Matters",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/maintaining-healthy-relationships-and-mental-wellbeing/"
+  },
+  {
+    "domain": "relationship_stress",
+    "tip": "Dedicate time for your own hobbies and interests — maintaining your own identity within a relationship protects your mental wellbeing.",
+    "source": "NHS Every Mind Matters",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/maintaining-healthy-relationships-and-mental-wellbeing/"
+  },
+  {
+    "domain": "relationship_stress",
+    "tip": "View mental health difficulties as external to the relationship — a shared challenge to tackle together, not a flaw in either person.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/your-stories/managing-mental-health-in-a-relationship/"
+  },
+  {
+    "domain": "relationship_stress",
+    "tip": "Take things slowly and regularly check in with how you are feeling — you should never feel pressured to move at someone else's pace.",
+    "source": "YoungMinds",
+    "read_more": "https://www.youngminds.org.uk/young-person/blog/tips-for-dating-and-building-healthy-relationships/"
+  },
+  {
+    "domain": "relationship_stress",
+    "tip": "Acknowledge tensions by talking openly about how you are feeling — this helps you work towards solutions that work for both of you.",
+    "source": "Rethink Mental Illness",
+    "read_more": "https://www.rethink.org/advice-and-information/carers-hub/advice-for-loved-ones-and-carers/couples-who-care-for-an-adult-who-lives-with-a-mental-illness-relationship-tips/"
+  },
+  {
+    "domain": "relationship_stress",
+    "tip": "Avoid blaming language like 'you never' or 'it's your fault' — use 'I think' and 'I feel' statements instead to share your point of view without triggering defensiveness.",
+    "source": "Rethink Mental Illness",
+    "read_more": "https://www.rethink.org/advice-and-information/carers-hub/advice-for-loved-ones-and-carers/couples-who-care-for-an-adult-who-lives-with-a-mental-illness-relationship-tips/"
+  },
+  {
+    "domain": "relationship_stress",
+    "tip": "Before discussing an issue, take time to reflect on your own feelings and understand why the situation affects you — reacting immediately rarely helps.",
+    "source": "The Mix",
+    "read_more": "https://www.themix.org.uk/explore-our-topics/sex-and-relationships/how-to-talk-with-your-boyfriend-girlfriend-or-partner/"
+  },
+  {
+    "domain": "relationship_stress",
+    "tip": "Frame difficult conversations as a collaboration: 'we are having issues with X and it would be good to talk this through together' reduces defensiveness.",
+    "source": "The Mix",
+    "read_more": "https://www.themix.org.uk/explore-our-topics/sex-and-relationships/how-to-talk-with-your-boyfriend-girlfriend-or-partner/"
+  },
+  {
+    "domain": "relationship_stress",
+    "tip": "Set aside regular time to talk, or consider writing down feelings in a message or letter if it feels difficult to speak aloud.",
+    "source": "NHS Every Mind Matters",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/maintaining-healthy-relationships-and-mental-wellbeing/"
+  },
+  {
+    "domain": "relationship_stress",
+    "tip": "Confide in someone outside the relationship that you trust for support when things feel difficult.",
+    "source": "NHS Every Mind Matters",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/maintaining-healthy-relationships-and-mental-wellbeing/"
+  },
+  {
+    "domain": "relationship_stress",
+    "tip": "During conflict, ask yourself 'Is there another way to look at this situation?' to foster understanding before responding.",
+    "source": "NHS Every Mind Matters",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/maintaining-healthy-relationships-and-mental-wellbeing/"
+  },
+  {
+    "domain": "relationship_stress",
+    "tip": "Challenge negative thoughts about yourself in relationships and reframe them into neutral or positive alternatives to build confidence.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/relationships/"
+  },
+  {
+    "domain": "relationship_stress",
+    "tip": "If you are experiencing relationship problems, speaking to a counsellor or therapist can help you develop healthier communication patterns.",
+    "source": "Relate",
+    "read_more": "https://www.relate.org.uk/get-help/self-help-and-advice"
+  },
+  {
+    "domain": "relationship_stress",
+    "tip": "Recognise the difference between healthy and unhealthy relationship patterns — if you feel controlled, isolated, or afraid, support is available.",
+    "source": "YoungMinds",
+    "read_more": "https://www.youngminds.org.uk/young-person/coping-with-life/relationships/"
+  },
+  {
+    "domain": "relationship_stress",
+    "tip": "It is okay to take space from a relationship when you need it — time apart can give both people perspective and reduce tension.",
+    "source": "The Mix",
+    "read_more": "https://www.themix.org.uk/explore-our-topics/sex-and-relationships/"
+  },
+  {
+    "domain": "identity_uncertainty",
+    "tip": "Take time to examine your current situation honestly — talking it through with someone you trust can bring clarity when everything feels uncertain.",
+    "source": "NHS Every Mind Matters",
+    "read_more": "https://www.nhs.uk/every-mind-matters/mental-wellbeing-tips/how-to-deal-with-change/"
+  },
+  {
+    "domain": "identity_uncertainty",
+    "tip": "Focus on what is within your control and identify specific outcomes you want — creating small action plans reduces the paralysis of uncertainty.",
+    "source": "Mental Health UK",
+    "read_more": "https://mentalhealth-uk.org/news-and-insights/dealing-with-uncertainty/"
+  },
+  {
+    "domain": "identity_uncertainty",
+    "tip": "Establish a daily routine that includes something positive — a walk, a creative activity, a moment of rest — to create a sense of agency when direction feels lost.",
+    "source": "NHS Every Mind Matters",
+    "read_more": "https://www.nhs.uk/every-mind-matters/mental-wellbeing-tips/how-to-deal-with-change/"
+  },
+  {
+    "domain": "identity_uncertainty",
+    "tip": "Create a self-care kit with comforting, grounding items — a favourite book, photos, a stress ball — to return to when difficult feelings surface.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/"
+  },
+  {
+    "domain": "identity_uncertainty",
+    "tip": "If you are questioning your gender identity, seek out resources and communities specifically designed for this — you do not have to navigate it alone.",
+    "source": "YoungMinds",
+    "read_more": "https://www.youngminds.org.uk/young-person/identity-and-mental-health/"
+  },
+  {
+    "domain": "identity_uncertainty",
+    "tip": "If you are questioning your identity, confiding in at least one supportive person can reduce feelings of depression and boost self-esteem — the decision of when and how to share is entirely yours.",
+    "source": "Rethink Mental Illness",
+    "read_more": "https://www.rethink.org/advice-and-information/living-with-mental-illness/lgbtplus-mental-health/lgbtplus-mental-health/"
+  },
+  {
+    "domain": "identity_uncertainty",
+    "tip": "When feeling overwhelmed by comparisons with others, limit social media and focus on setting your own personal goals rather than basing them on what others are doing.",
+    "source": "The Mix",
+    "read_more": "https://www.themix.org.uk/explore-our-topics/lifestyle/feeling-behind-in-life-why-young-people-compare-themselves/"
+  },
+  {
+    "domain": "identity_uncertainty",
+    "tip": "If you are exploring your gender identity, remember it is just one aspect of your whole self — many people find it feels less all-consuming as they grow more comfortable with who they are.",
+    "source": "CALM",
+    "read_more": "https://www.thecalmzone.net/guides/gender-identity"
+  },
+  {
+    "domain": "identity_uncertainty",
+    "tip": "If you are experiencing distress or despair, reach out to SANE for confidential emotional support — no one should face these challenges alone.",
+    "source": "SANE",
+    "read_more": "https://www.sane.org.uk/"
+  },
+  {
+    "domain": "identity_uncertainty",
+    "tip": "Understand how your cultural identity affects your mental health and learn to navigate pressures or expectations from your community.",
+    "source": "YoungMinds",
+    "read_more": "https://www.youngminds.org.uk/young-person/identity-and-mental-health/"
+  },
+  {
+    "domain": "identity_uncertainty",
+    "tip": "If you are questioning your gender identity, remember it is not a mental health problem, but acknowledge that the process can impact your mental health.",
+    "source": "YoungMinds",
+    "read_more": "https://www.youngminds.org.uk/young-person/identity-and-mental-health/"
+  },
+  {
+    "domain": "identity_uncertainty",
+    "tip": "If you identify as LGBTQIA+, acknowledge that dealing with uncertainty, pressure, or judgment about your sexuality can be challenging and impact your mental health.",
+    "source": "YoungMinds",
+    "read_more": "https://www.youngminds.org.uk/young-person/identity-and-mental-health/"
+  },
+  {
+    "domain": "identity_uncertainty",
+    "tip": "Be kind to yourself and do what feels right for you at the moment, recognizing that good days for wellbeing vary.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/"
+  },
+  {
+    "domain": "identity_uncertainty",
+    "tip": "Focus on the present moment or your senses using mindfulness techniques like meditation or breathing exercises to manage overwhelming feelings.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/"
+  },
+  {
+    "domain": "identity_uncertainty",
+    "tip": "Create a self-care kit with comforting items or a digital one with helpful photos, music, and messages to support yourself when struggling.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/"
+  },
+  {
+    "domain": "identity_uncertainty",
+    "tip": "Take breaks from the internet or change the accounts you follow to improve your mental health if online content is making you feel worse.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/"
+  },
+  {
+    "domain": "identity_uncertainty",
+    "tip": "Join a class or group to learn a new skill, which can boost confidence and provide social connection.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/"
+  },
+  {
+    "domain": "identity_uncertainty",
+    "tip": "Engage in creative activities like drawing, photography, or baking to distract from difficult thoughts, understand yourself better, or express feelings safely.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/"
+  },
+  {
+    "domain": "identity_uncertainty",
+    "tip": "Connect with others by talking to someone you trust, joining peer support groups, or engaging in online communities with similar experiences.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/"
+  },
+  {
+    "domain": "identity_uncertainty",
+    "tip": "Volunteer or do small acts of kindness for others to gain a sense of purpose, meet new people, and boost self-esteem.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/"
+  },
+  {
+    "domain": "identity_uncertainty",
+    "tip": "Limit comparison, especially online, as people often only show their best moments, not the reality behind the scenes.",
+    "source": "The Mix",
+    "read_more": "https://www.themix.org.uk/explore-our-topics/lifestyle/feeling-behind-in-life-why-young-people-compare-selves/"
+  },
+  {
+    "domain": "identity_uncertainty",
+    "tip": "Set your own goals based on your ambitions, not on what others are doing, as everyone has different paths.",
+    "source": "The Mix",
+    "read_more": "https://www.themix.org.uk/explore-our-topics/lifestyle/feeling-behind-in-life-why-young-people-compare-selves/"
+  },
+  {
+    "domain": "identity_uncertainty",
+    "tip": "Celebrate small wins, even if they seem tiny, as they are steps towards bigger achievements and personal progress.",
+    "source": "The Mix",
+    "read_more": "https://www.themix.org.uk/explore-our-topics/lifestyle/feeling-behind-in-life-why-young-people-compare-selves/"
+  },
+  {
+    "domain": "identity_uncertainty",
+    "tip": "Understand that feeling behind doesn't mean you're failing; it means you're human, and it's okay to move at your own pace.",
+    "source": "The Mix",
+    "read_more": "https://www.themix.org.uk/explore-our-topics/lifestyle/feeling-behind-in-life-why-young-people-compare-selves/"
+  },
+  {
+    "domain": "identity_uncertainty",
+    "tip": "Remember that being trans is just one part of who you are; focus on living a full life beyond your gender identity.",
+    "source": "The Calm Zone",
+    "read_more": "https://www.thecalmzone.net/guides/gender-identity"
+  },
+  {
+    "domain": "identity_uncertainty",
+    "tip": "If you are not ready to come out, remember you are no less trans, and who you tell is your decision alone.",
+    "source": "The Calm Zone",
+    "read_more": "https://www.thecalmzone.net/guides/gender-identity"
+  },
+  {
+    "domain": "identity_uncertainty",
+    "tip": "Focus on aspects within your control if you are experiencing delays or difficulties in accessing gender-affirming healthcare.",
+    "source": "The Calm Zone",
+    "read_more": "https://www.thecalmzone.net/guides/gender-identity"
+  },
+  {
+    "domain": "identity_uncertainty",
+    "tip": "Socially transition by dressing how you want or asking people to use your chosen name and pronouns, even if medical transition is not an option or is delayed.",
+    "source": "The Calm Zone",
+    "read_more": "https://www.thecalmzone.net/guides/gender-identity"
+  },
+  {
+    "domain": "work_burnout",
+    "tip": "Identify the specific stressors in your work environment — naming them clearly is the first step to understanding what you can actually change.",
+    "source": "NHS Every Mind Matters",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/work-related-stress/"
+  },
+  {
+    "domain": "work_burnout",
+    "tip": "Establish clear boundaries between work and personal life — especially when working from home — so you can genuinely switch off.",
+    "source": "NHS Every Mind Matters",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/work-related-stress/"
+  },
+  {
+    "domain": "work_burnout",
+    "tip": "Discuss your workload with your manager and set realistic targets — most managers would rather adjust expectations than lose someone to burnout.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/how-to-be-mentally-healthy-at-work/work-and-stress/"
+  },
+  {
+    "domain": "work_burnout",
+    "tip": "Take regular short breaks throughout the day, including at least 30 minutes away from your desk at lunch — preferably outside.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/how-to-be-mentally-healthy-at-work/work-and-stress/"
+  },
+  {
+    "domain": "work_burnout",
+    "tip": "Use the Pomodoro Technique: work for 25 minutes, then take a 5-minute break — this prevents overwhelm and reduces the risk of burnout over long sessions.",
+    "source": "Rethink Mental Illness",
+    "read_more": "https://www.rethink.org/news-and-stories/news-and-views/2024/10-tips-to-manage-anxiety-and-stress/"
+  },
+  {
+    "domain": "work_burnout",
+    "tip": "Break down overwhelming tasks into smaller, manageable steps — making them feel less daunting helps you make progress without burning out.",
+    "source": "Childline",
+    "read_more": "https://www.childline.org.uk/get-support/ask-sam/school-college-and-work-asksam/helping-stress--burnout-from-school/"
+  },
+  {
+    "domain": "work_burnout",
+    "tip": "Plan your day and include time for activities you enjoy, alongside regular meals, hydration, and movement — recovery is part of performance.",
+    "source": "Heads Together",
+    "read_more": "https://www.headstogether.org.uk/episode-four/"
+  },
+  {
+    "domain": "work_burnout",
+    "tip": "Recognise that chasing unattainable ideals and striving for perfection leads to burnout — focus on achievable goals and self-compassion instead.",
+    "source": "Student Space",
+    "read_more": "https://studentspace.org.uk/wellbeing/managing-imposter-syndrome-and-fear-of-failure"
+  },
+  {
+    "domain": "work_burnout",
+    "tip": "Set clear boundaries by agreeing with yourself to leave work at the door when you finish for the day — burnout builds when rest is treated as optional.",
+    "source": "CALM",
+    "read_more": "https://www.thecalmzone.net/how-to-deal-with-burnout"
+  },
+  {
+    "domain": "work_burnout",
+    "tip": "Identify specific stressors by noting what makes you feel overwhelmed or anxious at work as it happens.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/work-related-stress/"
+  },
+  {
+    "domain": "work_burnout",
+    "tip": "Focus on aspects of your work situation that are within your control to change, rather than dwelling on those that are not.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/work-related-stress/"
+  },
+  {
+    "domain": "work_burnout",
+    "tip": "Practice deep breathing exercises, such as taking three long, slow breaths, to calm yourself in stressful moments.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/work-related-stress/"
+  },
+  {
+    "domain": "work_burnout",
+    "tip": "Discuss your feelings and the pressures you are under with a trusted person, such as a manager, colleague, friend, or family member.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/work-related-stress/"
+  },
+  {
+    "domain": "work_burnout",
+    "tip": "Build your resilience by actively seeking practical solutions to work-related problems and adapting to challenges in healthy ways.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/work-related-stress/"
+  },
+  {
+    "domain": "work_burnout",
+    "tip": "Consciously try to shift your perspective on work issues, reframing negative thoughts and focusing on positives or lessons learned.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/work-related-stress/"
+  },
+  {
+    "domain": "work_burnout",
+    "tip": "Establish clear boundaries between work and personal life, especially if working from home, to allow yourself to switch off in your free time.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/work-related-stress/"
+  },
+  {
+    "domain": "work_burnout",
+    "tip": "Incorporate physical activity into your workday, even small amounts like walking during breaks, and prioritize healthy eating and hydration.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/every-mind-matters/lifes-challenges/work-related-stress/"
+  },
+  {
+    "domain": "work_burnout",
+    "tip": "Separate your self-worth from your job by recognizing that your identity extends beyond your professional role.",
+    "source": "The Calm Zone",
+    "read_more": "https://www.thecalmzone.net/how-to-deal-with-burnout"
+  },
+  {
+    "domain": "work_burnout",
+    "tip": "Actively think about your interests, skills, and personality outside of work to reinforce your identity beyond your job.",
+    "source": "The Calm Zone",
+    "read_more": "https://www.thecalmzone.net/how-to-deal-with-burnout"
+  },
+  {
+    "domain": "work_burnout",
+    "tip": "Avoid comparing your career and successes to those of others, as everyone's journey is unique.",
+    "source": "The Calm Zone",
+    "read_more": "https://www.thecalmzone.net/how-to-deal-with-burnout"
+  },
+  {
+    "domain": "work_burnout",
+    "tip": "Acknowledge and accept your emotions, understanding that making mistakes is a natural part of learning and growth.",
+    "source": "Student Space",
+    "read_more": "https://studentspace.org.uk/wellbeing/managing-imposter-syndrome-and-fear-of-failure"
+  },
+  {
+    "domain": "work_burnout",
+    "tip": "Let go of the pursuit of perfectionism and instead focus on continuous growth and learning in your professional development.",
+    "source": "Student Space",
+    "read_more": "https://studentspace.org.uk/wellbeing/managing-imposter-syndrome-and-fear-of-failure"
+  },
+  {
+    "domain": "work_burnout",
+    "tip": "Build and lean on your relationships with colleagues and friends, as sharing struggles can help you realize you're not alone.",
+    "source": "Student Space",
+    "read_more": "https://studentspace.org.uk/wellbeing/managing-imposter-syndrome-and-fear-of-failure"
+  },
+  {
+    "domain": "work_burnout",
+    "tip": "Regularly reflect on and recognize your strengths and achievements, dedicating time each day to affirm your capabilities.",
+    "source": "Student Space",
+    "read_more": "https://studentspace.org.uk/wellbeing/managing-imposter-syndrome-and-fear-of-failure"
+  },
+  {
+    "domain": "sleep_fatigue",
+    "tip": "Go to bed and wake up at the same time every day — including weekends — to regulate your body's internal clock and improve sleep quality.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/live-well/sleep-and-tiredness/self-help-tips-to-fight-fatigue/"
+  },
+  {
+    "domain": "sleep_fatigue",
+    "tip": "Avoid caffeine in the afternoon and evening — its stimulating effects can last for several hours and significantly disrupt your ability to fall asleep.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/live-well/sleep-and-tiredness/self-help-tips-to-fight-fatigue/"
+  },
+  {
+    "domain": "sleep_fatigue",
+    "tip": "Limit screen time in the evening and reduce screen brightness — the blue light from phones and laptops signals wakefulness to your brain.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/sleep-problems/tips-to-improve-your-sleep/"
+  },
+  {
+    "domain": "sleep_fatigue",
+    "tip": "Eat regular meals and healthy snacks every 3–4 hours to maintain consistent energy levels and prevent the afternoon energy crash.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/live-well/sleep-and-tiredness/self-help-tips-to-fight-fatigue/"
+  },
+  {
+    "domain": "sleep_fatigue",
+    "tip": "Get up at the same time daily and expose yourself to daylight in the morning — natural light is the strongest signal to your brain that it is time to be awake.",
+    "source": "NHS Inform Scotland",
+    "read_more": "https://www.nhsinform.scot/illnesses-and-conditions/mental-health/mental-health-self-help-guides/sleep-problems-and-insomnia-self-help-guide/"
+  },
+  {
+    "domain": "sleep_fatigue",
+    "tip": "Keep your bedroom cool, dark, and quiet — your sleep environment has a significant impact on how quickly you fall asleep and how deeply you sleep.",
+    "source": "University of Manchester",
+    "read_more": "https://www.studentsupport.manchester.ac.uk/taking-care/wellbeing/behealthy/sleep/"
+  },
+  {
+    "domain": "sleep_fatigue",
+    "tip": "Set aside at least 7 hours for sleep each night and try not to shift your sleep schedule by more than an hour on weekends.",
+    "source": "Sleep Foundation",
+    "read_more": "https://www.sleepfoundation.org/sleep-faqs/how-not-to-be-tired"
+  },
+  {
+    "domain": "sleep_fatigue",
+    "tip": "Limit or avoid screens before sleep and relax before bed with a warm bath, reading, or listening to the radio.",
+    "source": "Rethink Mental Illness",
+    "read_more": "https://www.rethink.org/advice-and-information/living-with-mental-illness/mental-wellbeing-and-physical-health/how-can-i-improve-my-sleep/"
+  },
+  {
+    "domain": "sleep_fatigue",
+    "tip": "If you cannot get to sleep, get up and go into another room, keep the lights low, and do something a bit boring until you feel sleepy again.",
+    "source": "Edinburgh University Counselling",
+    "read_more": "https://student-counselling.ed.ac.uk/self-help/addressing-difficulties-with-sleep"
+  },
+  {
+    "domain": "sleep_fatigue",
+    "tip": "Make a bedtime routine and spend 30 minutes doing something relaxing before getting into bed — consistency signals to your brain that sleep is coming.",
+    "source": "Childline",
+    "read_more": "https://www.childline.org.uk/info-advice/your-feelings/feelings-emotions/problems-sleeping/"
+  },
+  {
+    "domain": "sleep_fatigue",
+    "tip": "Avoid taking naps during the day — even if you are tired — to ensure you build up enough sleep pressure to fall asleep at night.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/live-well/sleep-and-tiredness/self-help-tips-to-fight-fatigue/"
+  },
+  {
+    "domain": "sleep_fatigue",
+    "tip": "Cut down on alcohol before bedtime — while it may help you fall asleep initially, it disrupts sleep quality and leaves you more tired.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/live-well/sleep-and-tiredness/self-help-tips-to-fight-fatigue/"
+  },
+  {
+    "domain": "sleep_fatigue",
+    "tip": "Drink a glass of water if you feel tired — mild dehydration is a surprisingly common cause of daytime fatigue.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/live-well/sleep-and-tiredness/self-help-tips-to-fight-fatigue/"
+  },
+  {
+    "domain": "sleep_fatigue",
+    "tip": "Introduce relaxing activities into your day — yoga, tai chi, or listening to music — to reduce stress and restore energy levels.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/live-well/sleep-and-tiredness/self-help-tips-to-fight-fatigue/"
+  },
+  {
+    "domain": "sleep_fatigue",
+    "tip": "If you are struggling to get to sleep, do not force it — get up and do something calming in low light until you feel tired again.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/sleep-problems/tips-to-improve-your-sleep/"
+  },
+  {
+    "domain": "sleep_fatigue",
+    "tip": "Keep a sleep diary to identify patterns — noting when you sleep, wake, and how rested you feel can reveal what is disrupting your sleep.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/sleep-problems/tips-to-improve-your-sleep/"
+  },
+  {
+    "domain": "sleep_fatigue",
+    "tip": "Avoid using your bed for activities like watching TV or working — your brain needs to associate bed with sleep only.",
+    "source": "NHS Inform Scotland",
+    "read_more": "https://www.nhsinform.scot/illnesses-and-conditions/mental-health/mental-health-self-help-guides/sleep-problems-and-insomnia-self-help-guide/"
+  },
+  {
+    "domain": "sleep_fatigue",
+    "tip": "Write down your worries or a to-do list before bed to get them out of your head — this reduces the mental load that keeps you awake.",
+    "source": "Edinburgh University Counselling",
+    "read_more": "https://student-counselling.ed.ac.uk/self-help/addressing-difficulties-with-sleep"
+  },
+  {
+    "domain": "sleep_fatigue",
+    "tip": "Aim for 7–9 hours of sleep and try to keep your schedule consistent — even on weekends — to avoid disrupting your body clock.",
+    "source": "Sleep Foundation",
+    "read_more": "https://www.sleepfoundation.org/sleep-hygiene"
+  },
+  {
+    "domain": "sleep_fatigue",
+    "tip": "Create a wind-down routine in the hour before bed — dim the lights, avoid screens, and do something calm to signal to your brain that sleep is coming.",
+    "source": "Sleep Foundation",
+    "read_more": "https://www.sleepfoundation.org/sleep-hygiene"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Commit to waiting a set amount of time — 5, 10, or 15 minutes — before acting on the urge to self-harm, and use a distraction during that window to let the urge pass.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/self-harm/helping-yourself-if-you-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "If you feel angry or overwhelmed, try hitting cushions, squeezing a rubber ball hard, or tearing up paper — physical release without physical harm.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/self-harm/helping-yourself-if-you-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Create a personal safety plan that includes your warning signs, coping strategies, trusted contacts, and helpline numbers — having it ready reduces the moment of crisis.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/self-harm/helping-yourself-if-you-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Call Samaritans on 116 123 — free, confidential, non-judgmental, 24 hours a day — if you are struggling with thoughts of self-harm.",
+    "source": "Samaritans",
+    "read_more": "https://www.samaritans.org/how-we-can-help/if-youre-having-difficult-time/if-you-want-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Text SHOUT to 85258 for free, confidential support from trained crisis volunteers — available any time, any network.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/feelings-symptoms-behaviours/behaviours/self-harm/getting-help/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Sharing your feelings with someone you trust can help reduce the urge to self-harm — you do not have to carry this alone.",
+    "source": "Rethink Mental Illness",
+    "read_more": "https://www.rethink.org/advice-and-information/get-help-now/self-help-guides-for-urgent-help/how-do-i-manage-thoughts-of-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Distract yourself from thoughts of self-harm by engaging in an activity you enjoy — exercise, gardening, drawing, or music can all interrupt the urge.",
+    "source": "Rethink Mental Illness",
+    "read_more": "https://www.rethink.org/advice-and-information/get-help-now/self-help-guides-for-urgent-help/how-do-i-manage-thoughts-of-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Use a stress ball or squeeze ice cubes to manage intense feelings and redirect urges to self-harm — cold and pressure can interrupt the emotional spiral.",
+    "source": "Childline",
+    "read_more": "https://www.childline.org.uk/info-advice/your-feelings/self-harm/self-harm-coping-techniques/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Create a coping box filled with comforting items — photos, letters, a favourite scent — to help you feel calm and grounded when urges arise.",
+    "source": "Childline",
+    "read_more": "https://www.childline.org.uk/info-advice/your-feelings/self-harm/self-harm-coping-techniques/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "If you are under 35 and having thoughts of suicide or self-harm, contact HopeLine 24/7 on 0800 068 4141 for confidential support.",
+    "source": "Papyrus UK",
+    "read_more": "https://www.papyrus-uk.org/help-me/hopeline-24-7"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Hit cushions or a pillow to release angry and frustrated feelings in a safe way.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/self-harm/helping-yourself-if-you-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Squeeze a rubber ball really hard to manage intense urges to self-harm.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/self-harm/helping-yourself-if-you-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Play loud music to distract yourself from the urge to self-harm when feeling angry or frustrated.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/self-harm/helping-yourself-if-you-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Tear something like a newspaper into pieces to externalize and release strong emotions.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/self-harm/helping-yourself-if-you-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Clench then relax all your muscles to release physical tension and redirect intense feelings.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/self-harm/helping-yourself-if-you-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Wrap yourself in something cosy, such as a jumper or blanket, for comfort when feeling sad or fearful.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/self-harm/helping-yourself-if-you-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Spend time with an animal or cuddle a soft toy to find comfort and reduce feelings of sadness or fear.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/self-harm/helping-yourself-if-you-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Journal your feelings by writing them down or recording a video/audio clip to process emotions.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/self-harm/helping-yourself-if-you-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Call or message someone you care about when you feel sad or fearful to seek connection and support.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/self-harm/helping-yourself-if-you-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Call a helpline like Samaritans (116 123) or Self Injury Support for immediate emotional support.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/self-harm/helping-yourself-if-you-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Practice deep breathing exercises, making your out-breath longer than your in-breath, to calm yourself.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/self-harm/helping-yourself-if-you-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Set a timer and do some tidying up or decluttering to regain a sense of control.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/self-harm/helping-yourself-if-you-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Engage in creative activities like coloring, drawing, or learning a new skill to redirect focus.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/self-harm/helping-yourself-if-you-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Smell something with a strong odor or wash your face with cold water to reconnect when feeling numb or disconnected.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/self-harm/helping-yourself-if-you-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Hold objects with different textures and focus on the sensations to ground yourself.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/self-harm/helping-yourself-if-you-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Commit to delaying self-harm for a set amount of time (e.g., 5, 10, or 15 minutes) and use distraction techniques during this period.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/self-harm/helping-yourself-if-you-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Keep track of what happens before, during, and after you self-harm to understand your triggers and urges.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/self-harm/helping-yourself-if-you-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Create a support plan (safety plan) that includes warning signs, coping strategies, and contact details of trusted people and helplines.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/self-harm/helping-yourself-if-you-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Assemble a self-care box with comforting items like photographs, art supplies, fidget toys, and scented objects to use during urges.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/self-harm/helping-yourself-if-you-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Practice self-compassion by speaking kindly to yourself and celebrating small wins, even if you wanted to self-harm but didn't.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/self-harm/helping-yourself-if-you-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Reach out for support by talking to a trusted friend, family member, therapist, or health professional about your feelings.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/self-harm/helping-yourself-if-you-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "If you relapse, be kind to yourself and try to understand why it happened to make changes for the future.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/types-of-mental-health-problems/self-harm/helping-yourself-if-you-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Talk about your feelings to a friend, family member, trained volunteer, or health professional.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/feelings-symptoms-behaviours/behaviours/self-harm/ways-help-avoid-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Distract yourself by going for a walk, listening to music, or doing something else harmless when you feel the urge to self-harm.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/feelings-symptoms-behaviours/behaviours/self-harm/ways-help-avoid-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Write down your feelings in a private journal; no one else needs to see it.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/feelings-symptoms-behaviours/behaviours/self-harm/ways-help-avoid-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "If you have hurt yourself and need immediate medical attention, call 999 for an ambulance.",
+    "source": "Samaritans",
+    "read_more": "https://www.samaritans.org/how-we-can-help/if-youre-having-difficult-time/if-you-want-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Seek help from your GP, who should take your self-harm seriously and offer support.",
+    "source": "Samaritans",
+    "read_more": "https://www.samaritans.org/how-we-can-help/if-youre-having-difficult-time/if-you-want-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Ask a friend or family member to accompany you to appointments for extra support.",
+    "source": "Samaritans",
+    "read_more": "https://www.samaritans.org/how-we-can-help/if-youre-having-difficult-time/if-you-want-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Visit a Samaritans branch face-to-face for support in a safe environment.",
+    "source": "Samaritans",
+    "read_more": "https://www.samaritans.org/how-we-can-help/if-youre-having-difficult-time/if-you-want-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Write a letter to Samaritans if you prefer to express your thoughts and feelings in writing.",
+    "source": "Samaritans",
+    "read_more": "https://www.samaritans.org/how-we-can-help/if-youre-having-difficult-time/if-you-want-self-harm/"
+  },
+  {
+    "domain": "self_harm",
+    "tip": "Email Samaritans at jo@samaritans.org if you need time to compose your thoughts and reflect.",
+    "source": "Samaritans",
+    "read_more": "https://www.samaritans.org/how-we-can-help/if-youre-having-difficult-time/if-you-want-self-harm/"
+  },
+  {
+    "domain": "crisis",
+    "tip": "If you need urgent mental health support, call 111 and select the mental health option — they will direct you to the right help immediately.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/nhs-services/mental-health-services/where-to-get-urgent-help-for-mental-health/"
+  },
+  {
+    "domain": "crisis",
+    "tip": "If you have seriously harmed yourself or feel you cannot keep yourself safe, call 999 or go straight to A&E — this is a medical emergency.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/guides-to-support-and-services/crisis-services-and-planning/how-to-get-help-in-a-mental-health-crisis/"
+  },
+  {
+    "domain": "crisis",
+    "tip": "Call Samaritans on 116 123 — free, anonymous, available 24/7 across the UK — if you need someone to talk to right now.",
+    "source": "Samaritans",
+    "read_more": "https://www.samaritans.org/"
+  },
+  {
+    "domain": "crisis",
+    "tip": "Text SHOUT to 85258 — free, anonymous, available any time — if you want support but cannot make a phone call.",
+    "source": "Shout",
+    "read_more": "https://giveusashout.org/"
+  },
+  {
+    "domain": "crisis",
+    "tip": "If you are under 19, call Childline on 0800 1111 — free, confidential, and the number will not appear on your phone bill.",
+    "source": "Childline",
+    "read_more": "https://www.childline.org.uk/"
+  },
+  {
+    "domain": "crisis",
+    "tip": "Contact your local NHS mental health team if you are already being treated by them — your care plan should say who to contact for urgent help.",
+    "source": "Rethink Mental Illness",
+    "read_more": "https://www.rethink.org/advice-and-information/get-help-now/i-need-urgent-help-for-my-mental-health/"
+  },
+  {
+    "domain": "crisis",
+    "tip": "Call the CALM helpline on 0800 58 58 58 (5pm–midnight, every day) for confidential support if you are struggling with suicidal thoughts.",
+    "source": "CALM",
+    "read_more": "https://www.thecalmzone.net/feeling-suicidal"
+  },
+  {
+    "domain": "crisis",
+    "tip": "If you are a young person struggling with suicidal thoughts, contact HopeLine 24/7 by calling 0800 068 4141 or texting HOPE to 88247.",
+    "source": "Papyrus UK",
+    "read_more": "https://www.papyrus-uk.org/help-me/hopeline-24-7"
+  },
+  {
+    "domain": "crisis",
+    "tip": "If you need urgent help for your mental health, get advice from 111 online or call 111 and select the mental health option. They will tell you the right place to get help.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/nhs-services/mental-health-services/where-to-get-urgent-help-for-mental-health/"
+  },
+  {
+    "domain": "crisis",
+    "tip": "For confidential support, call 116 123 to talk to Samaritans, or email jo@samaritans.org for a reply within 24 hours.",
+    "source": "Samaritans",
+    "read_more": "https://www.nhs.uk/nhs-services/mental-health-services/where-to-get-urgent-help-for-mental-health/"
+  },
+  {
+    "domain": "crisis",
+    "tip": "Text \"SHOUT\" to 85258 to contact the Shout Crisis Text Line. If you're under 19, text \"YM\".",
+    "source": "Shout Crisis Text Line",
+    "read_more": "https://www.nhs.uk/nhs-services/mental-health-services/where-to-get-urgent-help-for-mental-health/"
+  },
+  {
+    "domain": "crisis",
+    "tip": "If you're under 19, you can call 0800 1111 to talk to Childline. The number will not appear on your phone bill.",
+    "source": "Childline",
+    "read_more": "https://www.nhs.uk/nhs-services/mental-health-services/where-to-get-urgent-help-for-mental-health/"
+  },
+  {
+    "domain": "crisis",
+    "tip": "If someone's life is at risk (e.g., serious injury, overdose) or you cannot keep yourself or someone else safe, call 999 or go to A&E immediately.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/nhs-services/mental-health-services/where-to-get-urgent-help-for-mental-health/"
+  },
+  {
+    "domain": "crisis",
+    "tip": "Make a safety plan if you struggle with suicidal thoughts or are supporting someone else. The Staying Safe website provides information, video tutorials, and online templates.",
+    "source": "Staying Safe website",
+    "read_more": "https://www.nhs.uk/nhs-services/mental-health-services/where-to-get-urgent-help-for-mental-health/"
+  },
+  {
+    "domain": "crisis",
+    "tip": "If you are experiencing a mental health crisis and need help right away, support is available. Find out more about crisis services.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/guides-to-support-and-services/crisis-services-and-planning/"
+  },
+  {
+    "domain": "crisis",
+    "tip": "Consider making a plan for a mental health crisis, even if you hope it won't happen. This can help you think about what to do if you start to feel in crisis.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/guides-to-support-and-services/crisis-services-and-planning/"
+  },
+  {
+    "domain": "crisis",
+    "tip": "If you're going through a tough time, contact Samaritans free. They are there to listen without judgment so you don't have to face it alone.",
+    "source": "Samaritans",
+    "read_more": "https://www.samaritans.org/how-we-can-help/"
+  },
+  {
+    "domain": "crisis",
+    "tip": "To start a conversation with Shout, text 'Shout' to 85258. It's a free, confidential, and 24/7 text messaging service for anyone in the UK.",
+    "source": "Shout",
+    "read_more": "https://giveusashout.org/get-help/"
+  },
+  {
+    "domain": "crisis",
+    "tip": "If your life is at imminent risk, please call 999 for immediate help.",
+    "source": "Shout",
+    "read_more": "https://giveusashout.org/get-help/"
+  },
+  {
+    "domain": "crisis",
+    "tip": "If you are under 35 and having thoughts of suicide, contact HopeLine 24/7 by calling 0300 102 2470, texting HOPE to 88247, or emailing pat@papyrus-uk.org.",
+    "source": "PAPYRUS UK",
+    "read_more": "https://www.papyrus-uk.org/help-me/hopeline-24-7"
+  },
+  {
+    "domain": "crisis",
+    "tip": "If you are worried about a young person in your life, HopeLine 24/7 advisers can help you understand what to do and how to support them.",
+    "source": "PAPYRUS UK",
+    "read_more": "https://www.papyrus-uk.org/help-me/hopeline-24-7"
+  },
+  {
+    "domain": "crisis",
+    "tip": "If you've had a difficult conversation about suicide and need to talk it through, HopeLine 24/7 is there for debriefing so you don't have to carry it alone.",
+    "source": "PAPYRUS UK",
+    "read_more": "https://www.papyrus-uk.org/help-me/hopeline-24-7"
+  },
+  {
+    "domain": "crisis",
+    "tip": "When feeling overwhelmed, try a box breathing exercise to quiet your brain and find some release. This can help you get into a better headspace.",
+    "source": "The CALMzone",
+    "read_more": "https://www.thecalmzone.net/feeling-suicidal"
+  },
+  {
+    "domain": "general",
+    "tip": "Make time each day to connect with family or friends, or volunteer locally — a sense of belonging is one of the strongest protective factors for mental health.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/five-steps-to-mental-wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Find activities you genuinely enjoy and make them a regular part of your life — being active in ways that feel meaningful raises self-esteem and lifts mood.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/five-steps-to-mental-wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Learn something new — a skill, a recipe, a language — to build confidence, distract from difficult thoughts, and create a sense of progress.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/five-steps-to-mental-wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Practice mindfulness by paying attention to your thoughts, feelings, and surroundings without judgement — even five minutes a day builds resilience over time.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/five-steps-to-mental-wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Take a break from stressful situations — do something you enjoy, go outside, or try a breathing exercise — before returning to the problem.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Spend time outdoors or bring nature indoors with plants — contact with the natural world consistently reduces stress and improves mood.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Small acts of kindness — saying thank you, asking how someone is, helping a stranger — create positive feelings and a sense of reward that benefit your own wellbeing.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/five-steps-to-mental-wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Limit digital overload by taking regular breaks from screens and social media — give yourself time to genuinely switch off.",
+    "source": "Rethink Mental Illness",
+    "read_more": "https://www.rethink.org/news-and-stories/commonly-asked-mental-health-questions/what/10-tips-to-maintain-your-mental-health/"
+  },
+  {
+    "domain": "general",
+    "tip": "Practice box breathing — inhale for 4, hold for 4, exhale for 4, hold for 4 — to ground yourself and quiet your brain when feeling overwhelmed.",
+    "source": "CALM",
+    "read_more": "https://www.thecalmzone.net/feeling-suicidal"
+  },
+  {
+    "domain": "general",
+    "tip": "Try the 5-4-3-2-1 grounding technique: name 5 things you can see, 4 you can touch, 3 you can hear, 2 you can smell, and 1 you can taste.",
+    "source": "Papyrus UK",
+    "read_more": "https://www.papyrus-uk.org/help-me/struggling-sad-or-frightened/coping-strategies"
+  },
+  {
+    "domain": "general",
+    "tip": "Write or draw how you feel to release pressure and negative thoughts — externalising what is inside your head helps you think differently about it.",
+    "source": "Childline",
+    "read_more": "https://www.childline.org.uk/info-advice/your-feelings/anxiety-stress-panic/coping-with-stress/"
+  },
+  {
+    "domain": "general",
+    "tip": "Make a to-do list and break your day into small, manageable steps — feeling in control of small things builds momentum when the bigger picture feels overwhelming.",
+    "source": "The Mix",
+    "read_more": "https://www.themix.org.uk/explore-our-topics/mental-health/a-guide-to-self-care/"
+  },
+  {
+    "domain": "general",
+    "tip": "Take time each day to be with your family, for example, try arranging a fixed time to eat dinner together.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/five-steps-to-mental-wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Arrange a day out with friends you have not seen for a while.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/five-steps-to-mental-wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Try switching off the TV to talk or play a game with your children, friends or family.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/five-steps-to-mental-wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Have lunch with a colleague.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/five-steps-to-mental-wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Volunteer at a local school, hospital or community group.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/five-steps-to-mental-wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Make the most of technology to stay in touch with friends and family, especially if you live far apart.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/five-steps-to-mental-wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Engage in physical activities you enjoy, such as running or aerobic exercises, to improve your fitness and mental wellbeing.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/five-steps-to-mental-wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Try learning to cook something new.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/five-steps-to-mental-wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Take on a new responsibility at work, such as mentoring a junior staff member or improving your presentation skills.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/five-steps-to-mental-wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Work on a DIY project, such as fixing a broken bike or garden gate.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/five-steps-to-mental-wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Consider signing up for a course at a local college, like learning a new language or a practical skill such as plumbing.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/five-steps-to-mental-wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Try new hobbies that challenge you, such as writing a blog, taking up a new sport, or learning to paint.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/five-steps-to-mental-wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Say thank you to someone for something they have done for you.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/five-steps-to-mental-wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Ask friends, family or colleagues how they are and really listen to their answer.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/five-steps-to-mental-wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Practice mindfulness to improve your mental wellbeing by paying more attention to your thoughts, feelings, body, and the world around you.",
+    "source": "NHS",
+    "read_more": "https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/five-steps-to-mental-wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Take a break if you're feeling overwhelmed by a stressful situation, even just for a few minutes, to relax and relieve distress.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Make time to do an activity you like on a regular basis, such as cooking a meal, getting in touch with a friend, or watching TV.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Focus on the present moment using techniques like meditation or breathing exercises, or by paying attention to your senses during daily activities.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Put together a self-care kit filled with comforting items like your favorite book, photos, a stress ball, or a comforting blanket.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Take breaks from the internet or change the accounts you follow/websites you visit if online activity negatively affects your mental health.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Join a class or group to learn a new skill, which can be enjoyable and boost your confidence.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Try online learning or join online clubs if it's difficult to get out and about.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Do something creative like drawing, taking photos, or baking to distract from difficult thoughts or express feelings safely.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Bring nature indoors by listening to birdsong, looking at pictures of animals, or decorating your living space with natural materials.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Spend time with animals, such as pet-sitting, dog walking, feeding birds, or visiting a local community farm, for a calming and enjoyable experience.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Talk to someone you trust, like a friend, partner, or family member, or call a helpline to feel listened to and supported.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Seek peer support by talking to people with similar feelings or experiences, either face-to-face or through online communities.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Find ways to make a difference, such as supporting a cause, signing petitions, donating to charity, or doing small acts of kindness.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Volunteer your time to help others, which can provide a sense of purpose, help you meet people, and boost self-esteem.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Drink water regularly, as staying hydrated is important for both mental and physical health.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Make food choices that work best for you and your situation, as what we eat can affect our mood and energy levels.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Look after yourself by doing basic hygiene tasks like brushing your teeth or showering, even if you're struggling, setting small goals.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Try to build physical activity into your daily routine, starting small and finding something you enjoy.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Establish a routine around bedtime to help set a regular sleeping pattern.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Give yourself some tech-free time before sleep and avoid bright screens that can affect your sleep.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Do a relaxing activity, like having a bath or a relaxation exercise, before you go to sleep.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/"
+  },
+  {
+    "domain": "general",
+    "tip": "Try to make your sleeping environment comfortable, as small changes can help improve your sleep.",
+    "source": "Mind",
+    "read_more": "https://www.mind.org.uk/information-support/tips-for-everyday-living/wellbeing/"
+  }
+]

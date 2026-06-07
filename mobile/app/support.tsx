@@ -1,8 +1,10 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { CrisisCard } from "../src/components/CrisisCard";
 
 export default function SupportScreen() {
   return (
+    <SafeAreaView edges={["top", "bottom"]} style={styles.safe}>
     <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
       <Text style={styles.kicker}>SUPPORT</Text>
       <Text style={styles.h1}>You can reach out any time</Text>
@@ -20,11 +22,13 @@ export default function SupportScreen() {
         gets built out in build-order step 5.
       </Text>
     </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  screen: { backgroundColor: "#f7faf9" },
+  safe: { flex: 1, backgroundColor: "#f7faf9" },
+  screen: { flex: 1, backgroundColor: "#f7faf9" },
   content: { padding: 20, paddingBottom: 48 },
   kicker: {
     color: "#2f6f5e",

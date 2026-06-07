@@ -10,10 +10,11 @@ export default function RootLayout() {
       <Tabs
         screenOptions={{
           headerStyle: { backgroundColor: "#f7faf9" },
-          headerTitleStyle: { color: "#1d2b27", fontWeight: "700" },
+          // headerTitleStyle: { color: "#1d2b27", fontWeight: "700" },
+          headerShown: false,
           tabBarActiveTintColor: ACTIVE,
           tabBarInactiveTintColor: INACTIVE,
-          tabBarStyle: { backgroundColor: "#ffffff", borderTopColor: "#eceeed" },
+          // tabBarStyle: { backgroundColor: "#ffffff", borderTopColor: "#eceeed" },
         }}
       >
         <Tabs.Screen name="index" options={{ title: "Today" }} />
