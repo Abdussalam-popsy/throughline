@@ -60,17 +60,34 @@ export interface EntryAnalysis {
   related_stressor?: RelatedStressor | null;
 }
 
-export interface Resource {
+/**
+ * A curated coping tip for a domain. Shape mirrors the tips backend
+ * (`GET /api/entry/tip?domain=`); the server owns all tip content.
+ */
+export interface Tip {
   domain: string;
-  title: string;
+  tip: string;
   source: string;
-  snippet: string;
-  url?: string;
+  readMore?: string;
+}
+
+/** A grounding technique the server matched to the entry's domain. */
+export interface Grounding {
+  id: string;
+  title: string;
+  durationLabel: string;
+  description: string;
+  type: string;
 }
 
 export interface ProcessEntryResult {
   analysis: EntryAnalysis;
-  resource: Resource | null;
+}
+
+/** The result-screen support bundle from POST /api/entry/support. */
+export interface SupportResult {
+  tip: Tip | null;
+  grounding: Grounding | null;
 }
 
 export interface RouteSuggestion {

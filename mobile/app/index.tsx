@@ -8,13 +8,19 @@ import {
   TextInput,
   View,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { GroundingActivity } from "../src/components/GroundingActivity";
-import { ResourceCard } from "../src/components/ResourceCard";
+import { GroundingTechniqueCard } from "../src/components/GroundingTechniqueCard";
+import { TipCard } from "../src/components/TipCard";
 import { CrisisCard } from "../src/components/CrisisCard";
 import { useEntries } from "../src/hooks/useEntries";
 import { useVoiceInput } from "../src/hooks/useVoiceInput";
-import { classifyDomainApi, processEntryApi } from "../src/services/api";
-import type { ProcessEntryResult } from "../src/lib/types";
+import {
+  classifyDomainApi,
+  fetchSupportApi,
+  processEntryApi,
+} from "../src/services/api";
+import type { ProcessEntryResult, SupportResult } from "../src/lib/types";
 
 type Stage = "home" | "mood" | "grounding" | "write" | "submitting" | "result";
 
@@ -67,6 +73,8 @@ export default function TodayScreen() {
   const [selectedEmotions, setSelectedEmotions] = useState<string[]>([]);
   const [text, setText] = useState("");
   const [outcome, setOutcome] = useState<ProcessEntryResult | null>(null);
+  const [support, setSupport] = useState<SupportResult | null>(null);
+  const [showGrounding, setShowGrounding] = useState(false);
 
   const dictationBaseRef = useRef("");
   const { recognizing, error: voiceError, start: startVoice, stop: stopVoice } =
@@ -89,8 +97,18 @@ export default function TodayScreen() {
 
   function confirmMood() {
     if (selectedMoodIdx === null) return;
-    const mood = MOODS[selectedMoodIdx];
-    setStage(mood.grounding ? "grounding" : "write");
+    setStage(MOODS[selectedMoodIdx].grounding ? "grounding" : "write");
+  }
+
+  // Step one stage back. Typed text is preserved; only reset() clears it.
+  function goBack() {
+    if (recognizing) stopVoice();
+    if (stage === "mood") setStage("home");
+    else if (stage === "grounding") setStage("mood");
+    else if (stage === "write") {
+      const cameFromGrounding = selectedMoodIdx !== null && MOODS[selectedMoodIdx].grounding;
+      setStage(cameFromGrounding ? "grounding" : "mood");
+    }
   }
 
   async function submit() {
@@ -116,6 +134,9 @@ export default function TodayScreen() {
       createdAt: now,
     });
     setOutcome(result);
+    if (result.analysis.risk_level !== "crisis") {
+      setSupport(await fetchSupportApi(domain, result.analysis.risk_level));
+    }
     setStage("result");
   }
 
@@ -123,6 +144,8 @@ export default function TodayScreen() {
     if (recognizing) stopVoice();
     setText("");
     setOutcome(null);
+    setSupport(null);
+    setShowGrounding(false);
     setSelectedMoodIdx(null);
     setSelectedEmotions([]);
     setStage("home");
@@ -131,282 +154,295 @@ export default function TodayScreen() {
   const isCrisis = outcome?.analysis.risk_level === "crisis";
   const weekDates = getWeekDates();
   const lastEntry = entries[entries.length - 1] ?? null;
+  const showBack = stage === "mood" || stage === "grounding" || stage === "write";
 
-  // ── HOME ────────────────────────────────────────────────
-  if (stage === "home") {
-    return (
+  return (
+    <SafeAreaView edges={["top", "bottom"]} style={styles.safe}>
       <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
-        <Text style={styles.pageTitle}>Today</Text>
 
-        {/* Week calendar strip */}
-        <View style={styles.calendarRow}>
-          {weekDates.map((d, i) => (
-            <View key={i} style={styles.calendarCell}>
-              <Text style={[styles.calDayLabel, d.isToday && styles.calDayLabelActive]}>
-                {d.label}
-              </Text>
-              <View style={[styles.calDateCircle, d.isToday && styles.calDateCircleActive]}>
-                <Text style={[styles.calDateText, d.isToday && styles.calDateTextActive]}>
-                  {d.date}
-                </Text>
-              </View>
-            </View>
-          ))}
-        </View>
-
-        <View style={styles.divider} />
-
-        {/* Daily Thread card */}
-        <View style={styles.threadCard}>
-          {/* Thread icon */}
-          <View style={styles.threadIconWrap}>
-            <View style={[styles.threadRing, { width: 56, height: 56, opacity: 0.15 }]} />
-            <View style={[styles.threadRing, { width: 38, height: 38, opacity: 0.25, top: 9, left: 9 }]} />
-            <View style={[styles.threadRing, { width: 22, height: 22, opacity: 0.8, top: 17, left: 17 }]} />
-          </View>
-          <Text style={styles.threadTitle}>Daily Thread</Text>
-          <Text style={styles.threadSub}>Track your day for {formatTodayLong()}</Text>
+        {showBack && (
           <Pressable
-            onPress={() => setStage("mood")}
-            style={({ pressed }) => [styles.startBtn, pressed && styles.startBtnPressed]}
+            onPress={goBack}
+            hitSlop={10}
+            accessibilityRole="button"
+            accessibilityLabel="Go back"
+            style={({ pressed }) => [styles.backBtn, pressed && styles.backPressed]}
           >
-            <Text style={styles.startBtnText}>Start</Text>
+            <Text style={styles.backText}>‹ Back</Text>
           </Pressable>
-        </View>
+        )}
 
-        {/* Recent entries */}
-        {lastEntry && (
+        {/* ── HOME ─────────────────────────────────────────── */}
+        {stage === "home" && (
           <>
-            <Text style={styles.sectionLabel}>RECENT ENTRIES</Text>
-            <View style={styles.entryPreviewCard}>
-              <View style={[styles.entryPreviewDot,
-                { backgroundColor: lastEntry.riskLevel === "crisis" ? "#b4453a"
-                    : lastEntry.riskLevel === "elevated" ? "#e0a13c" : "#7fae9f" }
-              ]} />
-              <View style={styles.entryPreviewBody}>
-                <Text style={styles.entryPreviewMeta}>
-                  {lastEntry.date}{lastEntry.stressor ? `  ·  ${lastEntry.stressor}` : ""}
-                </Text>
-                <Text style={styles.entryPreviewText} numberOfLines={2}>{lastEntry.text}</Text>
-              </View>
+            <Text style={styles.pageTitle}>Today</Text>
+
+            <View style={styles.calendarRow}>
+              {weekDates.map((d, i) => (
+                <View key={i} style={styles.calendarCell}>
+                  <Text style={[styles.calDayLabel, d.isToday && styles.calDayLabelActive]}>
+                    {d.label}
+                  </Text>
+                  <View style={[styles.calDateCircle, d.isToday && styles.calDateCircleActive]}>
+                    <Text style={[styles.calDateText, d.isToday && styles.calDateTextActive]}>
+                      {d.date}
+                    </Text>
+                  </View>
+                </View>
+              ))}
             </View>
+
+            <View style={styles.divider} />
+
+            <View style={styles.threadCard}>
+              <View style={styles.threadIconWrap}>
+                <View style={[styles.threadRing, { width: 56, height: 56, opacity: 0.15 }]} />
+                <View style={[styles.threadRing, { width: 38, height: 38, opacity: 0.25, top: 9, left: 9 }]} />
+                <View style={[styles.threadRing, { width: 22, height: 22, opacity: 0.8, top: 17, left: 17 }]} />
+              </View>
+              <Text style={styles.threadTitle}>Daily Thread</Text>
+              <Text style={styles.threadSub}>Track your day for {formatTodayLong()}</Text>
+              <Pressable
+                onPress={() => setStage("mood")}
+                style={({ pressed }) => [styles.startBtn, pressed && styles.startBtnPressed]}
+              >
+                <Text style={styles.startBtnText}>Start</Text>
+              </Pressable>
+            </View>
+
+            {lastEntry && (
+              <>
+                <Text style={styles.sectionLabel}>RECENT ENTRIES</Text>
+                <View style={styles.entryPreviewCard}>
+                  <View style={[styles.entryPreviewDot, {
+                    backgroundColor: lastEntry.riskLevel === "crisis" ? "#b4453a"
+                      : lastEntry.riskLevel === "elevated" ? "#e0a13c" : "#7fae9f",
+                  }]} />
+                  <View style={styles.entryPreviewBody}>
+                    <Text style={styles.entryPreviewMeta}>
+                      {lastEntry.date}{lastEntry.stressor ? `  ·  ${lastEntry.stressor}` : ""}
+                    </Text>
+                    <Text style={styles.entryPreviewText} numberOfLines={2}>{lastEntry.text}</Text>
+                  </View>
+                </View>
+              </>
+            )}
           </>
         )}
-      </ScrollView>
-    );
-  }
 
-  // ── MOOD + EMOTIONS ─────────────────────────────────────
-  if (stage === "mood") {
-    return (
-      <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
-        <Text style={styles.pageTitle}>{formatTodayLong()}</Text>
-        <Text style={styles.pageSubtitle}>How are you doing today?</Text>
+        {/* ── MOOD + EMOTIONS ──────────────────────────────── */}
+        {stage === "mood" && (
+          <>
+            <Text style={styles.pageTitle}>{formatTodayLong()}</Text>
+            <Text style={styles.pageSubtitle}>How are you doing today?</Text>
 
-        {/* Mood section */}
-        <View style={styles.card}>
-          <Text style={styles.cardTitle}>Mood</Text>
-          <Text style={styles.cardHint}>How are you feeling today?</Text>
-          <View style={styles.moodRow}>
-            {MOODS.map((mood, i) => (
+            <View style={styles.card}>
+              <Text style={styles.cardTitle}>Mood</Text>
+              <Text style={styles.cardHint}>How are you feeling today?</Text>
+              <View style={styles.moodRow}>
+                {MOODS.map((mood, i) => (
+                  <Pressable key={mood.label} onPress={() => setSelectedMoodIdx(i)} style={styles.moodItem}>
+                    <View style={[
+                      styles.moodCircle,
+                      { backgroundColor: mood.color },
+                      selectedMoodIdx === i && styles.moodCircleSelected,
+                    ]}>
+                      <Text style={styles.moodEmoji}>{mood.emoji}</Text>
+                    </View>
+                    <Text style={[styles.moodLabel, selectedMoodIdx === i && styles.moodLabelActive]}>
+                      {mood.label}
+                    </Text>
+                  </Pressable>
+                ))}
+              </View>
+            </View>
+
+            <View style={styles.card}>
+              <Text style={styles.cardTitle}>Emotions</Text>
+              <Text style={styles.cardHint}>What are you feeling? Pick all that apply.</Text>
+              <View style={styles.emotionGrid}>
+                {EMOTIONS.map((em) => {
+                  const active = selectedEmotions.includes(em.label);
+                  return (
+                    <Pressable key={em.label} onPress={() => toggleEmotion(em.label)} style={styles.emotionItem}>
+                      <View style={[styles.emotionCircle, active && styles.emotionCircleActive]}>
+                        <Text style={styles.emotionEmoji}>{em.emoji}</Text>
+                      </View>
+                      <Text style={[styles.emotionLabel, active && styles.emotionLabelActive]}>
+                        {em.label}
+                      </Text>
+                    </Pressable>
+                  );
+                })}
+              </View>
+            </View>
+
+            <Pressable
+              onPress={confirmMood}
+              disabled={selectedMoodIdx === null}
+              style={({ pressed }) => [
+                styles.cta,
+                selectedMoodIdx === null && styles.ctaDisabled,
+                pressed && selectedMoodIdx !== null && styles.ctaPressed,
+              ]}
+            >
+              <Text style={styles.ctaText}>Continue</Text>
+            </Pressable>
+            {selectedMoodIdx === null && (
+              <Text style={styles.hint}>Select at least one mood to continue</Text>
+            )}
+          </>
+        )}
+
+        {/* ── GROUNDING ────────────────────────────────────── */}
+        {stage === "grounding" && (
+          <GroundingActivity
+            onReady={() => setStage("write")}
+            onSkip={() => setStage("write")}
+          />
+        )}
+
+        {/* ── WRITE ────────────────────────────────────────── */}
+        {stage === "write" && (
+          <>
+            <Text style={styles.h1}>Now, let&apos;s journal{"\n"}these thoughts.</Text>
+            <Text style={styles.hint}>
+              What&apos;s on your mind? Write or speak as little or as much as you like.
+            </Text>
+
+            <View style={styles.promptChips}>
+              {JOURNAL_PROMPTS.map((p) => (
+                <Pressable
+                  key={p}
+                  onPress={() => setText((prev) => prev ? `${prev} ${p}` : p)}
+                  style={styles.promptChip}
+                >
+                  <Text style={styles.promptChipText}>{p}</Text>
+                </Pressable>
+              ))}
+            </View>
+
+            <View style={styles.inputWrap}>
+              <TextInput
+                style={styles.input}
+                value={text}
+                onChangeText={setText}
+                multiline
+                autoFocus
+                placeholder="Today I…"
+                placeholderTextColor="#9aa5a1"
+                textAlignVertical="top"
+              />
               <Pressable
-                key={mood.label}
-                onPress={() => setSelectedMoodIdx(i)}
-                style={styles.moodItem}
+                onPress={toggleDictation}
+                accessibilityRole="button"
+                accessibilityLabel={recognizing ? "Stop voice dictation" : "Dictate with your voice"}
+                style={({ pressed }) => [
+                  styles.micBtn,
+                  recognizing && styles.micBtnActive,
+                  pressed && styles.micPressed,
+                ]}
               >
-                <View style={[
-                  styles.moodCircle,
-                  { backgroundColor: mood.color },
-                  selectedMoodIdx === i && styles.moodCircleSelected,
-                ]}>
-                  <Text style={styles.moodEmoji}>{mood.emoji}</Text>
-                </View>
-                <Text style={[styles.moodLabel, selectedMoodIdx === i && styles.moodLabelActive]}>
-                  {mood.label}
+                <Text style={[styles.micIcon, recognizing && styles.micIconActive]}>
+                  {recognizing ? "■" : "🎤"}
                 </Text>
               </Pressable>
-            ))}
-          </View>
-        </View>
-
-        {/* Emotions section */}
-        <View style={styles.card}>
-          <Text style={styles.cardTitle}>Emotions</Text>
-          <Text style={styles.cardHint}>What are you feeling? Pick all that apply.</Text>
-          <View style={styles.emotionGrid}>
-            {EMOTIONS.map((em) => {
-              const active = selectedEmotions.includes(em.label);
-              return (
-                <Pressable
-                  key={em.label}
-                  onPress={() => toggleEmotion(em.label)}
-                  style={styles.emotionItem}
-                >
-                  <View style={[styles.emotionCircle, active && styles.emotionCircleActive]}>
-                    <Text style={styles.emotionEmoji}>{em.emoji}</Text>
-                  </View>
-                  <Text style={[styles.emotionLabel, active && styles.emotionLabelActive]}>
-                    {em.label}
-                  </Text>
-                </Pressable>
-              );
-            })}
-          </View>
-        </View>
-
-        <Pressable
-          onPress={confirmMood}
-          disabled={selectedMoodIdx === null}
-          style={({ pressed }) => [
-            styles.cta,
-            selectedMoodIdx === null && styles.ctaDisabled,
-            pressed && selectedMoodIdx !== null && styles.ctaPressed,
-          ]}
-        >
-          <Text style={styles.ctaText}>Continue</Text>
-        </Pressable>
-        {selectedMoodIdx === null && (
-          <Text style={styles.hint}>Select at least one mood to continue</Text>
-        )}
-      </ScrollView>
-    );
-  }
-
-  // ── GROUNDING ────────────────────────────────────────────
-  if (stage === "grounding") {
-    return (
-      <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
-        <GroundingActivity
-          onReady={() => setStage("write")}
-          onSkip={() => setStage("write")}
-        />
-      </ScrollView>
-    );
-  }
-
-  // ── WRITE ────────────────────────────────────────────────
-  if (stage === "write") {
-    return (
-      <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
-        <Text style={styles.h1}>Now, let's journal{"\n"}these thoughts.</Text>
-        <Text style={styles.hint}>What's on your mind? Write or speak as little or as much as you like.</Text>
-
-        {/* Prompt chips */}
-        <View style={styles.promptChips}>
-          {JOURNAL_PROMPTS.map((p) => (
-            <Pressable
-              key={p}
-              onPress={() => setText((prev) => prev ? `${prev} ${p}` : p)}
-              style={styles.promptChip}
-            >
-              <Text style={styles.promptChipText}>{p}</Text>
-            </Pressable>
-          ))}
-        </View>
-
-        <View style={styles.inputWrap}>
-          <TextInput
-            style={styles.input}
-            value={text}
-            onChangeText={setText}
-            multiline
-            autoFocus
-            placeholder="Today I…"
-            placeholderTextColor="#9aa5a1"
-            textAlignVertical="top"
-          />
-          <Pressable
-            onPress={toggleDictation}
-            accessibilityRole="button"
-            accessibilityLabel={recognizing ? "Stop voice dictation" : "Dictate with your voice"}
-            style={({ pressed }) => [
-              styles.micBtn,
-              recognizing && styles.micBtnActive,
-              pressed && styles.micPressed,
-            ]}
-          >
-            <Text style={[styles.micIcon, recognizing && styles.micIconActive]}>
-              {recognizing ? "■" : "🎤"}
-            </Text>
-          </Pressable>
-        </View>
-
-        {recognizing ? (
-          <View style={styles.listeningRow}>
-            <ActivityIndicator size="small" color="#2f6f5e" />
-            <Text style={styles.listeningText}>Listening… tap the square to stop.</Text>
-          </View>
-        ) : (
-          <Text style={styles.micHint}>Tap the mic to dictate your entry.</Text>
-        )}
-        {voiceError ? <Text style={styles.voiceError}>{voiceError}</Text> : null}
-
-        <Pressable
-          disabled={text.trim().length === 0}
-          onPress={submit}
-          style={({ pressed }) => [
-            styles.cta,
-            text.trim().length === 0 && styles.ctaDisabled,
-            pressed && text.trim().length > 0 && styles.ctaPressed,
-          ]}
-        >
-          <Text style={styles.ctaText}>Save entry</Text>
-        </Pressable>
-      </ScrollView>
-    );
-  }
-
-  // ── SUBMITTING ───────────────────────────────────────────
-  if (stage === "submitting") {
-    return (
-      <View style={[styles.screen, styles.loading]}>
-        <ActivityIndicator color="#2f6f5e" />
-        <Text style={styles.hint}>Saving and reflecting…</Text>
-      </View>
-    );
-  }
-
-  // ── RESULT ───────────────────────────────────────────────
-  return (
-    <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
-      {isCrisis ? (
-        <View style={styles.crisisFull}>
-          <CrisisCard prominent />
-          <Text style={styles.crisisNote}>
-            Your entry is saved. Please reach out to one of the lines above —
-            they&apos;re there for exactly this.
-          </Text>
-        </View>
-      ) : (
-        <>
-          <Text style={styles.h1}>Entry saved</Text>
-          {outcome?.analysis.next_prompt ? (
-            <View style={styles.promptCard}>
-              <Text style={styles.promptLabel}>SOMETHING TO SIT WITH</Text>
-              <Text style={styles.promptText}>{outcome.analysis.next_prompt}</Text>
             </View>
-          ) : null}
-          {outcome?.resource && (
-            <ResourceCard
-              title={outcome.resource.title}
-              source={outcome.resource.source}
-              snippet={outcome.resource.snippet}
-              url={outcome.resource.url}
-            />
-          )}
-        </>
-      )}
-      <Pressable onPress={reset} style={styles.secondary}>
-        <Text style={styles.secondaryText}>New entry</Text>
-      </Pressable>
-    </ScrollView>
+
+            {recognizing ? (
+              <View style={styles.listeningRow}>
+                <ActivityIndicator size="small" color="#2f6f5e" />
+                <Text style={styles.listeningText}>Listening… tap the square to stop.</Text>
+              </View>
+            ) : (
+              <Text style={styles.micHint}>Tap the mic to dictate your entry.</Text>
+            )}
+            {voiceError ? <Text style={styles.voiceError}>{voiceError}</Text> : null}
+
+            <Pressable
+              disabled={text.trim().length === 0}
+              onPress={submit}
+              style={({ pressed }) => [
+                styles.cta,
+                text.trim().length === 0 && styles.ctaDisabled,
+                pressed && text.trim().length > 0 && styles.ctaPressed,
+              ]}
+            >
+              <Text style={styles.ctaText}>Save entry</Text>
+            </Pressable>
+          </>
+        )}
+
+        {/* ── SUBMITTING ───────────────────────────────────── */}
+        {stage === "submitting" && (
+          <View style={styles.loading}>
+            <ActivityIndicator color="#2f6f5e" />
+            <Text style={styles.hint}>Saving and reflecting…</Text>
+          </View>
+        )}
+
+        {/* ── RESULT ───────────────────────────────────────── */}
+        {stage === "result" && outcome && (
+          <>
+            {isCrisis ? (
+              <View style={styles.crisisFull}>
+                <CrisisCard prominent />
+                <Text style={styles.crisisNote}>
+                  Your entry is saved. Please reach out to one of the lines above —
+                  they&apos;re there for exactly this.
+                </Text>
+              </View>
+            ) : (
+              <>
+                <Text style={styles.h1}>Entry saved</Text>
+                {outcome.analysis.next_prompt ? (
+                  <View style={styles.promptCard}>
+                    <Text style={styles.promptLabel}>SOMETHING TO SIT WITH</Text>
+                    <Text style={styles.promptText}>{outcome.analysis.next_prompt}</Text>
+                  </View>
+                ) : null}
+                {support?.tip ? (
+                  <TipCard tip={support.tip} domain={outcome.analysis.domain} />
+                ) : support ? (
+                  <Text style={styles.supportNote}>Couldn&apos;t load a tip right now.</Text>
+                ) : null}
+                {support?.grounding ? (
+                  showGrounding ? (
+                    <GroundingTechniqueCard
+                      grounding={support.grounding}
+                      onDone={() => setShowGrounding(false)}
+                    />
+                  ) : (
+                    <Pressable
+                      onPress={() => setShowGrounding(true)}
+                      style={({ pressed }) => [styles.groundingBtn, pressed && styles.groundingBtnPressed]}
+                    >
+                      <Text style={styles.groundingBtnText}>🌀 Want a grounding technique?</Text>
+                    </Pressable>
+                  )
+                ) : null}
+              </>
+            )}
+            <Pressable onPress={reset} style={styles.secondary}>
+              <Text style={styles.secondaryText}>New entry</Text>
+            </Pressable>
+          </>
+        )}
+
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  safe: { flex: 1, backgroundColor: "#f7faf9" },
   screen: { flex: 1, backgroundColor: "#f7faf9" },
   content: { padding: 20, paddingBottom: 48 },
-  loading: { alignItems: "center", justifyContent: "center", gap: 12 },
+  loading: { alignItems: "center", marginTop: 40, gap: 12 },
+
+  backBtn: { alignSelf: "flex-start", marginBottom: 10, paddingVertical: 2 },
+  backPressed: { opacity: 0.6 },
+  backText: { color: "#2f6f5e", fontWeight: "700", fontSize: 15 },
 
   // ── Home
   pageTitle: { fontSize: 28, fontWeight: "800", color: "#1d2b27", marginBottom: 16 },
@@ -418,8 +454,7 @@ const styles = StyleSheet.create({
   calDayLabelActive: { color: "#2f6f5e" },
   calDateCircle: {
     width: 34, height: 34, borderRadius: 17,
-    backgroundColor: "#eceeed",
-    alignItems: "center", justifyContent: "center",
+    backgroundColor: "#eceeed", alignItems: "center", justifyContent: "center",
   },
   calDateCircleActive: { backgroundColor: "#2f6f5e" },
   calDateText: { fontSize: 13, fontWeight: "500", color: "#52605b" },
@@ -428,42 +463,26 @@ const styles = StyleSheet.create({
   divider: { height: 1, backgroundColor: "#eceeed", marginBottom: 20 },
 
   threadCard: {
-    backgroundColor: "#fff",
-    borderRadius: 20,
-    borderWidth: 1,
-    borderColor: "#eceeed",
-    padding: 24,
-    alignItems: "center",
-    marginBottom: 24,
+    backgroundColor: "#fff", borderRadius: 20,
+    borderWidth: 1, borderColor: "#eceeed",
+    padding: 24, alignItems: "center", marginBottom: 24,
   },
   threadIconWrap: { width: 56, height: 56, marginBottom: 16, position: "relative" },
-  threadRing: {
-    position: "absolute",
-    borderRadius: 999,
-    backgroundColor: "#2f6f5e",
-  },
+  threadRing: { position: "absolute", borderRadius: 999, backgroundColor: "#2f6f5e" },
   threadTitle: { fontSize: 22, fontWeight: "800", color: "#1d2b27", marginBottom: 6 },
   threadSub: { fontSize: 13, color: "#52605b", marginBottom: 20, textAlign: "center" },
   startBtn: {
-    backgroundColor: "#2f6f5e",
-    borderRadius: 14,
-    paddingVertical: 14,
-    paddingHorizontal: 48,
-    alignItems: "center",
-    width: "100%",
+    backgroundColor: "#2f6f5e", borderRadius: 14,
+    paddingVertical: 14, alignItems: "center", width: "100%",
   },
   startBtnPressed: { backgroundColor: "#255647" },
   startBtnText: { color: "#fff", fontWeight: "700", fontSize: 16 },
 
-  sectionLabel: {
-    fontSize: 10, fontWeight: "600", color: "#9aa5a1",
-    letterSpacing: 1, marginBottom: 10,
-  },
+  sectionLabel: { fontSize: 10, fontWeight: "600", color: "#9aa5a1", letterSpacing: 1, marginBottom: 10 },
   entryPreviewCard: {
     backgroundColor: "#fff", borderRadius: 14,
     borderWidth: 1, borderColor: "#eceeed",
-    flexDirection: "row", alignItems: "flex-start",
-    padding: 14, gap: 10,
+    flexDirection: "row", alignItems: "flex-start", padding: 14, gap: 10,
   },
   entryPreviewDot: { width: 10, height: 10, borderRadius: 5, marginTop: 3 },
   entryPreviewBody: { flex: 1 },
@@ -473,8 +492,7 @@ const styles = StyleSheet.create({
   // ── Mood + Emotions
   card: {
     backgroundColor: "#fff", borderRadius: 18,
-    borderWidth: 1, borderColor: "#eceeed",
-    padding: 18, marginBottom: 14,
+    borderWidth: 1, borderColor: "#eceeed", padding: 18, marginBottom: 14,
   },
   cardTitle: { fontSize: 16, fontWeight: "700", color: "#1d2b27", marginBottom: 4 },
   cardHint: { fontSize: 12, color: "#9aa5a1", marginBottom: 16 },
@@ -483,25 +501,19 @@ const styles = StyleSheet.create({
   moodItem: { alignItems: "center", flex: 1 },
   moodCircle: {
     width: 52, height: 52, borderRadius: 26,
-    alignItems: "center", justifyContent: "center",
-    marginBottom: 6,
+    alignItems: "center", justifyContent: "center", marginBottom: 6,
   },
   moodCircleSelected: { borderWidth: 3, borderColor: "#1d2b27" },
   moodEmoji: { fontSize: 26 },
   moodLabel: { fontSize: 10, color: "#9aa5a1", textAlign: "center" },
   moodLabelActive: { color: "#1d2b27", fontWeight: "600" },
 
-  emotionGrid: {
-    flexDirection: "row", flexWrap: "wrap",
-    gap: 8,
-  },
+  emotionGrid: { flexDirection: "row", flexWrap: "wrap", gap: 8 },
   emotionItem: { alignItems: "center", width: "22%" },
   emotionCircle: {
     width: 52, height: 52, borderRadius: 26,
-    backgroundColor: "#eef5f2",
-    borderWidth: 1.5, borderColor: "#d4e5de",
-    alignItems: "center", justifyContent: "center",
-    marginBottom: 5,
+    backgroundColor: "#eef5f2", borderWidth: 1.5, borderColor: "#d4e5de",
+    alignItems: "center", justifyContent: "center", marginBottom: 5,
   },
   emotionCircleActive: { backgroundColor: "#2f6f5e", borderColor: "#2f6f5e" },
   emotionEmoji: { fontSize: 24 },
@@ -515,8 +527,7 @@ const styles = StyleSheet.create({
   promptChips: { flexDirection: "row", flexWrap: "wrap", gap: 8, marginBottom: 14 },
   promptChip: {
     backgroundColor: "#eef5f2", borderRadius: 20,
-    borderWidth: 1, borderColor: "#d4e5de",
-    paddingVertical: 7, paddingHorizontal: 14,
+    borderWidth: 1, borderColor: "#d4e5de", paddingVertical: 7, paddingHorizontal: 14,
   },
   promptChipText: { fontSize: 12, fontWeight: "500", color: "#2f6f5e" },
 
@@ -542,7 +553,7 @@ const styles = StyleSheet.create({
   listeningText: { fontSize: 13, color: "#2f6f5e", fontWeight: "600" },
   voiceError: { fontSize: 13, color: "#b3261e", marginBottom: 8 },
 
-  // ── Shared
+  // ── Shared CTA
   cta: {
     backgroundColor: "#2f6f5e", borderRadius: 14,
     paddingVertical: 16, alignItems: "center", marginTop: 8,
@@ -554,15 +565,18 @@ const styles = StyleSheet.create({
   // ── Result
   crisisFull: { gap: 14 },
   crisisNote: { color: "#52605b", fontSize: 14, lineHeight: 20 },
+  supportNote: { color: "#7a857f", fontSize: 14, marginTop: 18, fontStyle: "italic" },
+  groundingBtn: {
+    backgroundColor: "#fff", borderRadius: 14, borderWidth: 1, borderColor: "#cfe4dc",
+    paddingVertical: 15, alignItems: "center", marginTop: 16,
+  },
+  groundingBtnPressed: { backgroundColor: "#eef5f2" },
+  groundingBtnText: { color: "#2f6f5e", fontWeight: "700", fontSize: 15 },
   promptCard: {
     backgroundColor: "#fff", borderRadius: 16,
-    borderWidth: 1, borderColor: "#eceeed",
-    padding: 18, marginTop: 16,
+    borderWidth: 1, borderColor: "#eceeed", padding: 18, marginTop: 16,
   },
-  promptLabel: {
-    color: "#2f6f5e", fontWeight: "700",
-    fontSize: 11, letterSpacing: 1, marginBottom: 6,
-  },
+  promptLabel: { color: "#2f6f5e", fontWeight: "700", fontSize: 11, letterSpacing: 1, marginBottom: 6 },
   promptText: { fontSize: 17, color: "#1d2b27", lineHeight: 24 },
   secondary: { alignItems: "center", marginTop: 22, padding: 8 },
   secondaryText: { color: "#2f6f5e", fontWeight: "700", fontSize: 15 },
