@@ -1,0 +1,156 @@
+[
+  {
+    "id": "box_breathing",
+    "title": "Box Breathing",
+    "duration_seconds": 120,
+    "duration_label": "2 min",
+    "description": "Breathe in for 4 counts, hold for 4, breathe out for 4, hold for 4. Repeat 4 times.",
+    "type": "breathing",
+    "interaction": "in_app_animation",
+    "logs_as": "activity_log",
+    "best_for": ["crisis", "exam_stress", "work_burnout", "sleep_fatigue", "general"]
+  },
+  {
+    "id": "progressive_muscle",
+    "title": "Progressive Muscle Relaxation",
+    "duration_seconds": 300,
+    "duration_label": "5 min",
+    "description": "Starting from your toes, tense each muscle group for 5 seconds then release. Work up to your face. Releases physical tension held in the body.",
+    "type": "physical_relaxation",
+    "interaction": "in_app_guided",
+    "logs_as": "activity_log",
+    "best_for": ["exam_stress", "sleep_fatigue", "work_burnout", "general"]
+  },
+  {
+    "id": "walk_outside",
+    "title": "10-Minute Walk Outside",
+    "duration_seconds": 600,
+    "duration_label": "10 min",
+    "description": "Leave your space and walk outside without your phone. Even a short walk in daylight reduces cortisol and resets your nervous system.",
+    "type": "movement",
+    "interaction": "off_app_timer",
+    "logs_as": "activity_log",
+    "best_for": ["work_burnout", "loneliness", "sleep_fatigue", "general"]
+  },
+  {
+    "id": "54321",
+    "title": "5-4-3-2-1 Grounding",
+    "duration_seconds": 180,
+    "duration_label": "3 min",
+    "description": "Name 5 things you can see, 4 you can touch, 3 you can hear, 2 you can smell, 1 you can taste. Brings you back into the present moment.",
+    "type": "grounding",
+    "interaction": "in_app_guided",
+    "logs_as": "activity_log",
+    "best_for": ["crisis", "self_harm", "exam_stress", "general"]
+  },
+  {
+    "id": "free_write",
+    "title": "Timed Free Write",
+    "duration_seconds": 300,
+    "duration_label": "5 min",
+    "description": "Write without stopping for 5 minutes — no editing, no judgement. Get everything out of your head and onto the page.",
+    "type": "expressive_writing",
+    "interaction": "in_app_text_soft_timer",
+    "logs_as": "entry",
+    "best_for": ["exam_stress", "loneliness", "identity_uncertainty", "relationship_stress", "general"]
+  },
+  {
+    "id": "brain_dump",
+    "title": "Brain Dump",
+    "duration_seconds": 300,
+    "duration_label": "5 min",
+    "description": "Write down every single thing that is in your head right now — tasks, worries, thoughts, feelings. Getting it out of your head reduces cognitive load.",
+    "type": "cognitive_offload",
+    "interaction": "in_app_text_soft_timer",
+    "logs_as": "entry",
+    "best_for": ["exam_stress", "work_burnout", "financial_anxiety", "general"]
+  },
+  {
+    "id": "draw_feelings",
+    "title": "Draw How You Feel",
+    "duration_seconds": 300,
+    "duration_label": "5 min",
+    "description": "Draw, scribble, or doodle how you feel right now — no artistic skill required. Externalising emotion through drawing reduces its intensity.",
+    "type": "creative",
+    "interaction": "off_app_timer",
+    "logs_as": "activity_log",
+    "best_for": ["general", "identity_uncertainty", "loneliness", "self_harm"]
+  },
+  {
+    "id": "tear_paper",
+    "title": "Tear Up Paper",
+    "duration_seconds": 120,
+    "duration_label": "2 min",
+    "description": "Take a piece of paper or a magazine and tear it up as aggressively as you need to. Physical release of anger without physical harm.",
+    "type": "physical_release",
+    "interaction": "off_app_timer",
+    "logs_as": "activity_log",
+    "best_for": ["self_harm", "crisis", "work_burnout", "general"]
+  },
+  {
+    "id": "playlist",
+    "title": "Build a Feelings Playlist",
+    "duration_seconds": 600,
+    "duration_label": "10 min",
+    "description": "Open Spotify or YouTube and build a playlist that matches exactly how you feel right now — not how you want to feel. Let the music meet you where you are.",
+    "type": "music",
+    "interaction": "off_app_timer",
+    "logs_as": "activity_log",
+    "best_for": ["loneliness", "identity_uncertainty", "relationship_stress", "general"]
+  },
+  {
+    "id": "worst_case",
+    "title": "Worst / Best / Most Likely",
+    "duration_seconds": 300,
+    "duration_label": "5 min",
+    "description": "Write the worst case scenario, the best case, and the most realistic outcome. Most anxiety lives in the gap between worst case and most likely.",
+    "type": "reframing",
+    "interaction": "in_app_text_soft_timer",
+    "logs_as": "entry",
+    "best_for": ["exam_stress", "financial_anxiety", "relationship_stress", "general"]
+  },
+  {
+    "id": "text_someone",
+    "title": "Text One Person",
+    "duration_seconds": 120,
+    "duration_label": "2 min",
+    "description": "Text one person something real — not 'hey' but something specific. Connection does not require a full conversation.",
+    "type": "social",
+    "interaction": "off_app_timer",
+    "logs_as": "activity_log",
+    "best_for": ["loneliness", "relationship_stress", "general"]
+  },
+  {
+    "id": "tidy_one_thing",
+    "title": "Tidy One Small Thing",
+    "duration_seconds": 300,
+    "duration_label": "5 min",
+    "description": "Clear just one surface — your desk, your bedside table, the kitchen counter. Environmental order creates a small but real sense of control.",
+    "type": "environment",
+    "interaction": "off_app_timer",
+    "logs_as": "activity_log",
+    "best_for": ["work_burnout", "exam_stress", "financial_anxiety", "general"]
+  },
+  {
+    "id": "watch_nature",
+    "title": "Watch Something Natural",
+    "duration_seconds": 300,
+    "duration_label": "5 min",
+    "description": "Open a window and watch the sky, trees, or street for 5 minutes without your phone. Passive attention to the natural world reduces cortisol.",
+    "type": "passive_rest",
+    "interaction": "off_app_timer",
+    "logs_as": "activity_log",
+    "best_for": ["general", "sleep_fatigue", "loneliness"]
+  },
+  {
+    "id": "cold_water",
+    "title": "Cold Water on Your Face",
+    "duration_seconds": 60,
+    "duration_label": "1 min",
+    "description": "Splash cold water on your face or hold your wrists under cold running water for 30 seconds. Triggers the dive reflex and slows heart rate fast.",
+    "type": "sensory_interrupt",
+    "interaction": "off_app_timer",
+    "logs_as": "activity_log",
+    "best_for": ["crisis", "self_harm", "general"]
+  }
+]
