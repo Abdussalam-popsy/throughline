@@ -1,3 +1,4 @@
+import { useRouter } from "expo-router";
 import { useRef, useState } from "react";
 import {
   ActivityIndicator,
@@ -25,15 +26,31 @@ import type { ProcessEntryResult, SupportResult } from "../src/lib/types";
 type Stage = "triage" | "grounding" | "write" | "submitting" | "result";
 
 const EMOJIS = [
-  { e: "😊", mood: "good", grounding: false, sos: false },
-  { e: "😐", mood: "ok", grounding: false, sos: false },
-  { e: "😔", mood: "low", grounding: false, sos: false },
-  { e: "😢", mood: "sad", grounding: true, sos: false },
-  { e: "😡", mood: "angry", grounding: true, sos: false },
-  { e: "🆘", mood: "sos", grounding: true, sos: true },
+  { e: "😊", mood: "good", label: "Good", grounding: false, sos: false },
+  { e: "😐", mood: "ok", label: "Okay", grounding: false, sos: false },
+  { e: "😔", mood: "low", label: "Low", grounding: false, sos: false },
+  { e: "😢", mood: "sad", label: "Sad", grounding: true, sos: false },
+  { e: "😡", mood: "angry", label: "Angry", grounding: true, sos: false },
+  { e: "🆘", mood: "sos", label: "Need help", grounding: true, sos: true },
 ] as const;
 
+// A warm, time-aware greeting so the first thing the user sees feels personal
+// rather than like a form. Recomputed each render — cheap and always current.
+function greeting(): string {
+  const h = new Date().getHours();
+  if (h < 12) return "Good morning";
+  if (h < 18) return "Good afternoon";
+  return "Good evening";
+}
+
+const TODAY_LABEL = new Date().toLocaleDateString(undefined, {
+  weekday: "long",
+  month: "long",
+  day: "numeric",
+});
+
 export default function TodayScreen() {
+  const router = useRouter();
   const { entries, add } = useEntries();
   const [stage, setStage] = useState<Stage>("triage");
   const [sos, setSos] = useState(false);
@@ -70,6 +87,13 @@ export default function TodayScreen() {
   }
 
   function pickEmoji(emoji: (typeof EMOJIS)[number]) {
+    // SOS / "Need help" is a safety affordance, not a journaling mood — send the
+    // user straight to the always-on Support tab (crisis lines) rather than into
+    // the grounding → write → brief flow.
+    if (emoji.sos) {
+      router.navigate("/support");
+      return;
+    }
     setSos(emoji.sos);
     setGrounded(emoji.grounding);
     setStage(emoji.grounding ? "grounding" : "write");
@@ -151,26 +175,47 @@ export default function TodayScreen() {
           <Text style={styles.backText}>‹ Back</Text>
         </Pressable>
       )}
-      <Text style={styles.kicker}>TODAY</Text>
+      {stage !== "triage" && <Text style={styles.kicker}>TODAY</Text>}
 
       {stage === "triage" && (
         <>
-          <Text style={styles.h1}>How are you feeling right now?</Text>
+          <View style={styles.greetHeader}>
+            <Text style={styles.dateLabel}>{TODAY_LABEL.toUpperCase()}</Text>
+            <Text style={styles.greeting}>{greeting()}.</Text>
+            <Text style={styles.h1}>How are you feeling right now?</Text>
+            <Text style={styles.greetSub}>
+              Tap whichever is closest. We&apos;ll take it from there.
+            </Text>
+          </View>
+
           <View style={styles.emojiRow}>
             {EMOJIS.map((item) => (
               <Pressable
                 key={item.e}
                 onPress={() => pickEmoji(item)}
+                accessibilityRole="button"
+                accessibilityLabel={`I'm feeling ${item.label}`}
                 style={({ pressed }) => [
                   styles.emojiBtn,
+                  item.sos && styles.emojiBtnSos,
                   pressed && styles.emojiPressed,
+                  pressed && item.sos && styles.emojiPressedSos,
                 ]}
               >
                 <Text style={styles.emoji}>{item.e}</Text>
+                <Text style={[styles.emojiLabel, item.sos && styles.emojiLabelSos]}>
+                  {item.label}
+                </Text>
               </Pressable>
             ))}
           </View>
-          <Text style={styles.hint}>Tap whichever is closest. We&apos;ll take it from there.</Text>
+
+          <View style={styles.privacyNote}>
+            <Text style={styles.privacyIcon}>🔒</Text>
+            <Text style={styles.privacyText}>
+              Your check-in stays private on this device.
+            </Text>
+          </View>
         </>
       )}
 
@@ -336,10 +381,26 @@ const styles = StyleSheet.create({
   backText: { color: "#2f6f5e", fontWeight: "700", fontSize: 15 },
   h1: { fontSize: 24, fontWeight: "800", color: "#1d2b27", lineHeight: 30, marginBottom: 6 },
   hint: { fontSize: 14, color: "#52605b", lineHeight: 20 },
+  // Triage greeting: a warm, personal header that fills the top with intent.
+  greetHeader: { marginTop: 8, marginBottom: 4 },
+  dateLabel: {
+    color: "#7b8884",
+    fontWeight: "700",
+    fontSize: 12,
+    letterSpacing: 1.2,
+    marginBottom: 8,
+  },
+  greeting: {
+    fontSize: 18,
+    fontWeight: "700",
+    color: "#2f6f5e",
+    marginBottom: 2,
+  },
+  greetSub: { fontSize: 15, color: "#52605b", lineHeight: 21, marginTop: 2 },
   emojiRow: {
     flexDirection: "row",
     flexWrap: "wrap",
-    marginTop: 22,
+    marginTop: 24,
     marginBottom: 12,
     gap: 12,
   },
@@ -355,14 +416,35 @@ const styles = StyleSheet.create({
     borderColor: "#eceeed",
     alignItems: "center",
     justifyContent: "center",
+    gap: 8,
   },
+  // The SOS tile keeps the neutral white surface; only its label is tinted so it
+  // reads as "help is here" without an alarming fill.
+  emojiBtnSos: {},
   // Press feedback: tint + a gentle inward press. Calm, tactile, no shadow.
   emojiPressed: {
     backgroundColor: "#eef5f2",
     borderColor: "#bfe0d6",
     transform: [{ scale: 0.96 }],
   },
-  emoji: { fontSize: 42, lineHeight: 50, textAlign: "center" },
+  emojiPressedSos: {},
+  emoji: { fontSize: 40, lineHeight: 46, textAlign: "center" },
+  emojiLabel: {
+    fontSize: 13,
+    fontWeight: "600",
+    color: "#52605b",
+    textAlign: "center",
+  },
+  emojiLabelSos: { color: "#9c352b", fontWeight: "700" },
+  privacyNote: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 7,
+    marginTop: 24,
+  },
+  privacyIcon: { fontSize: 13 },
+  privacyText: { fontSize: 13, color: "#7b8884", fontWeight: "500" },
   inputWrap: { position: "relative", marginTop: 14 },
   input: {
     backgroundColor: "#fff",
