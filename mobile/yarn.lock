@@ -1029,7 +1029,7 @@
 
 "@expo/vector-icons@^15.0.2":
   version "15.1.1"
-  resolved "https://registry.yarnpkg.com/@expo/vector-icons/-/vector-icons-15.1.1.tgz#4b1d2c60493c0b0536972f0a5babd5f5c85b48f4"
+  resolved "https://registry.npmjs.org/@expo/vector-icons/-/vector-icons-15.1.1.tgz"
   integrity sha512-Iu2VkcoI5vygbtYngm7jb4ifxElNVXQYdDrYkT7UCEIiKLeWnQY0wf2ZhHZ+Wro6Sc5TaumpKUOqDRpLi5rkvw==
 
 "@expo/ws-tunnel@^1.0.1":
@@ -2924,7 +2924,7 @@ expo-modules-jsi@~56.0.8:
 
 expo-print@~56.0.3:
   version "56.0.3"
-  resolved "https://registry.yarnpkg.com/expo-print/-/expo-print-56.0.3.tgz#85e7636b5f464976223636116c4841a63c23a881"
+  resolved "https://registry.npmjs.org/expo-print/-/expo-print-56.0.3.tgz"
   integrity sha512-ByGKQuvYk/hDjqDGD81lUepSyAyd037XHGL90zZDMLC9vcRyGyaW5iX6QruK39JOZsF90rxV7Eu4syQxhBxSvQ==
 
 expo-router@~56.2.9:
@@ -2968,7 +2968,7 @@ expo-server@^56.0.5:
 
 expo-sharing@~56.0.16:
   version "56.0.16"
-  resolved "https://registry.yarnpkg.com/expo-sharing/-/expo-sharing-56.0.16.tgz#ae7ec34ffaf21b4fe3c91fee041259b2e9936119"
+  resolved "https://registry.npmjs.org/expo-sharing/-/expo-sharing-56.0.16.tgz"
   integrity sha512-tp29hiWunLkjIToDqiiJQo4Nfo//92DAg/pcRWENLlnTXy/qg58uxy1O5K6xVZ7sVZIJqwEDLzDedw3PlDmWmg==
   dependencies:
     "@expo/config-plugins" "^56.0.8"

@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import {
   ActivityIndicator,
+  ImageBackground,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -194,21 +195,28 @@ export default function TodayScreen() {
 
             <View style={styles.divider} />
 
-            <View style={styles.threadCard}>
-              <View style={styles.threadIconWrap}>
-                <View style={[styles.threadRing, { width: 56, height: 56, opacity: 0.15 }]} />
-                <View style={[styles.threadRing, { width: 38, height: 38, opacity: 0.25, top: 9, left: 9 }]} />
-                <View style={[styles.threadRing, { width: 22, height: 22, opacity: 0.8, top: 17, left: 17 }]} />
+            <ImageBackground
+              source={require("../assets/home/daily-thread-bg.jpg")}
+              style={styles.threadCard}
+              imageStyle={styles.threadCardBg}
+              resizeMode="cover"
+              accessibilityRole="image"
+              accessibilityLabel="Daily Thread landscape illustration"
+            >
+              <View style={styles.threadCardOverlay} pointerEvents="none" />
+              <View style={styles.threadCardContent}>
+                <Text style={styles.threadTitle}>Daily Thread</Text>
+                <Text style={styles.threadSub}>
+                  A space to reflect, grow and stay aligned.
+                </Text>
+                <Pressable
+                  onPress={() => setStage("mood")}
+                  style={({ pressed }) => [styles.startBtn, pressed && styles.startBtnPressed]}
+                >
+                  <Text style={styles.startBtnText}>Start</Text>
+                </Pressable>
               </View>
-              <Text style={styles.threadTitle}>Daily Thread</Text>
-              <Text style={styles.threadSub}>Track your day for {formatTodayLong()}</Text>
-              <Pressable
-                onPress={() => setStage("mood")}
-                style={({ pressed }) => [styles.startBtn, pressed && styles.startBtnPressed]}
-              >
-                <Text style={styles.startBtnText}>Start</Text>
-              </Pressable>
-            </View>
+            </ImageBackground>
 
             {lastEntry && (
               <>
@@ -463,14 +471,47 @@ const styles = StyleSheet.create({
   divider: { height: 1, backgroundColor: "#eceeed", marginBottom: 20 },
 
   threadCard: {
-    backgroundColor: "#fff", borderRadius: 20,
-    borderWidth: 1, borderColor: "#eceeed",
-    padding: 24, alignItems: "center", marginBottom: 24,
+    borderRadius: 20,
+    overflow: "hidden",
+    marginBottom: 24,
+    minHeight: 360,
+    justifyContent: "flex-end",
   },
-  threadIconWrap: { width: 56, height: 56, marginBottom: 16, position: "relative" },
-  threadRing: { position: "absolute", borderRadius: 999, backgroundColor: "#2f6f5e" },
-  threadTitle: { fontSize: 22, fontWeight: "800", color: "#1d2b27", marginBottom: 6 },
-  threadSub: { fontSize: 13, color: "#52605b", marginBottom: 20, textAlign: "center" },
+  threadCardBg: { borderRadius: 20 },
+  threadCardOverlay: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    bottom: 0,
+    height: "55%",
+    backgroundColor: "rgba(247, 250, 249, 0.55)",
+  },
+  threadCardContent: {
+    padding: 24,
+    paddingTop: 160,
+    alignItems: "center",
+  },
+  threadTitle: {
+    fontSize: 22,
+    fontWeight: "800",
+    color: "#1d2b27",
+    marginBottom: 6,
+    textAlign: "center",
+    textShadowColor: "rgba(247, 250, 249, 0.9)",
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 6,
+  },
+  threadSub: {
+    fontSize: 13,
+    color: "#52605b",
+    marginBottom: 20,
+    textAlign: "center",
+    lineHeight: 18,
+    maxWidth: 260,
+    textShadowColor: "rgba(247, 250, 249, 0.85)",
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 4,
+  },
   startBtn: {
     backgroundColor: "#2f6f5e", borderRadius: 14,
     paddingVertical: 14, alignItems: "center", width: "100%",

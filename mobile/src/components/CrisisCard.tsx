@@ -1,65 +1,114 @@
-import { Linking, StyleSheet, Text, View } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { Linking, Pressable, StyleSheet, Text, View } from "react-native";
 
-type Line = { label: string; action: string };
+type Line = { label: string; sub: string; action: string; icon: React.ComponentProps<typeof Ionicons>["name"] };
 
 const LINES: Line[] = [
-  { label: "Call 999 (immediate danger)", action: "tel:999" },
-  { label: "Samaritans — 116 123 (free, 24/7)", action: "tel:116123" },
-  { label: "Text SHOUT to 85258", action: "sms:85258&body=SHOUT" },
-  { label: "Papyrus HOPELINE247 — 0800 068 4141", action: "tel:08000684141" },
+  { label: "999",            sub: "Immediate danger",    action: "tel:999",                    icon: "call" },
+  { label: "116 123",        sub: "Samaritans · free, 24/7", action: "tel:116123",             icon: "call-outline" },
+  { label: "Text SHOUT",     sub: "Text to 85258",       action: "sms:85258&body=SHOUT",       icon: "chatbubble-outline" },
+  { label: "0800 068 4141",  sub: "Papyrus HOPELINE247", action: "tel:08000684141",             icon: "call-outline" },
 ];
 
-/**
- * Hardcoded, always-available crisis support. Never gated by model output.
- * `prominent` raises its visual weight (e.g. on a crisis signal or SOS emoji).
- */
 export function CrisisCard({ prominent = false }: { prominent?: boolean }) {
   return (
-    <View style={[styles.card, prominent && styles.cardProminent]}>
-      <Text style={styles.title}>
-        {prominent ? "You don't have to handle this alone" : "If you need to talk to someone now"}
-      </Text>
-      {prominent ? (
-        <Text style={styles.body}>
-          If you&apos;re in immediate danger or thinking about harming yourself,
-          please reach out right now.
-        </Text>
-      ) : null}
-      {LINES.map((l) => (
-        <Text
-          key={l.action}
-          style={styles.line}
-          onPress={() => {
-            Linking.openURL(l.action).catch(() => {});
-          }}
-        >
-          {l.label}
-        </Text>
-      ))}
+    <View style={styles.card}>
+      <View style={styles.header}>
+        <View style={styles.iconWrap}>
+          <Ionicons name="heart" size={18} color="#2f6f5e" />
+        </View>
+        <View style={styles.headerText}>
+          <Text style={styles.title}>
+            {prominent ? "You don't have to handle this alone" : "Need to talk to someone now?"}
+          </Text>
+          {prominent && (
+            <Text style={styles.body}>
+              If you're in immediate danger or thinking about harming yourself, please reach out.
+            </Text>
+          )}
+        </View>
+      </View>
+
+      <View style={styles.lines}>
+        {LINES.map((l, i) => (
+          <Pressable
+            key={l.action}
+            onPress={() => {
+              Linking.openURL(l.action).catch(() => {});
+            }}
+            style={({ pressed }) => [
+              styles.row,
+              i < LINES.length - 1 && styles.rowBorder,
+              pressed && styles.rowPressed,
+            ]}
+            accessibilityRole="button"
+            accessibilityLabel={`${l.label}: ${l.sub}`}
+          >
+            <View style={styles.rowIcon}>
+              <Ionicons name={l.icon} size={16} color="#2f6f5e" />
+            </View>
+            <View style={styles.rowText}>
+              <Text style={styles.rowLabel}>{l.label}</Text>
+              <Text style={styles.rowSub}>{l.sub}</Text>
+            </View>
+            <Ionicons name="chevron-forward" size={16} color="#9aa5a1" />
+          </Pressable>
+        ))}
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: "#fbeeec",
-    borderRadius: 16,
+    backgroundColor: "#ffffff",
+    borderRadius: 18,
     borderWidth: 1,
-    borderColor: "#f0cfc9",
+    borderColor: "#d4e5de",
+    overflow: "hidden",
+  },
+  header: {
+    flexDirection: "row",
+    gap: 12,
+    alignItems: "flex-start",
     padding: 18,
-    gap: 6,
+    paddingBottom: 14,
+    backgroundColor: "#eef5f2",
   },
-  cardProminent: {
-    borderWidth: 2,
-    borderColor: "#b4453a",
-    backgroundColor: "#fbe4e0",
+  iconWrap: {
+    width: 34,
+    height: 34,
+    borderRadius: 10,
+    backgroundColor: "#d4e8de",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 1,
   },
-  title: { fontSize: 17, fontWeight: "800", color: "#9c352b" },
-  body: { color: "#7a4039", fontSize: 14, lineHeight: 20, marginBottom: 2 },
-  line: {
-    color: "#b4453a",
-    fontSize: 16,
-    fontWeight: "700",
-    paddingVertical: 4,
+  headerText: { flex: 1 },
+  title: { fontSize: 16, fontWeight: "800", color: "#1d2b27", lineHeight: 22 },
+  body: { fontSize: 13, color: "#52605b", lineHeight: 19, marginTop: 4 },
+  lines: { backgroundColor: "#ffffff" },
+  row: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+    paddingVertical: 13,
+    paddingHorizontal: 16,
   },
+  rowBorder: {
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: "#eceeed",
+  },
+  rowPressed: { backgroundColor: "#f4faf7" },
+  rowIcon: {
+    width: 30,
+    height: 30,
+    borderRadius: 8,
+    backgroundColor: "#eef5f2",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  rowText: { flex: 1 },
+  rowLabel: { fontSize: 15, fontWeight: "700", color: "#1d2b27" },
+  rowSub: { fontSize: 12, color: "#7b8884", marginTop: 1 },
 });
