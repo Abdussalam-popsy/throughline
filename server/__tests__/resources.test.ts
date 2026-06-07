@@ -1,21 +1,25 @@
-import { getResourceForDomain } from "../src/services/resources";
+import { getTipForDomain } from "../src/services/resources";
 
-test("maps a known domain to a resource", () => {
-  const r = getResourceForDomain("exam_stress");
-  expect(r).not.toBeNull();
-  expect(r?.source).toContain("Imperial");
+test("returns a valid tip for a known domain", () => {
+  const t = getTipForDomain("exam_stress");
+  expect(t.domain).toBe("exam_stress");
+  expect(typeof t.tip).toBe("string");
+  expect(t.tip.length).toBeGreaterThan(0);
+  expect(typeof t.source).toBe("string");
+  expect(t.source.length).toBeGreaterThan(0);
 });
 
-test("returns null for the general domain", () => {
-  expect(getResourceForDomain("general")).toBeNull();
+test("falls back to a general tip for an unknown domain", () => {
+  expect(getTipForDomain("not_a_domain").domain).toBe("general");
 });
 
-test("returns null for an unknown domain", () => {
-  expect(getResourceForDomain("not_a_domain")).toBeNull();
+test("never serves sensitive-bucket tips — crisis/self_harm fall back to general", () => {
+  expect(getTipForDomain("crisis").domain).toBe("general");
+  expect(getTipForDomain("self_harm").domain).toBe("general");
 });
 
-test("body_image resource carries no diet/fitness/weight content", () => {
-  const r = getResourceForDomain("body_image");
-  const blob = `${r?.title} ${r?.snippet}`.toLowerCase();
-  expect(blob).not.toMatch(/\b(diet|fitness|exercise|weight|calorie)\b/);
+test("maps read_more to readMore when present", () => {
+  // exam_stress tips all carry a read_more URL in the source data.
+  const t = getTipForDomain("exam_stress");
+  expect(t.readMore).toMatch(/^https?:\/\//);
 });

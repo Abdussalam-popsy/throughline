@@ -8,13 +8,19 @@ import {
   TextInput,
   View,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { GroundingActivity } from "../src/components/GroundingActivity";
-import { ResourceCard } from "../src/components/ResourceCard";
+import { GroundingTechniqueCard } from "../src/components/GroundingTechniqueCard";
+import { TipCard } from "../src/components/TipCard";
 import { CrisisCard } from "../src/components/CrisisCard";
 import { useEntries } from "../src/hooks/useEntries";
 import { useVoiceInput } from "../src/hooks/useVoiceInput";
-import { classifyDomainApi, processEntryApi } from "../src/services/api";
-import type { ProcessEntryResult } from "../src/lib/types";
+import {
+  classifyDomainApi,
+  fetchSupportApi,
+  processEntryApi,
+} from "../src/services/api";
+import type { ProcessEntryResult, SupportResult } from "../src/lib/types";
 
 type Stage = "triage" | "grounding" | "write" | "submitting" | "result";
 
@@ -31,8 +37,15 @@ export default function TodayScreen() {
   const { entries, add } = useEntries();
   const [stage, setStage] = useState<Stage>("triage");
   const [sos, setSos] = useState(false);
+  // Whether the current entry's mood routed through the grounding breather, so
+  // the back button can return to it (rather than skipping straight to triage).
+  const [grounded, setGrounded] = useState(false);
   const [text, setText] = useState("");
   const [outcome, setOutcome] = useState<ProcessEntryResult | null>(null);
+  // Server-owned support bundle (tip + grounding) for the result screen. Null
+  // until fetched; its tip/grounding are individually null on crisis or error.
+  const [support, setSupport] = useState<SupportResult | null>(null);
+  const [showGrounding, setShowGrounding] = useState(false);
 
   // Text already in the field when the current dictation began. Live transcripts
   // are appended to it so speaking doesn't wipe out what was typed earlier.
@@ -58,7 +71,16 @@ export default function TodayScreen() {
 
   function pickEmoji(emoji: (typeof EMOJIS)[number]) {
     setSos(emoji.sos);
+    setGrounded(emoji.grounding);
     setStage(emoji.grounding ? "grounding" : "write");
+  }
+
+  // Step one stage back through the flow. Typed text is preserved; only `reset`
+  // (New entry) clears it. Not shown on triage / submitting / result.
+  function goBack() {
+    if (recognizing) stopVoice();
+    if (stage === "grounding") setStage("triage");
+    else if (stage === "write") setStage(grounded ? "grounding" : "triage");
   }
 
   async function submit() {
@@ -93,6 +115,12 @@ export default function TodayScreen() {
       createdAt: now,
     });
     setOutcome(result);
+    // The server owns the support content. Skip it for crisis (CrisisCard only);
+    // otherwise fetch the tip + grounding bundle before showing the result.
+    const crisis = sos || result.analysis.risk_level === "crisis";
+    if (!crisis) {
+      setSupport(await fetchSupportApi(domain, result.analysis.risk_level));
+    }
     setStage("result");
   }
 
@@ -100,14 +128,29 @@ export default function TodayScreen() {
     if (recognizing) stopVoice();
     setText("");
     setOutcome(null);
+    setSupport(null);
+    setShowGrounding(false);
     setSos(false);
+    setGrounded(false);
     setStage("triage");
   }
 
   const isCrisis = sos || outcome?.analysis.risk_level === "crisis";
 
   return (
+    <SafeAreaView edges={["top", "bottom"]} style={styles.safe}>
     <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
+      {(stage === "grounding" || stage === "write") && (
+        <Pressable
+          onPress={goBack}
+          hitSlop={10}
+          accessibilityRole="button"
+          accessibilityLabel="Go back"
+          style={({ pressed }) => [styles.backBtn, pressed && styles.backPressed]}
+        >
+          <Text style={styles.backText}>‹ Back</Text>
+        </Pressable>
+      )}
       <Text style={styles.kicker}>TODAY</Text>
 
       {stage === "triage" && (
@@ -238,14 +281,33 @@ export default function TodayScreen() {
                   </Text>
                 </View>
               ) : null}
-              {outcome.resource && (
-                <ResourceCard
-                  title={outcome.resource.title}
-                  source={outcome.resource.source}
-                  snippet={outcome.resource.snippet}
-                  url={outcome.resource.url}
-                />
-              )}
+              {support?.tip ? (
+                <TipCard tip={support.tip} domain={outcome.analysis.domain} />
+              ) : support ? (
+                <Text style={styles.supportNote}>
+                  Couldn&apos;t load a tip right now.
+                </Text>
+              ) : null}
+              {support?.grounding ? (
+                showGrounding ? (
+                  <GroundingTechniqueCard
+                    grounding={support.grounding}
+                    onDone={() => setShowGrounding(false)}
+                  />
+                ) : (
+                  <Pressable
+                    onPress={() => setShowGrounding(true)}
+                    style={({ pressed }) => [
+                      styles.groundingBtn,
+                      pressed && styles.groundingBtnPressed,
+                    ]}
+                  >
+                    <Text style={styles.groundingBtnText}>
+                      🌀 Want a grounding technique?
+                    </Text>
+                  </Pressable>
+                )
+              ) : null}
             </>
           )}
           <Pressable onPress={reset} style={styles.secondary}>
@@ -254,11 +316,13 @@ export default function TodayScreen() {
         </>
       )}
     </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  screen: { backgroundColor: "#f7faf9" },
+  safe: { flex: 1, backgroundColor: "#f7faf9" },
+  screen: { flex: 1, backgroundColor: "#f7faf9" },
   content: { padding: 20, paddingBottom: 48 },
   kicker: {
     color: "#2f6f5e",
@@ -267,6 +331,9 @@ const styles = StyleSheet.create({
     letterSpacing: 1.2,
     marginBottom: 6,
   },
+  backBtn: { alignSelf: "flex-start", marginBottom: 10, paddingVertical: 2 },
+  backPressed: { opacity: 0.6 },
+  backText: { color: "#2f6f5e", fontWeight: "700", fontSize: 15 },
   h1: { fontSize: 24, fontWeight: "800", color: "#1d2b27", marginBottom: 6 },
   hint: { fontSize: 14, color: "#52605b", lineHeight: 20 },
   emojiRow: {
@@ -341,6 +408,18 @@ const styles = StyleSheet.create({
   sosWrap: { marginBottom: 18 },
   crisisFull: { gap: 14 },
   crisisNote: { color: "#52605b", fontSize: 14, lineHeight: 20 },
+  supportNote: { color: "#7a857f", fontSize: 14, marginTop: 18, fontStyle: "italic" },
+  groundingBtn: {
+    backgroundColor: "#fff",
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: "#cfe4dc",
+    paddingVertical: 15,
+    alignItems: "center",
+    marginTop: 16,
+  },
+  groundingBtnPressed: { backgroundColor: "#eef5f2" },
+  groundingBtnText: { color: "#2f6f5e", fontWeight: "700", fontSize: 15 },
   promptCard: {
     backgroundColor: "#fff",
     borderRadius: 16,

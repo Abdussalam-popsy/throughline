@@ -1,7 +1,9 @@
 import { useFocusEffect } from "expo-router";
 import { useCallback, useState } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { getEntries } from "../src/services/storage";
+import { BiggestCauses } from "../src/components/BiggestCauses";
 import type { Entry } from "../src/lib/types";
 
 const RISK_COLOR: Record<string, string> = {
@@ -22,6 +24,7 @@ export default function TimelineScreen() {
   useFocusEffect(load);
 
   return (
+    <SafeAreaView edges={["top", "bottom"]} style={styles.safe}>
     <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
       <Text style={styles.kicker}>TIMELINE</Text>
       <Text style={styles.h1}>Your entries over time</Text>
@@ -29,6 +32,8 @@ export default function TimelineScreen() {
         Every journal entry you log, in the order it happened. Each is tagged with
         the stressor it&apos;s about — chosen automatically, never by hand.
       </Text>
+
+      <BiggestCauses entries={entries} />
 
       {entries.length === 0 ? (
         <Text style={styles.empty}>
@@ -58,11 +63,13 @@ export default function TimelineScreen() {
         ))
       )}
     </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  screen: { backgroundColor: "#f7faf9" },
+  safe: { flex: 1, backgroundColor: "#f7faf9" },
+  screen: { flex: 1, backgroundColor: "#f7faf9" },
   content: { padding: 20, paddingBottom: 48 },
   kicker: {
     color: "#2f6f5e",

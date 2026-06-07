@@ -7,9 +7,24 @@ import type {
   RiskLevel,
   RouteSuggestion,
   SendResult,
+  SupportResult,
+  Tip,
 } from "../lib/types";
 
 const BASE = process.env.EXPO_PUBLIC_API_URL ?? "http://localhost:3000";
+
+// One curated coping tip for a domain (from the tips backend). The server owns
+// all tip content; on any error we return null and the UI shows a quiet note
+// rather than fabricating a tip.
+export async function fetchTipApi(domain: Domain): Promise<Tip | null> {
+  try {
+    const r = await fetch(`${BASE}/api/entry/tip?domain=${encodeURIComponent(domain)}`);
+    if (!r.ok) throw new Error("tip failed");
+    return (await r.json()).tip ?? null;
+  } catch {
+    return null;
+  }
+}
 
 // Call 0 — quick domain triage. Run before saving an entry so it's tagged with
 // the right domain. Fails safe to "general" if the backend is unreachable.
@@ -29,8 +44,9 @@ export async function classifyDomainApi(text: string): Promise<Domain> {
   }
 }
 
-// Call 1 — reflect + domain (per entry). Fails safe to an elevated, no-resource
-// result if the backend is unreachable, so the UI never gets stuck.
+// Call 1 — reflect + domain (per entry). Returns the analysis only; the support
+// bundle (tip + grounding) is fetched separately via fetchSupportApi. Fails safe
+// to an elevated result if the backend is unreachable, so the UI never sticks.
 export async function processEntryApi(
   recent: Entry[],
   today: string,
@@ -55,8 +71,28 @@ export async function processEntryApi(
         stressors: [],
         related_stressor: null,
       },
-      resource: null,
     };
+  }
+}
+
+// The result-screen support bundle: a domain tip + a matching grounding technique.
+// The server decides what is sent (both null on crisis). The frontend keeps no
+// hardcoded content — on any error we return nulls and the UI shows a quiet note.
+export async function fetchSupportApi(
+  domain: Domain,
+  riskLevel: RiskLevel
+): Promise<SupportResult> {
+  try {
+    const r = await fetch(`${BASE}/api/entry/support`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ domain, riskLevel }),
+    });
+    if (!r.ok) throw new Error("support failed");
+    const data = await r.json();
+    return { tip: data.tip ?? null, grounding: data.grounding ?? null };
+  } catch {
+    return { tip: null, grounding: null };
   }
 }
 
