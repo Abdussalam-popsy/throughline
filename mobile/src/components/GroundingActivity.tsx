@@ -77,6 +77,7 @@ export function GroundingActivity({
       <Text style={styles.sub}>Follow the circle. There&apos;s no rush.</Text>
 
       <View style={styles.stage}>
+        <View style={styles.halo} />
         <Animated.View style={[styles.circle, { transform: [{ scale }] }]} />
         <Text style={styles.phase}>{LABEL[phase]}</Text>
       </View>
@@ -107,11 +108,21 @@ const styles = StyleSheet.create({
   title: { fontSize: 22, fontWeight: "800", color: "#1d2b27" },
   sub: { fontSize: 15, color: "#52605b", marginBottom: 8 },
   stage: {
-    width: 240,
-    height: 240,
+    width: 260,
+    height: 260,
     alignItems: "center",
     justifyContent: "center",
     marginVertical: 16,
+  },
+  // A still outer ring the breath expands toward — adds depth without a shadow.
+  halo: {
+    position: "absolute",
+    width: 252,
+    height: 252,
+    borderRadius: 126,
+    backgroundColor: "#f1f7f5",
+    borderWidth: 1,
+    borderColor: "#e0ece8",
   },
   circle: {
     position: "absolute",
@@ -131,7 +142,7 @@ const styles = StyleSheet.create({
     marginTop: 12,
   },
   ctaDisabled: { backgroundColor: "#dbe5e1" },
-  ctaPressed: { backgroundColor: "#255647" },
+  ctaPressed: { backgroundColor: "#255647", transform: [{ scale: 0.99 }] },
   ctaText: { color: "#fff", fontWeight: "700", fontSize: 16 },
   ctaTextDisabled: { color: "#8b9893" },
   skip: { color: "#7b8884", fontSize: 14, marginTop: 14, padding: 6 },

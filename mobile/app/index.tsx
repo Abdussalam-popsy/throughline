@@ -334,14 +334,14 @@ const styles = StyleSheet.create({
   backBtn: { alignSelf: "flex-start", marginBottom: 10, paddingVertical: 2 },
   backPressed: { opacity: 0.6 },
   backText: { color: "#2f6f5e", fontWeight: "700", fontSize: 15 },
-  h1: { fontSize: 24, fontWeight: "800", color: "#1d2b27", marginBottom: 6 },
+  h1: { fontSize: 24, fontWeight: "800", color: "#1d2b27", lineHeight: 30, marginBottom: 6 },
   hint: { fontSize: 14, color: "#52605b", lineHeight: 20 },
   emojiRow: {
     flexDirection: "row",
     flexWrap: "wrap",
-    marginTop: 18,
-    marginBottom: 10,
-    gap: 10,
+    marginTop: 22,
+    marginBottom: 12,
+    gap: 12,
   },
   emojiBtn: {
     // flexBasis + grow gives three even columns that fill the row and stay
@@ -356,8 +356,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  emojiPressed: { backgroundColor: "#eef5f2", borderColor: "#bfe0d6" },
-  emoji: { fontSize: 40, lineHeight: 48, textAlign: "center" },
+  // Press feedback: tint + a gentle inward press. Calm, tactile, no shadow.
+  emojiPressed: {
+    backgroundColor: "#eef5f2",
+    borderColor: "#bfe0d6",
+    transform: [{ scale: 0.96 }],
+  },
+  emoji: { fontSize: 42, lineHeight: 50, textAlign: "center" },
   inputWrap: { position: "relative", marginTop: 14 },
   input: {
     backgroundColor: "#fff",
@@ -404,8 +409,8 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
   ctaDisabled: { backgroundColor: "#dbe5e1" },
-  ctaPressed: { backgroundColor: "#255647" },
-  ctaText: { color: "#fff", fontWeight: "700", fontSize: 16 },
+  ctaPressed: { backgroundColor: "#255647", transform: [{ scale: 0.99 }] },
+  ctaText: { color: "#fff", fontWeight: "700", fontSize: 16, letterSpacing: 0.2 },
   loading: { alignItems: "center", marginTop: 40, gap: 12 },
   sosWrap: { marginBottom: 18 },
   crisisFull: { gap: 14 },

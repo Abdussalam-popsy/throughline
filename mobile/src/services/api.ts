@@ -9,9 +9,24 @@ import type {
   SendResult,
   SupportResult,
   Tip,
+  University,
 } from "../lib/types";
 
 const BASE = process.env.EXPO_PUBLIC_API_URL ?? "http://localhost:3000";
+
+// The full, alphabetised list of universities for the "Select your university"
+// dropdown. The server owns the contact data; on any error we return an empty
+// list so the picker can show a quiet retry state rather than crashing.
+export async function fetchUniversitiesApi(): Promise<University[]> {
+  try {
+    const r = await fetch(`${BASE}/api/universities`);
+    if (!r.ok) throw new Error("universities failed");
+    return (await r.json()).universities ?? [];
+  } catch (error) {
+    console.error("Error in fetchUniversitiesApi:", error);
+    return [];
+  }
+}
 
 // One curated coping tip for a domain (from the tips backend). The server owns
 // all tip content; on any error we return null and the UI shows a quiet note

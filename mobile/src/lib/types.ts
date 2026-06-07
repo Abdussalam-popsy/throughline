@@ -111,6 +111,23 @@ export interface RecipientOption {
   label: string;
 }
 
+/**
+ * A university's mental-health service. Mirrors the server contract
+ * (`GET /api/universities`): `phone`/`email` are present only when that channel
+ * is available; `url` (the service website) is always present. The selected
+ * university is persisted to SQLite and shown on the Support page.
+ */
+export interface University {
+  key: string;
+  name: string;
+  city: string;
+  serviceName: string;
+  phone?: string;
+  email?: string;
+  url: string;
+  notes: string;
+}
+
 export interface SendResult {
   recipient: string;
   previewUrl?: string;

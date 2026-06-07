@@ -27,7 +27,9 @@ export function BiggestCauses({ entries }: { entries: Entry[] }) {
         causes.map((cause, i) => (
           <View key={cause.domain} style={styles.card}>
             <View style={styles.headerRow}>
-              <Text style={styles.rank}>{i + 1}</Text>
+              <View style={styles.rankBadge}>
+                <Text style={styles.rankText}>{i + 1}</Text>
+              </View>
               <Text style={styles.label}>{cause.label}</Text>
               <Text style={styles.count}>
                 {cause.count} {cause.count === 1 ? "entry" : "entries"}
@@ -96,12 +98,15 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   headerRow: { flexDirection: "row", alignItems: "center", gap: 10 },
-  rank: {
-    color: "#2f6f5e",
-    fontWeight: "800",
-    fontSize: 15,
-    width: 16,
+  rankBadge: {
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    backgroundColor: "#d8e8e1",
+    alignItems: "center",
+    justifyContent: "center",
   },
+  rankText: { color: "#2f6f5e", fontWeight: "800", fontSize: 13 },
   label: { flex: 1, color: "#1d2b27", fontWeight: "800", fontSize: 16 },
   count: { color: "#7b8884", fontSize: 12, fontWeight: "600" },
   tip: { color: "#2b3733", fontSize: 14, lineHeight: 20, marginTop: 10 },

@@ -1,0 +1,252 @@
+[
+  {
+    "key": "imperial-counselling",
+    "university": "Imperial College London",
+    "city": "London",
+    "service_name": "Student Counselling and Mental Health Advice Service",
+    "phone": "020 7594 3224",
+    "email": "referraltoscmhas@imperial.ac.uk",
+    "url": "https://www.imperial.ac.uk/students/counselling/",
+    "notes": "Self-referral available. Phone line Mon-Fri 9:30am-12:00pm."
+  },
+  {
+    "key": "ucl-wellbeing",
+    "university": "University College London (UCL )",
+    "city": "London",
+    "service_name": "UCL Student Support and Wellbeing Services",
+    "phone": "020 3108 8836",
+    "email": null,
+    "url": "https://www.ucl.ac.uk/study/support-and-wellbeing/mental-health-and-wellbeing/ucl-student-support-and-wellbeing-services-phone-lines",
+    "notes": "24/7 support line in 35+ languages. Contact via askUCL portal."
+  },
+  {
+    "key": "kcl-wellbeing",
+    "university": "King's College London",
+    "city": "London",
+    "service_name": "Student Mental Health and Wellbeing Services",
+    "phone": "020 7848 1234",
+    "email": null,
+    "url": "https://www.kcl.ac.uk/smhw",
+    "notes": "Contact via online system. Dedicated crisis support page available."
+  },
+  {
+    "key": "lse-wellbeing",
+    "university": "London School of Economics (LSE )",
+    "city": "London",
+    "service_name": "Student Wellbeing Service",
+    "phone": "020 7955 7767",
+    "email": null,
+    "url": "https://www.lse.ac.uk/wellbeing",
+    "notes": "Service hours 9am-5pm. Contact via online portal."
+  },
+  {
+    "key": "qmul-counselling",
+    "university": "Queen Mary University of London",
+    "city": "London",
+    "service_name": "Advice and Counselling Service",
+    "phone": null,
+    "email": null,
+    "url": "https://www.qmul.ac.uk/welfare/about-us/contact-us/",
+    "notes": "Primary contact via AskQM portal. Direct phone lines currently unavailable."
+  },
+  {
+    "key": "city-counselling",
+    "university": "City St George's, University of London",
+    "city": "London",
+    "service_name": "Student Counselling and Mental Health Service",
+    "phone": "020 3897 2033",
+    "email": "studentlifecentre@sgul.ac.uk",
+    "url": "https://studenthub.citystgeorges.ac.uk/student-support-services/health-and-wellbeing/counselling-and-mental-health",
+    "notes": "Separate pathways for Clerkenwell & Moorgate vs Tooting."
+  },
+  {
+    "key": "goldsmiths-wellbeing",
+    "university": "Goldsmiths, University of London",
+    "city": "London",
+    "service_name": "Wellbeing Advisers",
+    "phone": null,
+    "email": "campus-support@gold.ac.uk",
+    "url": "https://www.gold.ac.uk/wellbeing",
+    "notes": "Appointments via telephone, Teams, or in person. Evening and weekend support available."
+  },
+  {
+    "key": "brunel-counselling",
+    "university": "Brunel University London",
+    "city": "Uxbridge",
+    "service_name": "Counselling and Mental Wellbeing Team",
+    "phone": "0800 031 8227",
+    "email": "studentsupport@brunel.ac.uk",
+    "url": "https://students.brunel.ac.uk/support/counselling-services",
+    "notes": "Self-referral and online booking available. Phone is Out of Hours Service."
+  },
+  {
+    "key": "westminster-counselling",
+    "university": "University of Westminster London",
+    "city": "London",
+    "service_name": "Counselling and Mental Health Service",
+    "phone": "020 7911 5000",
+    "email": "counselling@westminster.ac.uk",
+    "url": "https://www.westminster.ac.uk/current-students/support-and-services/counselling-and-mental-health-service",
+    "notes": "Self-referral via E2S portal. Ext. 66899."
+  },
+  {
+    "key": "londonmet-counselling",
+    "university": "London Metropolitan University",
+    "city": "London",
+    "service_name": "Counselling Service",
+    "phone": null,
+    "email": "counselling.studentservices@londonmet.ac.uk",
+    "url": "https://student.londonmet.ac.uk/life-at-london-met/student-services/counselling-service/",
+    "notes": "Drop-in appointments available without booking."
+  },
+  {
+    "key": "mdx-counselling",
+    "university": "Middlesex University London",
+    "city": "London",
+    "service_name": "Counselling And Mental Health Team",
+    "phone": "020 8411 4118",
+    "email": "cmh@mdx.ac.uk",
+    "url": "https://www.mdxsu.com/wellbeing-services",
+    "notes": "Direct contact available for queries or booking help."
+  },
+  {
+    "key": "uel-wellbeing",
+    "university": "University of East London",
+    "city": "London",
+    "service_name": "Student Wellbeing Service",
+    "phone": "020 8223 4444",
+    "email": "wellbeing@uel.ac.uk",
+    "url": "https://www.uel.ac.uk/about/uel-connected/mental-health-support",
+    "notes": "Crisis line is managed separately."
+  },
+  {
+    "key": "royalholloway-counselling",
+    "university": "Royal Holloway University of London",
+    "city": "Egham",
+    "service_name": "Counselling and Mental Health Team",
+    "phone": "0800 915 4644",
+    "email": "counselling@royalholloway.ac.uk",
+    "url": "https://intranet.royalholloway.ac.uk/students/help-support/counselling-and-mental-health/counselling-and-mental-health.aspx",
+    "notes": "Phone is Surrey Mental Health Crisis Line. Campus Security emergencies: 01784 443888."
+  },
+  {
+    "key": "birkbeck-wellbeing",
+    "university": "Birkbeck, University of London",
+    "city": "London",
+    "service_name": "Student Support and Wellbeing",
+    "phone": "020 3907 0700",
+    "email": "counselling-services@bbk.ac.uk",
+    "url": "https://www.bbk.ac.uk/student-services/wellbeing",
+    "notes": "Phone is for general enquiries."
+  },
+  {
+    "key": "ual-counselling",
+    "university": "University of the Arts London (UAL )",
+    "city": "London",
+    "service_name": "Counselling, Health Advice and Chaplaincy",
+    "phone": "020 7514 6251",
+    "email": null,
+    "url": "https://www.arts.ac.uk/students/student-services/counselling-health-advice-and-chaplaincy/mental-health-advice",
+    "notes": "Initial contact via online form and booking link."
+  },
+  {
+    "key": "manchester-counselling",
+    "university": "University of Manchester",
+    "city": "Manchester",
+    "service_name": "Mental Health Support Team",
+    "phone": "0161 275 2864",
+    "email": null,
+    "url": "https://www.counsellingservice.manchester.ac.uk/",
+    "notes": "Immediate support available for urgent cases outside working hours."
+  },
+  {
+    "key": "edinburgh-counselling",
+    "university": "University of Edinburgh",
+    "city": "Edinburgh",
+    "service_name": "Student Counselling Service",
+    "phone": "0131 650 4170",
+    "email": "student.counselling@ed.ac.uk",
+    "url": "https://student-counselling.ed.ac.uk/contact",
+    "notes": "Self-referral available."
+  },
+  {
+    "key": "bristol-counselling",
+    "university": "University of Bristol",
+    "city": "Bristol",
+    "service_name": "Student Counselling Service",
+    "phone": "0117 456 9860",
+    "email": null,
+    "url": "https://www.bristol.ac.uk/student-counselling/",
+    "notes": "Free short-term counselling. Wellbeing advisers can refer to counselling."
+  },
+  {
+    "key": "birmingham-ubheard",
+    "university": "University of Birmingham",
+    "city": "Birmingham",
+    "service_name": "UBHeard 24/7 Mental Health Support",
+    "phone": "0800 917 9379",
+    "email": null,
+    "url": "https://www.intranet.birmingham.ac.uk/student/your-wellbeing/mental-health/ubheard.aspx",
+    "notes": "24/7 service. Online portal and Wisdom App for live messaging."
+  },
+  {
+    "key": "leeds-counselling",
+    "university": "University of Leeds",
+    "city": "Leeds",
+    "service_name": "Student Counselling and Wellbeing Service",
+    "phone": "0113 343 4107",
+    "email": "scw@leeds.ac.uk",
+    "url": "https://students.leeds.ac.uk/counselling-wellbeing-support/doc/mental-health-counselling",
+    "notes": "Appointments allocated based on urgency. Self-referral available."
+  },
+  {
+    "key": "sheffield-counselling",
+    "university": "The University of Sheffield",
+    "city": "Sheffield",
+    "service_name": "Student Mental Health, Counselling, Therapies & Wellbeing",
+    "phone": "0114 222 2100",
+    "email": null,
+    "url": "https://sheffield.ac.uk/health-service/more-services/information-resources/mental-health",
+    "notes": "Self-referral services available."
+  },
+  {
+    "key": "nottingham-counselling",
+    "university": "University of Nottingham",
+    "city": "Nottingham",
+    "service_name": "The University of Nottingham Counselling Service",
+    "phone": "0115 951 3695",
+    "email": "Counselling.Service@nottingham.ac.uk",
+    "url": "https://www.nottingham.ac.uk/studentservices/wellbeing/counselling.aspx",
+    "notes": "Referral only service."
+  },
+  {
+    "key": "southampton-wellbeing",
+    "university": "University of Southampton",
+    "city": "Southampton",
+    "service_name": "Student Wellbeing Service",
+    "phone": "023 80599 599",
+    "email": "studenthub@soton.ac.uk",
+    "url": "https://www.southampton.ac.uk/wellbeing",
+    "notes": "Contact via Student Hub."
+  },
+  {
+    "key": "cardiff-counselling",
+    "university": "Cardiff University",
+    "city": "Cardiff",
+    "service_name": "Counselling and Wellbeing Service",
+    "phone": null,
+    "email": null,
+    "url": "https://www.cardiff.ac.uk/study/student-life/student-support/counselling-and-wellbeing",
+    "notes": "Service accessible via referral from Student Life teams or self-help resources."
+  },
+  {
+    "key": "glasgow-counselling",
+    "university": "University of Glasgow",
+    "city": "Glasgow",
+    "service_name": "Counselling & Wellbeing Service",
+    "phone": "0141 330 4528",
+    "email": "studentcounselling@glasgow.ac.uk",
+    "url": "https://www.gla.ac.uk/myglasgow/counselling/",
+    "notes": "Campus Security for emergencies: 0141 330 4444."
+  }
+]

@@ -1,6 +1,7 @@
 import { useCallback, useState } from "react";
 import {
   ActivityIndicator,
+  Alert,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -12,11 +13,31 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Markdown from "react-native-markdown-display";
 import { useBriefSender } from "../src/hooks/useBriefSender";
 import { getEntries } from "../src/services/storage";
+import { exportJournalPdf } from "../src/lib/pdfExport";
 import type { Entry } from "../src/lib/types";
 
 export default function BriefScreen() {
   const { status, brief, generate } = useBriefSender();
   const [entries, setEntries] = useState<Entry[]>([]);
+  const [exporting, setExporting] = useState(false);
+
+  // Export the generated brief + full entry log to a PDF and open the OS
+  // share/save sheet. The brief is already in hand here, so no regeneration is
+  // needed.
+  async function onExport() {
+    if (exporting) return;
+    setExporting(true);
+    try {
+      await exportJournalPdf(entries, brief);
+    } catch {
+      Alert.alert(
+        "Export failed",
+        "Couldn't create the PDF just now. Please try again."
+      );
+    } finally {
+      setExporting(false);
+    }
+  }
 
   // Build the brief from the live timeline (entries logged on the Today tab and
   // shown on the Timeline tab), not a hardcoded sample. Reload on focus so the
@@ -56,8 +77,8 @@ export default function BriefScreen() {
 
       {status === "error" && (
         <Text style={styles.error}>
-          Couldn&apos;t reach the brief service. Is the backend running on{" "}
-          {process.env.EXPO_PUBLIC_API_URL ?? "adsfafasfdsa, http://localhost:300"}?
+          Couldn&apos;t reach the brief service.{" "}
+          {/* {process.env.EXPO_PUBLIC_API_URL ?? "http://localhost:300"}? */}
         </Text>
       )}
 
@@ -76,6 +97,26 @@ export default function BriefScreen() {
             <View style={styles.card}>
               <Markdown style={markdownStyles}>{brief}</Markdown>
             </View>
+            <Pressable
+              onPress={onExport}
+              disabled={exporting}
+              accessibilityRole="button"
+              accessibilityLabel="Export your brief and entries as a PDF"
+              style={({ pressed }) => [
+                styles.export,
+                exporting && styles.exportDisabled,
+                pressed && !exporting && styles.exportPressed,
+              ]}
+            >
+              {exporting ? (
+                <>
+                  <ActivityIndicator size="small" color="#fff" />
+                  <Text style={styles.exportText}>Preparing PDF…</Text>
+                </>
+              ) : (
+                <Text style={styles.exportText}>⬇  Export as PDF</Text>
+              )}
+            </Pressable>
             <Pressable
               style={({ pressed }) => [
                 styles.refresh,
@@ -119,8 +160,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 22,
   },
-  ctaPressed: { backgroundColor: "#255647" },
-  ctaText: { color: "#fff", fontWeight: "700", fontSize: 16 },
+  ctaPressed: { backgroundColor: "#255647", transform: [{ scale: 0.99 }] },
+  ctaText: { color: "#fff", fontWeight: "700", fontSize: 16, letterSpacing: 0.2 },
   error: { color: "#b4453a", marginTop: 14, fontSize: 14, lineHeight: 20 },
   loading: { alignItems: "center", marginTop: 36, gap: 10 },
   loadingText: { color: "#52605b", fontSize: 14 },
@@ -138,6 +179,19 @@ const styles = StyleSheet.create({
     marginTop: 16,
     fontStyle: "italic",
   },
+  export: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 8,
+    backgroundColor: "#2f6f5e",
+    borderRadius: 14,
+    paddingVertical: 15,
+    marginTop: 18,
+  },
+  exportPressed: { backgroundColor: "#255647" },
+  exportDisabled: { opacity: 0.7 },
+  exportText: { color: "#fff", fontWeight: "700", fontSize: 15 },
   refresh: {
     alignSelf: "flex-start",
     marginTop: 14,
@@ -153,25 +207,39 @@ const styles = StyleSheet.create({
 });
 
 const markdownStyles = {
-  heading1: { fontSize: 20, fontWeight: "800", color: "#1d2b27", marginTop: 8 },
-  heading2: {
-    fontSize: 15,
-    fontWeight: "700",
+  // Doc title — top of the rendered brief (DESIGN.md §5.3 / Brief-document hierarchy).
+  heading1: {
+    fontSize: 20,
+    fontWeight: "800",
     color: "#1d2b27",
-    marginTop: 18,
-    marginBottom: 4,
+    marginTop: 8,
+    letterSpacing: 0.2,
+  },
+  // Section labels read as a clinical document: uppercase green over a hairline rule.
+  heading2: {
+    fontSize: 13,
+    fontWeight: "700",
+    color: "#2f6f5e",
+    textTransform: "uppercase",
+    letterSpacing: 1,
+    marginTop: 20,
+    marginBottom: 8,
     borderBottomWidth: 1,
     borderBottomColor: "#eceeed",
-    paddingBottom: 4,
+    paddingBottom: 6,
   },
   body: { color: "#2b3733", fontSize: 15, lineHeight: 22 },
+  // Quoted journal lines as evidence — italic, left-bordered, soft-filled.
   blockquote: {
     backgroundColor: "#f1f5f4",
     borderLeftWidth: 3,
     borderLeftColor: "#cdd8d4",
-    paddingHorizontal: 12,
-    paddingVertical: 6,
+    borderRadius: 6,
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    marginVertical: 6,
     color: "#52605b",
+    fontStyle: "italic",
   },
-  hr: { backgroundColor: "#eceeed", height: 1, marginVertical: 16 },
+  hr: { backgroundColor: "#eceeed", height: 1, marginVertical: 18 },
 } as const;

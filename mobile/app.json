@@ -16,7 +16,8 @@
           "microphonePermission": "Allow Throughline to use the microphone so you can dictate your entry.",
           "speechRecognitionPermission": "Allow Throughline to transcribe your speech into your entry."
         }
-      ]
+      ],
+      "expo-sharing"
     ],
     "ios": {
       "supportsTablet": true,

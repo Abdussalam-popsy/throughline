@@ -40,27 +40,33 @@ export default function TimelineScreen() {
           Nothing yet. Add an entry on the Today tab and it&apos;ll appear here.
         </Text>
       ) : (
-        entries.map((entry) => (
-          <View key={entry.id} style={styles.row}>
-            <View
-              style={[
-                styles.dot,
-                { backgroundColor: RISK_COLOR[entry.riskLevel ?? "none"] },
-              ]}
-            />
-            <View style={styles.rowBody}>
-              <Text style={styles.date}>{entry.date}</Text>
-              <Text style={styles.text} numberOfLines={2}>
-                {entry.text}
-              </Text>
-              {entry.stressor ? (
-                <View style={styles.chip}>
-                  <Text style={styles.chipText}>{entry.stressor}</Text>
-                </View>
-              ) : null}
+        entries.map((entry, i) => {
+          const isLast = i === entries.length - 1;
+          return (
+            <View key={entry.id} style={styles.row}>
+              <View style={styles.gutter}>
+                <View
+                  style={[
+                    styles.dot,
+                    { backgroundColor: RISK_COLOR[entry.riskLevel ?? "none"] },
+                  ]}
+                />
+                {!isLast ? <View style={styles.connector} /> : null}
+              </View>
+              <View style={styles.rowBody}>
+                <Text style={styles.date}>{entry.date}</Text>
+                <Text style={styles.text} numberOfLines={2}>
+                  {entry.text}
+                </Text>
+                {entry.stressor ? (
+                  <View style={styles.chip}>
+                    <Text style={styles.chipText}>{entry.stressor}</Text>
+                  </View>
+                ) : null}
+              </View>
             </View>
-          </View>
-        ))
+          );
+        })
       )}
     </ScrollView>
     </SafeAreaView>
@@ -78,12 +84,23 @@ const styles = StyleSheet.create({
     letterSpacing: 1.2,
     marginBottom: 6,
   },
-  h1: { fontSize: 24, fontWeight: "800", color: "#1d2b27" },
-  note: { color: "#7b8884", fontSize: 13, marginTop: 8, marginBottom: 16 },
+  h1: { fontSize: 24, fontWeight: "800", color: "#1d2b27", lineHeight: 30 },
+  note: { color: "#7b8884", fontSize: 13, lineHeight: 19, marginTop: 8, marginBottom: 16 },
   empty: { color: "#7b8884", fontSize: 14, lineHeight: 20, marginTop: 8 },
-  row: { flexDirection: "row", gap: 12, marginBottom: 14 },
-  dot: { width: 12, height: 12, borderRadius: 6, marginTop: 5 },
-  rowBody: { flex: 1 },
+  row: { flexDirection: "row", gap: 12 },
+  // Left rail: a ring-dot over a soft connector line so entries read as one
+  // continuous thread rather than a plain list.
+  gutter: { width: 16, alignItems: "center" },
+  dot: {
+    width: 16,
+    height: 16,
+    borderRadius: 8,
+    borderWidth: 3,
+    borderColor: "#f7faf9",
+    marginTop: 2,
+  },
+  connector: { width: 2, flex: 1, backgroundColor: "#dde8e3", borderRadius: 1, marginTop: 2 },
+  rowBody: { flex: 1, paddingBottom: 22 },
   date: { color: "#7b8884", fontSize: 12, fontWeight: "600" },
   text: { color: "#2b3733", fontSize: 14, lineHeight: 20, marginTop: 2 },
   chip: {
