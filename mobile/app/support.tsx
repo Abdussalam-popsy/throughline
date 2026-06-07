@@ -5,7 +5,6 @@ import { CrisisCard } from "../src/components/CrisisCard";
 import type { University } from "../src/lib/types";
 import { getUniversity } from "../src/services/storage";
 
-// A tappable contact line (phone / email / website) for the university card.
 function ContactLine({
   icon,
   label,
@@ -24,12 +23,14 @@ function ContactLine({
       accessibilityRole="button"
       accessibilityLabel={`${label}: ${value}`}
     >
-      <Ionicons name={icon} size={18} color="#2f6f5e" />
+      <View style={styles.contactIconWrap}>
+        <Ionicons name={icon} size={16} color="#2f6f5e" />
+      </View>
       <View style={styles.contactText}>
         <Text style={styles.contactLabel}>{label}</Text>
         <Text style={styles.contactValue}>{value}</Text>
       </View>
-      <Ionicons name="chevron-forward" size={18} color="#9aa5a1" />
+      <Ionicons name="chevron-forward" size={16} color="#9aa5a1" />
     </Pressable>
   );
 }
@@ -37,9 +38,16 @@ function ContactLine({
 function UniversityCard({ university }: { university: University }) {
   return (
     <View style={styles.uniCard}>
-      <Text style={styles.uniTag}>YOUR UNIVERSITY</Text>
-      <Text style={styles.uniName}>{university.name}</Text>
-      <Text style={styles.uniService}>{university.serviceName}</Text>
+      <View style={styles.uniHeader}>
+        <View style={styles.uniIconWrap}>
+          <Ionicons name="school-outline" size={18} color="#2f6f5e" />
+        </View>
+        <View style={styles.uniHeaderText}>
+          <Text style={styles.uniTag}>YOUR UNIVERSITY</Text>
+          <Text style={styles.uniName}>{university.name}</Text>
+          <Text style={styles.uniService}>{university.serviceName}</Text>
+        </View>
+      </View>
 
       <View style={styles.contacts}>
         {university.phone ? (
@@ -79,22 +87,33 @@ export default function SupportScreen() {
   return (
     <SafeAreaView edges={["top", "bottom"]} style={styles.safe}>
       <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
-        <Text style={styles.kicker}>SUPPORT</Text>
-        <Text style={styles.h1}>You can reach out any time</Text>
+
+        <View style={styles.heroRow}>
+          <View>
+            <Text style={styles.kicker}>SUPPORT</Text>
+            <Text style={styles.h1}>You can reach{"\n"}out any time</Text>
+          </View>
+          <View style={styles.heroIcon}>
+            <Ionicons name="heart" size={28} color="#2f6f5e" />
+          </View>
+        </View>
         <Text style={styles.sub}>
-          These lines are always here — you never need a reason &ldquo;serious
-          enough&rdquo; to use them.
+          These lines are always here — you never need a reason{" "}
+          <Text style={styles.subEmphasis}>&ldquo;serious enough&rdquo;</Text> to use them.
         </Text>
 
-        <View style={styles.spacer}>
+        <View style={styles.section}>
+          <Text style={styles.sectionLabel}>CRISIS LINES</Text>
           <CrisisCard prominent />
         </View>
 
         {university ? (
-          <View style={styles.spacer}>
+          <View style={styles.section}>
+            <Text style={styles.sectionLabel}>UNIVERSITY SUPPORT</Text>
             <UniversityCard university={university} />
           </View>
         ) : null}
+
       </ScrollView>
     </SafeAreaView>
   );
@@ -104,6 +123,24 @@ const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: "#f7faf9" },
   screen: { flex: 1, backgroundColor: "#f7faf9" },
   content: { padding: 20, paddingBottom: 48 },
+
+  heroRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    marginBottom: 10,
+  },
+  heroIcon: {
+    width: 52,
+    height: 52,
+    borderRadius: 16,
+    backgroundColor: "#eef5f2",
+    borderWidth: 1,
+    borderColor: "#d4e5de",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 4,
+  },
   kicker: {
     color: "#2f6f5e",
     fontWeight: "700",
@@ -111,45 +148,71 @@ const styles = StyleSheet.create({
     letterSpacing: 1.2,
     marginBottom: 6,
   },
-  h1: { fontSize: 24, fontWeight: "800", color: "#1d2b27", lineHeight: 30 },
-  sub: { fontSize: 15, color: "#52605b", marginTop: 8, lineHeight: 21 },
-  spacer: { marginTop: 18 },
+  h1: { fontSize: 28, fontWeight: "800", color: "#1d2b27", lineHeight: 34 },
+  sub: { fontSize: 15, color: "#52605b", lineHeight: 22, marginBottom: 6 },
+  subEmphasis: { fontStyle: "italic", color: "#2f6f5e" },
+
+  section: { marginTop: 24 },
+  sectionLabel: {
+    fontSize: 11,
+    fontWeight: "700",
+    color: "#9aa5a1",
+    letterSpacing: 1,
+    marginBottom: 10,
+  },
+
   uniCard: {
-    backgroundColor: "#eef5f2",
-    borderRadius: 16,
+    backgroundColor: "#ffffff",
+    borderRadius: 18,
     borderWidth: 1,
     borderColor: "#d4e5de",
-    padding: 18,
-    gap: 4,
+    overflow: "hidden",
   },
-  uniTag: { color: "#2f6f5e", fontWeight: "700", fontSize: 11, letterSpacing: 1 },
-  uniName: { fontSize: 18, fontWeight: "800", color: "#1d2b27", marginTop: 2 },
-  uniService: { fontSize: 14, color: "#52605b", marginBottom: 6 },
+  uniHeader: {
+    flexDirection: "row",
+    gap: 12,
+    alignItems: "flex-start",
+    padding: 18,
+    paddingBottom: 14,
+    backgroundColor: "#eef5f2",
+  },
+  uniIconWrap: {
+    width: 34,
+    height: 34,
+    borderRadius: 10,
+    backgroundColor: "#d4e8de",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 2,
+  },
+  uniHeaderText: { flex: 1 },
+  uniTag: { color: "#2f6f5e", fontWeight: "700", fontSize: 11, letterSpacing: 1, marginBottom: 2 },
+  uniName: { fontSize: 17, fontWeight: "800", color: "#1d2b27" },
+  uniService: { fontSize: 13, color: "#52605b", marginTop: 2 },
+
   contacts: {
     backgroundColor: "#ffffff",
-    borderRadius: 12,
-    borderWidth: 1,
-    borderColor: "#e1ebe7",
-    marginTop: 8,
-    overflow: "hidden",
   },
   contactRow: {
     flexDirection: "row",
     alignItems: "center",
     gap: 12,
     paddingVertical: 13,
-    paddingHorizontal: 14,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: "#eceeed",
+    paddingHorizontal: 16,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderTopColor: "#eceeed",
   },
-  pressed: { backgroundColor: "#f1f7f4" },
+  pressed: { backgroundColor: "#f4faf7" },
+  contactIconWrap: {
+    width: 30,
+    height: 30,
+    borderRadius: 8,
+    backgroundColor: "#eef5f2",
+    alignItems: "center",
+    justifyContent: "center",
+  },
   contactText: { flex: 1 },
-  contactLabel: {
-    fontSize: 12,
-    color: "#7b8884",
-    fontWeight: "600",
-    letterSpacing: 0.3,
-  },
+  contactLabel: { fontSize: 12, color: "#7b8884", fontWeight: "600", letterSpacing: 0.3 },
   contactValue: { fontSize: 15, color: "#1d2b27", fontWeight: "600", marginTop: 1 },
-  uniNotes: { fontSize: 13, color: "#5c6b66", lineHeight: 19, marginTop: 12 },
+  uniNotes: { fontSize: 13, color: "#5c6b66", lineHeight: 19, padding: 16, paddingTop: 12 },
 });
