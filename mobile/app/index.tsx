@@ -339,13 +339,15 @@ const styles = StyleSheet.create({
   emojiRow: {
     flexDirection: "row",
     flexWrap: "wrap",
-    justifyContent: "space-between",
     marginTop: 18,
     marginBottom: 10,
     gap: 10,
   },
   emojiBtn: {
-    width: "30%",
+    // flexBasis + grow gives three even columns that fill the row and stay
+    // aligned across both rows; gap (not space-between) keeps spacing uniform.
+    flexBasis: "30%",
+    flexGrow: 1,
     aspectRatio: 1,
     backgroundColor: "#fff",
     borderRadius: 16,
@@ -355,7 +357,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   emojiPressed: { backgroundColor: "#eef5f2", borderColor: "#bfe0d6" },
-  emoji: { fontSize: 40 },
+  emoji: { fontSize: 40, lineHeight: 48, textAlign: "center" },
   inputWrap: { position: "relative", marginTop: 14 },
   input: {
     backgroundColor: "#fff",
